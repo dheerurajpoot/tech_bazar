@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import ProfileLayout from "@/components/profile-layout";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
 	Users,
