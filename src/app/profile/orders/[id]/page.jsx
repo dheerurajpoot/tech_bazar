@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,43 +21,39 @@ import {
 } from "@/components/ui/table";
 import { Package, User, Calendar, DollarSign, FileDown } from "lucide-react";
 import toast from "react-hot-toast";
+import axios from "axios";
 
-// Simulating API data fetching
-const getOrderDetails = (id) => ({
-	id: id,
-	status: "Processing",
-	date: "2023-05-15",
-	total: 15000,
-	customer: {
-		name: "John Doe",
-		email: "john@example.com",
-	},
-	items: [
-		{ id: "1", name: "Tech Blog", price: 5000 },
-		{ id: "2", name: "E-commerce Store", price: 10000 },
-	],
-});
-
-export default function UserOrderDetailsPage({ params }) {
+export default function UserOrderDetailsPage({ params: rawParams }) {
 	const router = useRouter();
-	const [order, setOrder] = useState(null); // Initialize state to handle data
-	const [loading, setLoading] = useState(true);
+	const [order, setOrder] = useState(null);
+
+	const [isLoading, setIsLoading] = useState(false);
+	const orderId = React.use(rawParams).id;
+
+	const getOrder = async () => {
+		try {
+			setIsLoading(true);
+			const response = await axios.post("/api/get-order", {
+				orderId,
+			});
+			setOrder(response.data?.order);
+			setIsLoading(false);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setIsLoading(false);
+		}
+	};
 
 	useEffect(() => {
-		// Unwrapping params as it's a Promise
-		(async () => {
-			const unwrappedParams = await params; // Awaiting the params Promise
-			const orderDetails = getOrderDetails(unwrappedParams.id);
-			setOrder(orderDetails);
-			setLoading(false);
-		})();
-	}, [params]);
+		getOrder();
+	}, []);
 
 	const handleDownloadInvoice = () => {
 		toast.success("Invoice Downloaded");
 	};
 
-	if (loading) {
+	if (isLoading) {
 		return <p>Loading...</p>; // Show a loading state
 	}
 
@@ -79,23 +75,28 @@ export default function UserOrderDetailsPage({ params }) {
 							<Package className='mr-2' />
 							Order Information
 						</CardTitle>
-						<CardDescription>Order ID: {order.id}</CardDescription>
+						<CardDescription>
+							Order ID: {order?._id}
+						</CardDescription>
 					</CardHeader>
 					<CardContent>
 						<div className='space-y-2'>
 							<div className='flex items-center'>
 								<Calendar className='mr-2' />
-								<span>Date: {order.date}</span>
+								<span>
+									Date:{" "}
+									{new Date(order?.createdAt).toDateString()}
+								</span>
 							</div>
 							<div className='flex items-center'>
 								<DollarSign className='mr-2' />
 								<span>
-									Total: ${order.total.toLocaleString()}
+									Total: ${order?.amount?.toLocaleString()}
 								</span>
 							</div>
 							<div className='flex items-center'>
 								<Package className='mr-2' />
-								<span>Status: {order.status}</span>
+								<span>Status: {order?.status}</span>
 							</div>
 						</div>
 					</CardContent>
@@ -117,10 +118,13 @@ export default function UserOrderDetailsPage({ params }) {
 					<CardContent>
 						<div className='space-y-2'>
 							<p>
-								<strong>Name:</strong> {order.customer.name}
+								<strong>Name:</strong> {order?.user?.username}
 							</p>
 							<p>
-								<strong>Email:</strong> {order.customer.email}
+								<strong>Email:</strong> {order?.user?.email}
+							</p>
+							<p>
+								<strong>Phone:</strong> {order?.user?.phone}
 							</p>
 						</div>
 					</CardContent>
@@ -142,20 +146,18 @@ export default function UserOrderDetailsPage({ params }) {
 							</TableRow>
 						</TableHeader>
 						<TableBody>
-							{order.items.map((item) => (
-								<TableRow key={item.id}>
-									<TableCell>{item.name}</TableCell>
-									<TableCell className='text-right'>
-										${item.price.toLocaleString()}
-									</TableCell>
-								</TableRow>
-							))}
+							<TableRow>
+								<TableCell>{order?.product?.title}</TableCell>
+								<TableCell className='text-right'>
+									${order?.product?.price?.toLocaleString()}
+								</TableCell>
+							</TableRow>
 						</TableBody>
 					</Table>
 				</CardContent>
 				<CardFooter className='flex justify-end'>
 					<p className='font-bold'>
-						Total: ${order.total.toLocaleString()}
+						Total: ${order?.amount?.toLocaleString()}
 					</p>
 				</CardFooter>
 			</Card>

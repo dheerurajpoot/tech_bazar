@@ -30,6 +30,10 @@ const productModel = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		isSold: {
+			type: Boolean,
+			default: false,
+		},
 		earningsPerMonth: {
 			type: Number,
 			default: 0,

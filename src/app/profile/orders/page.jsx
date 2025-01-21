@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../context/authContext";
 import Link from "next/link";
 import ProfileLayout from "@/components/profile-layout";
@@ -12,26 +12,32 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
+import axios from "axios";
 
 export default function UserOrdersPage() {
 	const { user } = useContext(AuthContext);
 
-	const orders = [
-		{
-			id: "1",
-			product: "Tech Blog",
-			date: "2023-05-01",
-			status: "Completed",
-			total: 5000,
-		},
-		{
-			id: "2",
-			product: "E-commerce Store",
-			date: "2023-05-15",
-			status: "Processing",
-			total: 10000,
-		},
-	];
+	const [orders, setOrders] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
+
+	const userId = user?._id;
+	const getOrders = async () => {
+		try {
+			setIsLoading(true);
+			const response = await axios.post("/api/get-user-orders", {
+				userId,
+			});
+
+			setOrders(response.data?.orders || []);
+			setIsLoading(false);
+		} catch (error) {
+			setIsLoading(false);
+			console.log(error);
+		}
+	};
+	useEffect(() => {
+		getOrders();
+	}, [user, userId]);
 
 	return (
 		<ProfileLayout isAdmin={user?.role === "admin"}>
@@ -49,19 +55,21 @@ export default function UserOrdersPage() {
 						</TableRow>
 					</TableHeader>
 					<TableBody>
-						{orders.map((order) => (
-							<TableRow key={order.id}>
-								<TableCell>{order.id}</TableCell>
-								<TableCell>{order.product}</TableCell>
-								<TableCell>{order.date}</TableCell>
+						{orders.map((order, index) => (
+							<TableRow key={order._id}>
+								<TableCell>{index + 1}</TableCell>
+								<TableCell>{order.product.title}</TableCell>
+								<TableCell>
+									{new Date(order.createdAt).toDateString()}
+								</TableCell>
 								<TableCell>{order.status}</TableCell>
 								<TableCell>
-									${order.total.toLocaleString()}
+									${order.amount?.toLocaleString()}
 								</TableCell>
 								<TableCell>
 									<Button asChild size='sm'>
 										<Link
-											href={`/profile/orders/${order.id}`}>
+											href={`/profile/orders/${order._id}`}>
 											View Details
 										</Link>
 									</Button>

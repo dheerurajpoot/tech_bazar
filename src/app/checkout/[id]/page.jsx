@@ -54,6 +54,7 @@ export default function CheckoutPage({ params: rawParams }) {
 		product: product?._id,
 		amount: product.price,
 		status: "pending",
+		paymentMethod,
 	};
 
 	const handleSubmit = async (e) => {
@@ -86,19 +87,19 @@ export default function CheckoutPage({ params: rawParams }) {
 						<h2 className='text-2xl font-semibold'>
 							{product.title}
 						</h2>
-						<p className='text-gray-600'>{product.description}</p>
+						<p className='text-gray-600'>{product?.description}</p>
 						<div className='grid grid-cols-2 gap-4'>
 							<div>
 								<Label>Type</Label>
-								<p>{product.type}</p>
+								<p>{product?.type}</p>
 							</div>
 							<div>
 								<Label>Age</Label>
-								<p>{product.age} months</p>
+								<p>{product?.age} months</p>
 							</div>
 							<div>
 								<Label>Monetization</Label>
-								<p>{product.monetization}</p>
+								<p>{product?.monetization}</p>
 							</div>
 							<div>
 								<Label>Monthly Earnings</Label>
@@ -118,7 +119,7 @@ export default function CheckoutPage({ params: rawParams }) {
 					<CardContent>
 						<div className='space-y-2'>
 							<div className='flex justify-between'>
-								<span>{product.title}</span>
+								<span>{product?.title}</span>
 								<span>${product?.price?.toLocaleString()}</span>
 							</div>
 							<Separator />

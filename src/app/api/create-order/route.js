@@ -6,10 +6,10 @@ export async function POST(request) {
 	try {
 		await connectDb();
 		const reqBody = await request.json();
-		const { user, product, amount, status } = reqBody;
+		const { user, product, amount, status, paymentMethod } = reqBody;
 
 		// Validate incoming data
-		if (!user || !product || !amount || !status) {
+		if (!user || !product || !amount || !status || !paymentMethod) {
 			return NextResponse.json({
 				message: "Invalid input. All fields are required.",
 				status: 400,
@@ -21,6 +21,7 @@ export async function POST(request) {
 			product,
 			amount,
 			status,
+			paymentMethod,
 		});
 
 		const order = await newOrder.save();
