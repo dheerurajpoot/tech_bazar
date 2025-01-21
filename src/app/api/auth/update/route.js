@@ -9,12 +9,13 @@ export async function PUT(request) {
 		await connectDb();
 		const reqBody = await request.json();
 
-		const { userId, username, email } = reqBody;
+		const { userId, username, email, phone } = reqBody;
 		const updateUser = await User.findByIdAndUpdate(
 			{ _id: userId },
 			{
 				username: username,
 				email: email,
+				phone: phone,
 			}
 		);
 		if (!updateUser) {
@@ -41,6 +42,7 @@ export async function PUT(request) {
 				_id: user._id,
 				username: user.username,
 				email: user.email,
+				phone: user.phone,
 				role: user?.role,
 				token: token,
 				createdAt: user?.createdAt,

@@ -70,20 +70,28 @@ export default function RegisterPage() {
 		try {
 			if (validateForm()) {
 				setIsLoading(true);
+
 				const response = await axios.post(
 					"/api/auth/register",
 					formData
 				);
+
 				if (response.data.success) {
-					toast.success(res.data.message);
+					toast.success(response.data.message);
 					setIsLoading(false);
+					setTimeout(() => {
+						const confirmed = window.confirm(
+							"Please verify your email address to login, verification link has been sended to your email address!"
+						);
+						if (!confirmed) return;
+					}, 1000);
 					// Redirect to home page after successful registration
 					router.push("/login");
 				}
 			}
 		} catch (error) {
 			setIsLoading(false);
-			toast.error(error.response.data.message);
+			toast.error(error.response?.data?.message);
 			console.log(error);
 		}
 	};

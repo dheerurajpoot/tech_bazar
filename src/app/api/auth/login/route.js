@@ -17,6 +17,12 @@ export async function POST(request) {
 				{ status: 400 }
 			);
 		}
+		if (!user.isVerified) {
+			return NextResponse.json(
+				{ message: "Please verify your email first!" },
+				{ status: 400 }
+			);
+		}
 
 		const isValid = await bcryptjs.compare(password, user.password);
 		if (!isValid) {
@@ -40,6 +46,7 @@ export async function POST(request) {
 				_id: user._id,
 				username: user.username,
 				email: user.email,
+				phone: user.phone,
 				role: user?.role,
 				token: token,
 				createdAt: user?.createdAt,

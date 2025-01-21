@@ -1,13 +1,14 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import { connectDb } from "@/dbconfig/db";
 import { User } from "@/models/user.model";
+import { sendMail } from "@/lib/mailer";
 
 export async function POST(request) {
 	try {
 		await connectDb();
 		const reqBody = await request.json();
-		const { username, email, password } = reqBody;
+		const { username, email, phone, password } = reqBody;
 
 		const user = await User.findOne({ email });
 
@@ -22,9 +23,16 @@ export async function POST(request) {
 		const newUser = new User({
 			username,
 			email,
+			phone,
 			password: hashedPassword,
 		});
 		const savedUser = await newUser.save();
+		// send verification mail
+		await sendMail({
+			email,
+			emailType: "VERIFY",
+			userId: savedUser._id,
+		});
 
 		return NextResponse.json({
 			message: "Account Created Successfully",

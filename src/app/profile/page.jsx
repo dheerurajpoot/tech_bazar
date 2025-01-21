@@ -17,6 +17,9 @@ export default function ProfilePage() {
 					<strong>Email:</strong> {user?.email}
 				</p>
 				<p>
+					<strong>Phone:</strong> {user?.phone}
+				</p>
+				<p>
 					<strong>Role:</strong> {user?.role}
 				</p>
 			</div>

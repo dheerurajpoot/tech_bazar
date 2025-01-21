@@ -125,14 +125,18 @@ function UserMenu({ isOpen, setIsOpen }) {
 						Sell
 					</Link>
 				</DropdownMenuItem>
-				<DropdownMenuItem>
-					<Link href='/profile' className='w-full'>
-						Profile
-					</Link>
-				</DropdownMenuItem>
-				<DropdownMenuSeparator />
 				{user && user ? (
-					<DropdownMenuItem onClick={logOut}>Logout</DropdownMenuItem>
+					<>
+						<DropdownMenuItem>
+							<Link href='/profile' className='w-full'>
+								Profile
+							</Link>
+						</DropdownMenuItem>
+						<DropdownMenuSeparator />
+						<DropdownMenuItem onClick={logOut}>
+							Logout
+						</DropdownMenuItem>
+					</>
 				) : (
 					<>
 						<DropdownMenuItem>
@@ -140,6 +144,7 @@ function UserMenu({ isOpen, setIsOpen }) {
 								Register
 							</Link>
 						</DropdownMenuItem>
+						<DropdownMenuSeparator />
 						<DropdownMenuItem>
 							<Link href='/login' className='w-full'>
 								Login

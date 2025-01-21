@@ -16,6 +16,7 @@ export default function UpdateProfilePage() {
 		userId: "",
 		username: "",
 		email: "",
+		phone: "",
 	});
 
 	// Prefill form data when the user context is available
@@ -25,6 +26,7 @@ export default function UpdateProfilePage() {
 				userId: user._id,
 				username: user.username,
 				email: user.email,
+				phone: user?.phone,
 			});
 		}
 	}, [user]);
@@ -76,6 +78,18 @@ export default function UpdateProfilePage() {
 							value={formData.email}
 							onChange={handleInputChange}
 							placeholder='Enter your email'
+							disabled={isLoading}
+						/>
+					</div>
+					<div>
+						<Label htmlFor='phone'>Phone</Label>
+						<Input
+							id='phone'
+							name='phone'
+							type='text'
+							value={formData.phone}
+							onChange={handleInputChange}
+							placeholder='Enter your phone no.'
 							disabled={isLoading}
 						/>
 					</div>
