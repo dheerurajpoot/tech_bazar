@@ -20,11 +20,12 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import axios from "axios";
+import { convertGoogleDriveLink } from "@/lib/helper";
 
 export default function ProductDetailsPage({ params: rawParams }) {
-	const [product, setProduct] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const productId = React.use(rawParams).id;
+	const [product, setProduct] = useState([]);
 
 	if (!product) {
 		notFound();
@@ -36,7 +37,8 @@ export default function ProductDetailsPage({ params: rawParams }) {
 			const response = await axios.post("/api/get-product", {
 				productId,
 			});
-			setProduct(response.data?.product);
+
+			setProduct(response.data?.product || {});
 			setIsLoading(false);
 		} catch (error) {
 			console.log(error);
@@ -59,14 +61,17 @@ export default function ProductDetailsPage({ params: rawParams }) {
 				<ArrowLeft className='mr-2 h-4 w-4' />
 				Back to listings
 			</Link>
-
 			<div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
 				<div>
 					<Card className='overflow-hidden mb-4'>
 						<CardHeader className='p-0'>
 							<Image
 								src={
-									"https://www.thoughtco.com/thmb/q17Qe08HCrtbdTFVyo8e1j_Qj4E=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/wordpress-5be6252ac9e77c00524ca43d.jpg"
+									product?.images?.[selectedImage]
+										? convertGoogleDriveLink(
+												product.images[selectedImage]
+										  )
+										: "/placeholder.svg"
 								}
 								alt={`${product?.title} - Image ${
 									selectedImage + 1
@@ -88,7 +93,7 @@ export default function ProductDetailsPage({ params: rawParams }) {
 										: "border-transparent"
 								}`}>
 								<Image
-									src={image}
+									src={convertGoogleDriveLink(image)}
 									alt={`${product.title} - Thumbnail ${
 										index + 1
 									}`}
