@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/select";
 import axios from "axios";
 
-export default function ShopPage() {
+const ShopPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [products, setProducts] = useState([]);
 	const searchParams = useSearchParams();
@@ -39,7 +39,6 @@ export default function ShopPage() {
 			setIsLoading(true);
 			const response = await axios.get("/api/admin/allproducts");
 			setProducts(response.data?.products);
-
 			setIsLoading(false);
 		} catch (error) {
 			console.log(error);
@@ -47,6 +46,7 @@ export default function ShopPage() {
 			setIsLoading(false);
 		}
 	};
+
 	useEffect(() => {
 		getAllProducts();
 	}, []);
@@ -184,5 +184,13 @@ export default function ShopPage() {
 				</div>
 			)}
 		</div>
+	);
+};
+
+export default function ShopPageWithSuspense() {
+	return (
+		<Suspense fallback={<div>Loading...</div>}>
+			<ShopPage />
+		</Suspense>
 	);
 }
