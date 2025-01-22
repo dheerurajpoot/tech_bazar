@@ -135,24 +135,21 @@ export default function CheckoutPage({ params: rawParams }) {
 								Payment Method
 							</h3>
 							<RadioGroup
-								defaultValue='credit_card'
+								// defaultValue='credit_card'
 								onValueChange={handlePaymentMethodChange}
 								className='space-y-2'>
 								<div className='flex items-center space-x-2'>
-									<RadioGroupItem
-										value='credit_card'
-										id='credit_card'
-									/>
-									<Label htmlFor='credit_card'>
-										Credit Card
-									</Label>
+									<RadioGroupItem value='upi' id='upi' />
+									<Label htmlFor='upi'>UPI (India)</Label>
 								</div>
 								<div className='flex items-center space-x-2'>
 									<RadioGroupItem
-										value='paypal'
-										id='paypal'
+										value='binance'
+										id='binance'
 									/>
-									<Label htmlFor='paypal'>PayPal</Label>
+									<Label htmlFor='binance'>
+										Binance (Crypto Wallet)
+									</Label>
 								</div>
 								<div className='flex items-center space-x-2'>
 									<RadioGroupItem
@@ -160,26 +157,25 @@ export default function CheckoutPage({ params: rawParams }) {
 										id='bank_transfer'
 									/>
 									<Label htmlFor='bank_transfer'>
-										Bank Transfer
+										Bank Transfer (India)
 									</Label>
 								</div>
 							</RadioGroup>
 						</div>
 
-						{paymentMethod === "credit_card" && (
+						{paymentMethod === "upi" && (
 							<div className='w-full p-4 bg-gray-100 rounded-md'>
 								<p>
-									Credit card payment selected. In a real
-									application, you would see a form for card
-									details here.
+									UPI payment selected. In a real application,
+									you would see a form for card details here.
 								</p>
 							</div>
 						)}
 
-						{paymentMethod === "paypal" && (
+						{paymentMethod === "binance" && (
 							<div className='w-full p-4 bg-gray-100 rounded-md'>
 								<p>
-									PayPal selected. In a real application, you
+									Binance selected. In a real application, you
 									would be redirected to PayPal for payment.
 								</p>
 							</div>
