@@ -1,74 +1,51 @@
 "use client";
 
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import ProfileLayout from "@/components/profile-layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AuthContext } from "../../../../context/authContext";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function ChangePasswordPage() {
 	const { user } = useContext(AuthContext);
-	const [formData, setFormData] = useState({
-		currentPassword: "",
-		newPassword: "",
-		confirmPassword: "",
-	});
+	const [email, setEmail] = useState("");
+	const [loading, setLoading] = useState(false);
 
-	const handleInputChange = (e) => {
-		const { name, value } = e.target;
-		setFormData((prev) => ({ ...prev, [name]: value }));
+	const forgotPassword = async () => {
+		try {
+			setLoading(true);
+			const response = await axios.post("/api/auth/forgot-password", {
+				email,
+			});
+			toast.success(response.data.message);
+			setLoading(false);
+		} catch (error) {
+			setLoading(false);
+			toast.error(error.response.data.message);
+		}
 	};
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		// Implement change password logic here
-		console.log("Changing password:", formData);
-	};
-
 	return (
 		<ProfileLayout isAdmin={user?.role === "admin"}>
 			<h1 className='text-2xl font-bold mb-4'>Change Password</h1>
-			<form
-				onSubmit={handleSubmit}
-				className='bg-white shadow rounded-lg p-6'>
-				<div className='space-y-4'>
-					<div>
-						<Label htmlFor='currentPassword'>
-							Current Password
-						</Label>
-						<Input
-							id='currentPassword'
-							name='currentPassword'
-							type='password'
-							value={formData.currentPassword}
-							onChange={handleInputChange}
-						/>
-					</div>
-					<div>
-						<Label htmlFor='newPassword'>New Password</Label>
-						<Input
-							id='newPassword'
-							name='newPassword'
-							type='password'
-							value={formData.newPassword}
-							onChange={handleInputChange}
-						/>
-					</div>
-					<div>
-						<Label htmlFor='confirmPassword'>
-							Confirm New Password
-						</Label>
-						<Input
-							id='confirmPassword'
-							name='confirmPassword'
-							type='password'
-							value={formData.confirmPassword}
-							onChange={handleInputChange}
-						/>
-					</div>
-					<Button type='submit'>Change Password</Button>
+			<form className='space-y-4'>
+				<div className='space-y-2'>
+					<Label htmlFor='email'>Email</Label>
+					<Input
+						id='email'
+						type='email'
+						placeholder='test@example.com'
+						required
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+					/>
 				</div>
+
+				<Button type='button' onClick={forgotPassword}>
+					{loading ? "Sending..." : "Send Reset Link"}
+				</Button>
 			</form>
 		</ProfileLayout>
 	);
