@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AuthContext } from "../../../../context/authContext";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function UpdateProfilePage() {
 	const { user } = useContext(AuthContext);
@@ -23,9 +24,9 @@ export default function UpdateProfilePage() {
 	useEffect(() => {
 		if (user) {
 			setFormData({
-				userId: user._id,
-				username: user.username,
-				email: user.email,
+				userId: user?._id,
+				username: user?.username,
+				email: user?.email,
 				phone: user?.phone,
 			});
 		}
@@ -41,10 +42,15 @@ export default function UpdateProfilePage() {
 		setIsLoading(true);
 		try {
 			const response = await axios.put("/api/auth/update", formData);
-			console.log("Profile updated successfully:", response.data.user);
+			if (response.data.success) {
+				localStorage.removeItem("user");
+				localStorage.setItem(
+					"user",
+					JSON.stringify(response.data.user)
+				);
+				toast.success(response.data?.message);
+			}
 
-			localStorage.removeItem("user");
-			localStorage.setItem("user", JSON.stringify(response.data.user));
 			setIsLoading(false);
 		} catch (error) {
 			setIsLoading(false);
@@ -87,7 +93,7 @@ export default function UpdateProfilePage() {
 							id='phone'
 							name='phone'
 							type='text'
-							value={formData.phone}
+							value={formData?.phone}
 							onChange={handleInputChange}
 							placeholder='Enter your phone no.'
 							disabled={isLoading}

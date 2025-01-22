@@ -15,6 +15,7 @@ export async function POST(request) {
 				status: 400,
 			});
 		}
+		console.log("payment method is: ", paymentMethod);
 
 		const newOrder = new Order({
 			user,

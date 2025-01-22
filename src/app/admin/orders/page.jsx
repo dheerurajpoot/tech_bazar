@@ -21,7 +21,7 @@ export default function AdminOrdersPage() {
 		try {
 			setIsLoading(true);
 			const response = await axios.get("/api/admin/allorders");
-			setOrders(response.data?.orders || []);
+			setOrders(response.data?.orders.reverse() || []);
 			setIsLoading(false);
 		} catch (error) {
 			setIsLoading(false);

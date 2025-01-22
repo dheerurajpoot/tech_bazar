@@ -182,11 +182,22 @@ export default function ProductDetailsPage({ params: rawParams }) {
 							</div>
 						</CardContent>
 						<CardFooter className='flex flex-col sm:flex-row justify-between items-center gap-4'>
-							<Link href={`/checkout/${product?._id}`}>
-								<Button size='lg' className='w-full sm:w-auto'>
-									Purchase Now
+							{product?.isSold ? (
+								<Button
+									size='lg'
+									className='w-full sm:w-auto bg-red-500 text-white cursor-not-allowed'
+									disabled>
+									Sold
 								</Button>
-							</Link>
+							) : (
+								<Link href={`/checkout/${product?._id}`}>
+									<Button
+										size='lg'
+										className='w-full sm:w-auto'>
+										Purchase Now
+									</Button>
+								</Link>
+							)}
 							<Button
 								size='lg'
 								variant='outline'

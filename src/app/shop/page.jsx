@@ -38,7 +38,7 @@ const ShopPage = () => {
 		try {
 			setIsLoading(true);
 			const response = await axios.get("/api/admin/allproducts");
-			setProducts(response.data?.products);
+			setProducts(response.data?.products.reverse());
 			setIsLoading(false);
 		} catch (error) {
 			console.log(error);

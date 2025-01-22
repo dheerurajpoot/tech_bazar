@@ -84,7 +84,7 @@ export default function AdminUsersPage() {
 		try {
 			setLoading(true);
 			const response = await axios.get("/api/admin/allusers");
-			setUsers(response.data.users || []);
+			setUsers(response.data.users.reverse() || []);
 			setLoading(false);
 		} catch (error) {
 			setLoading(false);

@@ -53,7 +53,7 @@ export default function CheckoutPage({ params: rawParams }) {
 		user: user?._id,
 		product: product?._id,
 		amount: product.price,
-		status: "pending",
+		status: "Processing",
 		paymentMethod,
 	};
 

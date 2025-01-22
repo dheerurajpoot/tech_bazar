@@ -43,41 +43,49 @@ export default function UserOrdersPage() {
 		<ProfileLayout isAdmin={user?.role === "admin"}>
 			<h1 className='text-2xl font-bold mb-4'>Your Orders</h1>
 			<div className='bg-white shadow rounded-lg overflow-hidden'>
-				<Table>
-					<TableHeader>
-						<TableRow>
-							<TableHead>Order ID</TableHead>
-							<TableHead>Product</TableHead>
-							<TableHead>Date</TableHead>
-							<TableHead>Status</TableHead>
-							<TableHead>Total</TableHead>
-							<TableHead>Actions</TableHead>
-						</TableRow>
-					</TableHeader>
-					<TableBody>
-						{orders.map((order, index) => (
-							<TableRow key={order._id}>
-								<TableCell>{index + 1}</TableCell>
-								<TableCell>{order.product.title}</TableCell>
-								<TableCell>
-									{new Date(order.createdAt).toDateString()}
-								</TableCell>
-								<TableCell>{order.status}</TableCell>
-								<TableCell>
-									${order.amount?.toLocaleString()}
-								</TableCell>
-								<TableCell>
-									<Button asChild size='sm'>
-										<Link
-											href={`/profile/orders/${order._id}`}>
-											View Details
-										</Link>
-									</Button>
-								</TableCell>
+				{orders && orders.length === 0 ? (
+					<p className=' py-2 text-center'>
+						You don't have any order to show
+					</p>
+				) : (
+					<Table>
+						<TableHeader>
+							<TableRow>
+								<TableHead>Order ID</TableHead>
+								<TableHead>Product</TableHead>
+								<TableHead>Date</TableHead>
+								<TableHead>Status</TableHead>
+								<TableHead>Total</TableHead>
+								<TableHead>Actions</TableHead>
 							</TableRow>
-						))}
-					</TableBody>
-				</Table>
+						</TableHeader>
+						<TableBody>
+							{orders.map((order, index) => (
+								<TableRow key={order._id}>
+									<TableCell>{index + 1}</TableCell>
+									<TableCell>{order.product.title}</TableCell>
+									<TableCell>
+										{new Date(
+											order.createdAt
+										).toDateString()}
+									</TableCell>
+									<TableCell>{order.status}</TableCell>
+									<TableCell>
+										${order.amount?.toLocaleString()}
+									</TableCell>
+									<TableCell>
+										<Button asChild size='sm'>
+											<Link
+												href={`/profile/orders/${order._id}`}>
+												View Details
+											</Link>
+										</Button>
+									</TableCell>
+								</TableRow>
+							))}
+						</TableBody>
+					</Table>
+				)}
 			</div>
 		</ProfileLayout>
 	);

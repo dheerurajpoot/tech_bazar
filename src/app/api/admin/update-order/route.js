@@ -19,7 +19,6 @@ export async function PUT(request) {
 			);
 		}
 
-		// Find and update the order's status
 		const order = await Order.findById(orderId);
 		if (!order) {
 			return NextResponse.json(
@@ -32,11 +31,10 @@ export async function PUT(request) {
 		await order.save();
 
 		if (status === "Completed") {
-			const product = await Product.findByIdAndUpdate(
-				order.product,
-				{ isSold: true },
-				{ new: true }
-			);
+			const product = await Product.findById(order.product);
+
+			product.isSold = true;
+			await product.save();
 
 			if (!product) {
 				return NextResponse.json(
@@ -44,8 +42,6 @@ export async function PUT(request) {
 					{ status: 404 }
 				);
 			}
-
-			console.log("Product marked as sold:", product);
 		}
 
 		return NextResponse.json({
@@ -53,7 +49,7 @@ export async function PUT(request) {
 			success: true,
 		});
 	} catch (error) {
-		console.error("Error updating order:", error);
+		console.log("Error updating order:", error);
 		return NextResponse.json({ message: error.message }, { status: 500 });
 	}
 }
