@@ -17,14 +17,16 @@ import { Separator } from "@/components/ui/separator";
 import axios from "axios";
 import { AuthContext } from "../../../../context/authContext";
 import toast from "react-hot-toast";
+import { Input } from "@/components/ui/input";
 
 export default function CheckoutPage({ params: rawParams }) {
 	const [product, setProduct] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const productId = React.use(rawParams).id;
 	const router = useRouter();
-	const [paymentMethod, setPaymentMethod] = useState("credit_card");
+	const [paymentMethod, setPaymentMethod] = useState("");
 	const { user } = useContext(AuthContext);
+	const [paymentId, setPaymentId] = useState("");
 
 	const getProduct = async () => {
 		try {
@@ -49,12 +51,17 @@ export default function CheckoutPage({ params: rawParams }) {
 		setPaymentMethod(value);
 	};
 
+	const onPaymentIdChange = (id) => {
+		setPaymentId(id);
+	};
+
 	const payload = {
 		user: user?._id,
 		product: product?._id,
 		amount: product.price,
 		status: "Processing",
 		paymentMethod,
+		paymentId,
 	};
 
 	const handleSubmit = async (e) => {
@@ -65,7 +72,6 @@ export default function CheckoutPage({ params: rawParams }) {
 			const response = await axios.post("/api/create-order", payload);
 			console.log(response.data);
 
-			console.log("Processing payment with method:", paymentMethod);
 			if (response.data.success) {
 				toast.success(response.data?.message);
 				router.push(`/thank-you/${response?.data?.order?._id}`);
@@ -73,6 +79,16 @@ export default function CheckoutPage({ params: rawParams }) {
 		} catch (error) {
 			console.log(error);
 		}
+	};
+
+	const accountDetails = {
+		accountName: "Dheeru Rajpoot",
+		accountNumber: "40839586491",
+		ifscCode: "SBIN0001161",
+		upiId: "adsenseservices90@axl",
+		binanceAccountName: "AdsenseServices",
+		binanceId: "556105059",
+		trc20: "TEiKjQHn5sRpW69prMSsV2s38PQtndofhb",
 	};
 
 	return (
@@ -164,31 +180,135 @@ export default function CheckoutPage({ params: rawParams }) {
 						</div>
 
 						{paymentMethod === "upi" && (
-							<div className='w-full p-4 bg-gray-100 rounded-md'>
-								<p>
-									UPI payment selected. In a real application,
-									you would see a form for card details here.
-								</p>
-							</div>
+							<Card className='w-full'>
+								<CardHeader>
+									<CardTitle>Payment Details</CardTitle>
+								</CardHeader>
+								<CardContent className='space-y-4'>
+									<div className='space-y-2'>
+										<Label>UPI ID</Label>
+										<p className='font-medium'>
+											{accountDetails.upiId}
+										</p>
+									</div>
+									<div className='flex justify-center'>
+										<Image
+											src='/upiscanner.jpeg'
+											alt='Payment Scanner'
+											width={200}
+											height={200}
+											className='rounded-lg'
+										/>
+									</div>
+									<div className='space-y-2'>
+										<Label htmlFor='paymentId'>
+											Transaction ID / Payment ID
+										</Label>
+										<Input
+											id='paymentId'
+											placeholder='Enter your transaction or payment ID'
+											onChange={(e) =>
+												onPaymentIdChange(
+													e.target.value
+												)
+											}
+										/>
+									</div>
+								</CardContent>
+							</Card>
 						)}
 
 						{paymentMethod === "binance" && (
-							<div className='w-full p-4 bg-gray-100 rounded-md'>
-								<p>
-									Binance selected. In a real application, you
-									would be redirected to PayPal for payment.
-								</p>
-							</div>
+							<Card className='w-full'>
+								<CardHeader>
+									<CardTitle>Payment Details</CardTitle>
+								</CardHeader>
+								<CardContent className='space-y-4'>
+									<div className='space-y-2'>
+										<Label>Account Name</Label>
+										<p className='font-medium'>
+											{accountDetails.binanceAccountName}
+										</p>
+									</div>
+									<div className='space-y-2'>
+										<Label>Binance ID</Label>
+										<p className='font-medium'>
+											{accountDetails.binanceId}
+										</p>
+									</div>
+									<div className='space-y-2'>
+										<Label>TRC 20</Label>
+										<p className='font-medium'>
+											{accountDetails.trc20}
+										</p>
+									</div>
+									<div className='flex justify-center'>
+										<Image
+											src='/usdtscanner.jpeg'
+											alt='Payment Scanner'
+											width={200}
+											height={200}
+											className='rounded-lg'
+										/>
+									</div>
+									<div className='space-y-2'>
+										<Label htmlFor='paymentId'>
+											Transaction ID / Payment ID
+										</Label>
+										<Input
+											id='paymentId'
+											placeholder='Enter your transaction or payment ID'
+											onChange={(e) =>
+												onPaymentIdChange(
+													e.target.value
+												)
+											}
+										/>
+									</div>
+								</CardContent>
+							</Card>
 						)}
 
 						{paymentMethod === "bank_transfer" && (
-							<div className='w-full p-4 bg-gray-100 rounded-md'>
-								<p>
-									Bank transfer selected. In a real
-									application, you would see bank details for
-									transfer here.
-								</p>
-							</div>
+							<Card className='w-full'>
+								<CardHeader>
+									<CardTitle>Payment Details</CardTitle>
+								</CardHeader>
+								<CardContent className='space-y-4'>
+									<div className='space-y-2'>
+										<Label>Account Name</Label>
+										<p className='font-medium'>
+											{accountDetails.accountName}
+										</p>
+									</div>
+									<div className='space-y-2'>
+										<Label>Account Number</Label>
+										<p className='font-medium'>
+											{accountDetails.accountNumber}
+										</p>
+									</div>
+									<div className='space-y-2'>
+										<Label>IFSC Code</Label>
+										<p className='font-medium'>
+											{accountDetails.ifscCode}
+										</p>
+									</div>
+									<div className='space-y-2'>
+										<Label htmlFor='paymentId'>
+											Transaction ID / Payment ID
+										</Label>
+										<Input
+											id='paymentId'
+											placeholder='Enter your transaction or payment ID'
+											onChange={(e) =>
+												onPaymentIdChange(
+													e.target.value
+												)
+											}
+										/>
+									</div>
+								</CardContent>
+							</Card>
 						)}
 
 						<Button onClick={handleSubmit} className='w-full mt-4'>

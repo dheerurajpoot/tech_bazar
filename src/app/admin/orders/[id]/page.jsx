@@ -26,7 +26,15 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { Package, User, Calendar, DollarSign, TrendingUp } from "lucide-react";
+import {
+	Package,
+	User,
+	Calendar,
+	DollarSign,
+	TrendingUp,
+	CreditCard,
+	ScanLine,
+} from "lucide-react";
 import toast from "react-hot-toast";
 import axios from "axios";
 
@@ -118,6 +126,16 @@ export default function AdminOrderDetailsPage({ params: rawParams }) {
 							<div className='flex items-center'>
 								<TrendingUp className='mr-2' />
 								<span>Status: {order?.status}</span>
+							</div>
+							<div className='flex items-center'>
+								<CreditCard className='mr-2' />
+								<span>
+									Payment Method: {order?.paymentMethod}
+								</span>
+							</div>
+							<div className='flex items-center'>
+								<ScanLine className='mr-2' />
+								<span>Payment Id: {order?.paymentId}</span>
 							</div>
 						</div>
 					</CardContent>

@@ -22,6 +22,10 @@ const orderModel = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		paymentId: {
+			type: String,
+			required: true,
+		},
 		status: {
 			type: String,
 			required: true,
