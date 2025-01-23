@@ -157,11 +157,17 @@ export default function ProductDetailsPage({ params: rawParams }) {
 							</h3>
 							<div className='bg-gray-50 p-4 rounded-lg'>
 								<p className='font-semibold'>
-									{product?.seller?.username}
+									{product?.seller?.username}{" "}
+									{product?.seller?.role === "admin" && (
+										<span className='text-xs font-semibold bg-yellow-200 text-yellow-800 px-1 py-0.5 rounded'>
+											Admin
+										</span>
+									)}
 								</p>
 								<div className='flex items-center mt-1'>
 									<span>
-										({product?.seller?.totalSales} sales)
+										({product?.seller?.totalSales || "5"}{" "}
+										Sales)
 									</span>
 								</div>
 								<p className='text-sm text-gray-500 mt-1'>

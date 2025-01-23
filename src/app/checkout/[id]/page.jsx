@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
 	Card,
 	CardContent,
+	CardDescription,
 	CardFooter,
 	CardHeader,
 	CardTitle,
@@ -185,6 +186,12 @@ export default function CheckoutPage({ params: rawParams }) {
 									<CardTitle>Payment Details</CardTitle>
 								</CardHeader>
 								<CardContent className='space-y-4'>
+									<CardDescription>
+										Make payment on given UPI ID or Scanner
+										and Submit your payment or Transection
+										ID in the box below. We will verify your
+										payment and complete your order ASAP.
+									</CardDescription>
 									<div className='space-y-2'>
 										<Label>UPI ID</Label>
 										<p className='font-medium'>
@@ -224,6 +231,13 @@ export default function CheckoutPage({ params: rawParams }) {
 									<CardTitle>Payment Details</CardTitle>
 								</CardHeader>
 								<CardContent className='space-y-4'>
+									<CardDescription>
+										Make payment on given Binance ID, TRC20
+										Address or Scanner and Submit your
+										payment or Transection ID in the box
+										below. We will verify your payment and
+										complete your order ASAP.
+									</CardDescription>
 									<div className='space-y-2'>
 										<Label>Account Name</Label>
 										<p className='font-medium'>
@@ -275,6 +289,13 @@ export default function CheckoutPage({ params: rawParams }) {
 									<CardTitle>Payment Details</CardTitle>
 								</CardHeader>
 								<CardContent className='space-y-4'>
+									<CardDescription>
+										Make payment on given Bank Account
+										Details and Submit your payment or
+										Transection ID in the box below. We will
+										verify your payment and complete your
+										order ASAP.
+									</CardDescription>
 									<div className='space-y-2'>
 										<Label>Account Name</Label>
 										<p className='font-medium'>

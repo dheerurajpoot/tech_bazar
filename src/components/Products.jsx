@@ -20,6 +20,7 @@ import {
 	CardHeader,
 } from "@/components/ui/card";
 import axios from "axios";
+import { Skeleton } from "./ui/skeleton";
 
 export default function ProductSection() {
 	const [products, setProducts] = useState([]);
@@ -111,14 +112,18 @@ export default function ProductSection() {
 				</div>
 
 				<div className='space-y-6'>
-					{filteredProducts
-						.slice(0, visibleProducts)
-						.map((product) => (
-							<ProductListItem
-								key={product._id}
-								product={product}
-							/>
-						))}
+					{isLoading
+						? Array.from({ length: 5 }).map((_, index) => (
+								<ProductSkeleton key={index} />
+						  ))
+						: filteredProducts
+								.slice(0, visibleProducts)
+								.map((product) => (
+									<ProductListItem
+										key={product._id}
+										product={product}
+									/>
+								))}
 				</div>
 
 				{visibleProducts < filteredProducts.length && (
@@ -187,6 +192,32 @@ function ProductListItem({ product }) {
 							View Details
 						</Link>
 					</Button>
+				</CardFooter>
+			</div>
+		</Card>
+	);
+}
+
+function ProductSkeleton() {
+	return (
+		<Card>
+			<div className='flex flex-col md:flex-row'>
+				<CardHeader className='md:w-1/4'>
+					<Skeleton className='h-48 w-full rounded-t-lg md:rounded-l-lg md:rounded-t-none' />
+				</CardHeader>
+				<CardContent className='flex-1 p-6'>
+					<Skeleton className='h-6 w-3/4 mb-4' />
+					<Skeleton className='h-4 w-full mb-4' />
+					<div className='grid grid-cols-2 gap-4'>
+						<Skeleton className='h-4 w-1/2' />
+						<Skeleton className='h-4 w-1/2' />
+						<Skeleton className='h-4 w-1/2' />
+						<Skeleton className='h-4 w-1/2' />
+					</div>
+				</CardContent>
+				<CardFooter className='flex flex-col justify-between p-6 md:w-1/4'>
+					<Skeleton className='h-6 w-1/3 mb-4' />
+					<Skeleton className='h-10 w-full' />
 				</CardFooter>
 			</div>
 		</Card>
