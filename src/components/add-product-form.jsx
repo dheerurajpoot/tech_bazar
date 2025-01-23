@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,6 +16,7 @@ import {
 import axios from "axios";
 import { AuthContext } from "../../context/authContext";
 import toast from "react-hot-toast";
+import { ImageUpload } from "./image-upload";
 
 export default function AddProductPage() {
 	const { user } = useContext(AuthContext);
@@ -31,7 +32,7 @@ export default function AddProductPage() {
 		earningsPerMonth: "",
 		traffic: "",
 	});
-	const [imageLinks, setImageLinks] = useState([""]);
+	const [imageLinks, setImageLinks] = useState([]);
 	const [errors, setErrors] = useState({
 		name: "",
 		type: "",
@@ -42,10 +43,10 @@ export default function AddProductPage() {
 		country: "",
 		earningsPerMonth: "",
 		traffic: "",
-		images: "",
-		general: "",
 	});
 	const [isLoading, setIsLoading] = useState(false);
+	const [isUploading, setIsUploading] = useState(false);
+	const [images, setImages] = useState([]);
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
@@ -58,15 +59,36 @@ export default function AddProductPage() {
 		setErrors((prev) => ({ ...prev, type: "", general: "" }));
 	};
 
-	const handleImageLinkChange = (index, value) => {
-		const newImageLinks = [...imageLinks];
-		newImageLinks[index] = value;
-		setImageLinks(newImageLinks);
+	const handleImagesChange = (newImages) => {
+		setImages((prev) => [...prev, ...newImages]);
+		setErrors((prev) => ({ ...prev, images: "" }));
 	};
 
-	const addImageLink = () => {
-		setImageLinks([...imageLinks, ""]);
+	const handleImageUpload = async () => {
+		try {
+			const formData = new FormData();
+			images.forEach((image) => {
+				formData.append("files", image);
+			});
+			setIsUploading(true);
+			const response = await axios.post("/api/image-upload", formData, {
+				headers: {
+					"Content-Type": "multipart/form-data",
+				},
+			});
+
+			const uploadedImageLinks = response?.data?.images;
+			setImageLinks((prev) => [...prev, ...uploadedImageLinks]);
+			setIsUploading(false);
+		} catch (error) {
+			console.log(error);
+			setIsUploading(false);
+		}
 	};
+
+	useEffect(() => {
+		handleImageUpload();
+	}, [images]);
 
 	const validateForm = () => {
 		let isValid = true;
@@ -134,11 +156,6 @@ export default function AddProductPage() {
 			isValid = false;
 		}
 
-		if (imageLinks.filter((link) => link.trim() !== "").length === 0) {
-			newErrors.images = "Please add at least one image link.";
-			isValid = false;
-		}
-
 		setErrors(newErrors);
 		return isValid;
 	};
@@ -176,9 +193,6 @@ export default function AddProductPage() {
 	return (
 		<div className='container mx-auto px-4 py-2'>
 			<div className='max-w-2xl mx-auto'>
-				{/* <h1 className='text-3xl font-bold mb-6 text-center'>
-					Add New Product
-				</h1> */}
 				<form onSubmit={handleSubmit} className='space-y-6'>
 					<div>
 						<Label htmlFor='name'>Product Name</Label>
@@ -350,46 +364,20 @@ export default function AddProductPage() {
 					</div>
 
 					<div>
-						<Label>Product Image Links</Label>
-						{imageLinks.map((link, index) => (
-							<div key={index} className='flex items-center mb-2'>
-								<Input
-									type='url'
-									value={link}
-									onChange={(e) =>
-										handleImageLinkChange(
-											index,
-											e.target.value
-										)
-									}
-									placeholder='https://drive.google.com/uc?id=your-image-id'
-									className='flex-grow'
-								/>
-								{index === imageLinks.length - 1 && (
-									<Button
-										type='button'
-										onClick={addImageLink}
-										className='ml-2'>
-										Add Another
-									</Button>
-								)}
-							</div>
-						))}
-						{errors.images && (
+						<Label>Product Images</Label>
+						<ImageUpload onImagesChange={handleImagesChange} />
+
+						{isUploading && (
 							<p className='text-sm text-red-500 mt-1'>
-								{errors.images}
+								Image Uploading...
 							</p>
 						)}
 					</div>
 
-					{errors.general && (
-						<p className='text-sm text-red-500'>{errors.general}</p>
-					)}
-
 					<Button
 						type='submit'
 						className='w-full'
-						disabled={isLoading}>
+						disabled={isLoading || isUploading}>
 						{isLoading ? "Adding Product..." : "Add Product"}
 					</Button>
 				</form>

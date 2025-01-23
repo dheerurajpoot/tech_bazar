@@ -4,13 +4,7 @@ import React, { useEffect, useState } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import {
-	ArrowLeft,
-	DollarSign,
-	Calendar,
-	TrendingUp,
-	Star,
-} from "lucide-react";
+import { ArrowLeft, Calendar, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -20,7 +14,6 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import axios from "axios";
-import { convertGoogleDriveLink } from "@/lib/helper";
 
 export default function ProductDetailsPage({ params: rawParams }) {
 	const [isLoading, setIsLoading] = useState(false);
@@ -38,7 +31,7 @@ export default function ProductDetailsPage({ params: rawParams }) {
 				productId,
 			});
 
-			setProduct(response.data?.product || {});
+			setProduct(response?.data?.product || {});
 			setIsLoading(false);
 		} catch (error) {
 			console.log(error);
@@ -68,9 +61,7 @@ export default function ProductDetailsPage({ params: rawParams }) {
 							<Image
 								src={
 									product?.images?.[selectedImage]
-										? convertGoogleDriveLink(
-												product.images[selectedImage]
-										  )
+										? product?.images[selectedImage]
 										: "/placeholder.svg"
 								}
 								alt={`${product?.title} - Image ${
@@ -93,8 +84,8 @@ export default function ProductDetailsPage({ params: rawParams }) {
 										: "border-transparent"
 								}`}>
 								<Image
-									src={convertGoogleDriveLink(image)}
-									alt={`${product.title} - Thumbnail ${
+									src={image}
+									alt={`${product?.title} - Thumbnail ${
 										index + 1
 									}`}
 									width={150}
@@ -110,22 +101,22 @@ export default function ProductDetailsPage({ params: rawParams }) {
 					<Card>
 						<CardHeader>
 							<CardTitle className='text-3xl font-bold'>
-								{product.title}
+								{product?.title}
 							</CardTitle>
 							<div className='flex items-center justify-between mt-2'>
 								<div className='text-2xl font-semibold text-primary'>
-									${product.price?.toLocaleString()}
+									${product?.price?.toLocaleString()}
 								</div>
 								<div className='text-sm text-gray-500'>
 									Category:{" "}
-									{product.type?.charAt(0).toUpperCase() +
-										product.type?.slice(1)}
+									{product?.type?.charAt(0).toUpperCase() +
+										product?.type?.slice(1)}
 								</div>
 							</div>
 						</CardHeader>
 						<CardContent>
 							<p className='text-gray-600 mb-6'>
-								{product.description}
+								{product?.description}
 							</p>
 
 							<h3 className='text-lg font-semibold mb-2'>
@@ -134,7 +125,7 @@ export default function ProductDetailsPage({ params: rawParams }) {
 							<ul className='space-y-2 mb-6'>
 								<li className='flex items-center'>
 									<Calendar className='mr-2 h-5 w-5 text-gray-400' />
-									Age: {product.age} months
+									Age: {product?.age} months
 								</li>
 								<li className='flex items-center'>
 									<TrendingUp className='mr-2 h-5 w-5 text-gray-400' />
@@ -145,7 +136,7 @@ export default function ProductDetailsPage({ params: rawParams }) {
 									<span className='font-semibold'>
 										Monetization:
 									</span>{" "}
-									{product.monetization}
+									{product?.monetization}
 								</li>
 								<li>
 									<span className='font-semibold'>

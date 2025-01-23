@@ -4,8 +4,7 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: "https",
-				hostname: "drive.google.com",
-				pathname: "/uc",
+				hostname: "res.cloudinary.com",
 			},
 		],
 	},

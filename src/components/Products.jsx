@@ -20,7 +20,6 @@ import {
 	CardHeader,
 } from "@/components/ui/card";
 import axios from "axios";
-import { convertGoogleDriveLink } from "@/lib/helper";
 
 export default function ProductSection() {
 	const [products, setProducts] = useState([]);
@@ -140,10 +139,7 @@ function ProductListItem({ product }) {
 			<div className='flex flex-col md:flex-row'>
 				<CardHeader className='md:w-1/4'>
 					<Image
-						src={
-							convertGoogleDriveLink(product?.images[0]) ||
-							"/placeholder.svg"
-						}
+						src={product?.images[0] || "/placeholder.svg"}
 						alt={product.title}
 						width={300}
 						height={200}
