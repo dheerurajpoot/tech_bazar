@@ -97,13 +97,21 @@ const ShopPage = () => {
 					</SelectTrigger>
 					<SelectContent>
 						<SelectItem value='all'>All categories</SelectItem>
-						<SelectItem value='website'>Websites</SelectItem>
-						<SelectItem value='facebook'>Facebook Pages</SelectItem>
-						<SelectItem value='instagram'>
-							Instagram Accounts
+						<SelectItem value='website'>Website</SelectItem>
+						<SelectItem value='facebook page'>
+							Facebook Page
 						</SelectItem>
-						<SelectItem value='youtube'>
-							YouTube Channels
+						<SelectItem value='instagram account'>
+							Instagram Account
+						</SelectItem>
+						<SelectItem value='youtube channel'>
+							YouTube Channel
+						</SelectItem>
+						<SelectItem value='google play console'>
+							Google Play Console
+						</SelectItem>
+						<SelectItem value='adsense dashboard'>
+							Adsense Dashboard
 						</SelectItem>
 					</SelectContent>
 				</Select>

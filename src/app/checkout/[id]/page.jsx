@@ -192,11 +192,25 @@ export default function CheckoutPage({ params: rawParams }) {
 										ID in the box below. We will verify your
 										payment and complete your order ASAP.
 									</CardDescription>
-									<div className='space-y-2'>
+									<div className='space-x-2'>
 										<Label>UPI ID</Label>
-										<p className='font-medium'>
-											{accountDetails.upiId}
-										</p>
+										<div className='flex items-center space-x-2'>
+											<p className='font-medium'>
+												{accountDetails.upiId}
+											</p>
+											<button
+												className='px-2 py-1 text-sm text-white bg-blue-500 rounded hover:bg-blue-600'
+												onClick={() => {
+													navigator.clipboard.writeText(
+														accountDetails.upiId
+													);
+													toast.success(
+														"UPI ID copied!"
+													);
+												}}>
+												Copy
+											</button>
+										</div>
 									</div>
 									<div className='flex justify-center'>
 										<Image
@@ -244,17 +258,45 @@ export default function CheckoutPage({ params: rawParams }) {
 											{accountDetails.binanceAccountName}
 										</p>
 									</div>
-									<div className='space-y-2'>
+									<div className='space-x-2'>
 										<Label>Binance ID</Label>
-										<p className='font-medium'>
-											{accountDetails.binanceId}
-										</p>
+										<div className='flex items-center space-x-2'>
+											<p className='font-medium'>
+												{accountDetails.binanceId}
+											</p>
+											<button
+												className='px-2 py-1 text-sm text-white bg-blue-500 rounded hover:bg-blue-600'
+												onClick={() => {
+													navigator.clipboard.writeText(
+														accountDetails.binanceId
+													);
+													toast.success(
+														"Binance ID copied!"
+													);
+												}}>
+												Copy
+											</button>
+										</div>
 									</div>
-									<div className='space-y-2'>
+									<div className='space-x-2'>
 										<Label>TRC 20</Label>
-										<p className='font-medium'>
-											{accountDetails.trc20}
-										</p>
+										<div className='flex items-center space-x-2'>
+											<p className='font-medium'>
+												{accountDetails.trc20}
+											</p>
+											<button
+												className='px-2 py-1 text-sm text-white bg-blue-500 rounded hover:bg-blue-600'
+												onClick={() => {
+													navigator.clipboard.writeText(
+														accountDetails.trc20
+													);
+													toast.success(
+														"TRC20 address copied!"
+													);
+												}}>
+												Copy
+											</button>
+										</div>
 									</div>
 									<div className='flex justify-center'>
 										<Image
@@ -290,30 +332,76 @@ export default function CheckoutPage({ params: rawParams }) {
 								</CardHeader>
 								<CardContent className='space-y-4'>
 									<CardDescription>
-										Make payment on given Bank Account
-										Details and Submit your payment or
-										Transection ID in the box below. We will
+										Make payment on the given Bank Account
+										Details and submit your payment or
+										Transaction ID in the box below. We will
 										verify your payment and complete your
 										order ASAP.
 									</CardDescription>
+
 									<div className='space-y-2'>
 										<Label>Account Name</Label>
-										<p className='font-medium'>
-											{accountDetails.accountName}
-										</p>
+										<div className='flex items-center space-x-2'>
+											<p className='font-medium'>
+												{accountDetails.accountName}
+											</p>
+											<button
+												className='px-2 py-1 text-sm text-white bg-blue-500 rounded hover:bg-blue-600'
+												onClick={() => {
+													navigator.clipboard.writeText(
+														accountDetails.accountName
+													);
+													toast.success(
+														"Account Name copied!"
+													);
+												}}>
+												Copy
+											</button>
+										</div>
 									</div>
+
 									<div className='space-y-2'>
 										<Label>Account Number</Label>
-										<p className='font-medium'>
-											{accountDetails.accountNumber}
-										</p>
+										<div className='flex items-center space-x-2'>
+											<p className='font-medium'>
+												{accountDetails.accountNumber}
+											</p>
+											<button
+												className='px-2 py-1 text-sm text-white bg-blue-500 rounded hover:bg-blue-600'
+												onClick={() => {
+													navigator.clipboard.writeText(
+														accountDetails.accountNumber
+													);
+													toast.success(
+														"Account Number copied!"
+													);
+												}}>
+												Copy
+											</button>
+										</div>
 									</div>
+
 									<div className='space-y-2'>
 										<Label>IFSC Code</Label>
-										<p className='font-medium'>
-											{accountDetails.ifscCode}
-										</p>
+										<div className='flex items-center space-x-2'>
+											<p className='font-medium'>
+												{accountDetails.ifscCode}
+											</p>
+											<button
+												className='px-2 py-1 text-sm text-white bg-blue-500 rounded hover:bg-blue-600'
+												onClick={() => {
+													navigator.clipboard.writeText(
+														accountDetails.ifscCode
+													);
+													toast.success(
+														"IFSC Code copied!"
+													);
+												}}>
+												Copy
+											</button>
+										</div>
 									</div>
+
 									<div className='space-y-2'>
 										<Label htmlFor='paymentId'>
 											Transaction ID / Payment ID

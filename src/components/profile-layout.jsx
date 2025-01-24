@@ -74,6 +74,17 @@ export default function ProfileLayout({ children, isAdmin }) {
 									asChild
 									variant='ghost'
 									className='w-full justify-start'>
+									<Link href='/admin/add-blog-post'>
+										Add New Blog
+										<span className='text-xs font-semibold bg-yellow-200 text-yellow-800 px-1 py-0.5 rounded'>
+											Admin
+										</span>
+									</Link>
+								</Button>
+								<Button
+									asChild
+									variant='ghost'
+									className='w-full justify-start'>
 									<Link href='/admin/orders'>
 										All Orders
 										<span className='text-xs font-semibold bg-yellow-200 text-yellow-800 px-1 py-0.5 rounded'>

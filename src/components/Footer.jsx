@@ -75,6 +75,13 @@ export default function Footer() {
 									Cookie Policy
 								</Link>
 							</li>
+							<li>
+								<Link
+									href='/blog'
+									className='text-sm hover:text-primary'>
+									Blog
+								</Link>
+							</li>
 						</ul>
 					</div>
 					<div>
