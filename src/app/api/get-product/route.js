@@ -8,10 +8,15 @@ export async function POST(request) {
 		const reqBody = await request.json();
 		const { productId } = reqBody;
 
-		const product = await Product.findOne({ _id: productId }).populate({
-			path: "seller",
-			select: "username email role createdAt",
-		});
+		const product = await Product.findOne({ _id: productId })
+			.populate({
+				path: "bids.user",
+				select: "username email role",
+			})
+			.populate({
+				path: "seller",
+				select: "username email role createdAt",
+			});
 		if (!product) {
 			return NextResponse.json(
 				{ message: "Product Not Found!" },

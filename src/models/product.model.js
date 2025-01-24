@@ -43,6 +43,18 @@ const productModel = new mongoose.Schema(
 			default: 0,
 		},
 		images: [String],
+		bids: [
+			{
+				user: {
+					type: mongoose.Schema.Types.ObjectId,
+					required: true,
+				},
+				amount: {
+					type: Number,
+					required: true,
+				},
+			},
+		],
 		seller: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "User",

@@ -8,6 +8,7 @@ import {
 	TrendingUp,
 	Globe,
 } from "lucide-react";
+import { BuyingProcessGuide } from "@/components/buying-process-guide";
 
 export default function AboutPage() {
 	return (
@@ -128,6 +129,10 @@ export default function AboutPage() {
 						</CardContent>
 					</Card>
 				</div>
+			</div>
+
+			<div className='m-8'>
+				<BuyingProcessGuide />
 			</div>
 
 			<div className='text-center'>

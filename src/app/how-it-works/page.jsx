@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { ArrowRight, DollarSign, ShieldCheck, Users } from "lucide-react";
+import { BuyingProcessGuide } from "@/components/buying-process-guide";
 
 export default function HowItWorksPage() {
 	return (
@@ -150,6 +151,10 @@ export default function HowItWorksPage() {
 						</p>
 					</div>
 				</div>
+			</div>
+
+			<div className='m-8'>
+				<BuyingProcessGuide />
 			</div>
 
 			<div className='mt-16 text-center'>

@@ -14,6 +14,9 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import axios from "axios";
+import { BiddingForm } from "@/components/bidding-form";
+import { RelatedProducts } from "@/components/related-products";
+import { BuyingProcessGuide } from "@/components/buying-process-guide";
 
 export default function ProductDetailsPage({ params: rawParams }) {
 	const [isLoading, setIsLoading] = useState(false);
@@ -95,6 +98,7 @@ export default function ProductDetailsPage({ params: rawParams }) {
 							</button>
 						))}
 					</div>
+					<BuyingProcessGuide />
 				</div>
 
 				<div>
@@ -177,6 +181,15 @@ export default function ProductDetailsPage({ params: rawParams }) {
 									)?.toDateString()}
 								</p>
 							</div>
+							<div className='mt-6'>
+								<h3 className='text-lg font-semibold mb-2'>
+									Bidding
+								</h3>
+								<BiddingForm
+									productId={product?._id}
+									bids={product?.bids || []}
+								/>
+							</div>
 						</CardContent>
 						<CardFooter className='flex flex-col sm:flex-row justify-between items-center gap-4'>
 							{product?.isSold ? (
@@ -205,6 +218,8 @@ export default function ProductDetailsPage({ params: rawParams }) {
 					</Card>
 				</div>
 			</div>
+			<hr className='my-5' />
+			<RelatedProducts currentProductId={product?._id} />
 		</div>
 	);
 }
