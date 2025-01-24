@@ -11,9 +11,15 @@ export async function PUT(request) {
 
 		const { productId, bidAmount, user } = reqBody;
 
-		if (!productId || !bidAmount || !user) {
+		if (!productId || !bidAmount) {
 			return NextResponse.json(
 				{ message: "Missing required fields" },
+				{ status: 400 }
+			);
+		}
+		if (!user) {
+			return NextResponse.json(
+				{ message: "Please login for bidding!" },
 				{ status: 400 }
 			);
 		}

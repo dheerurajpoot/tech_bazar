@@ -67,10 +67,29 @@ export default function AdminDashboardPage() {
 		}
 	};
 
+	const [orders, setOrders] = useState([]);
+
+	const getOrders = async () => {
+		try {
+			setIsLoading(true);
+			const response = await axios.get("/api/admin/allorders");
+			setOrders(response.data?.orders.reverse() || []);
+			setIsLoading(false);
+		} catch (error) {
+			setIsLoading(false);
+			console.log(error);
+		}
+	};
+
 	useEffect(() => {
 		getAllProducts();
 		getAllUsers();
+		getOrders();
 	}, []);
+
+	const totalSaleAmount = orders.reduce((total, order) => {
+		return total + (order?.amount || 0);
+	}, 0);
 
 	return (
 		<ProfileLayout isAdmin={true}>
@@ -84,12 +103,12 @@ export default function AdminDashboardPage() {
 				/>
 				<DashboardCard
 					title='Total Sales'
-					value={`$${data.totalSales.toLocaleString()}`}
+					value={`$${totalSaleAmount}`}
 					icon={<DollarSign className='h-8 w-8 text-green-600' />}
 				/>
 				<DashboardCard
-					title='Total Earnings'
-					value={`$${data.totalEarnings.toLocaleString()}`}
+					title='Total Orders'
+					value={`${orders?.length}`}
 					icon={<TrendingUp className='h-8 w-8 text-yellow-600' />}
 				/>
 				<DashboardCard
