@@ -42,6 +42,7 @@ const ShopPage = () => {
 				response.data?.products
 					.reverse()
 					.filter((product) => product?.inReview === false)
+					.filter((product) => product?.isSold === false)
 			);
 			setIsLoading(false);
 		} catch (error) {

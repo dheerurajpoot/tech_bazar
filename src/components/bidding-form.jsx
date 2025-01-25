@@ -57,7 +57,7 @@ export function BiddingForm({ productId, bids }) {
 								<li
 									key={index}
 									className='flex justify-between items-center'>
-									<span>User {bid?.user?.slice(-4)}</span>
+									<span>{bid?.user?.username}</span>
 									<span className='font-semibold'>
 										${bid?.amount?.toFixed(2)}
 									</span>

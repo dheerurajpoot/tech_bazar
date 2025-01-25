@@ -178,7 +178,11 @@ export default function AddProductPage() {
 				);
 
 				toast.success(response?.data?.message);
-				router.push("/admin/products");
+				router.push(
+					user?.role === "admin"
+						? "/admin/products"
+						: "/profile/products"
+				);
 				setIsLoading(false);
 			} catch (error) {
 				setErrors((prev) => ({

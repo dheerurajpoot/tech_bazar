@@ -71,13 +71,15 @@ export default function CheckoutPage({ params: rawParams }) {
 		try {
 			setIsLoading(true);
 			const response = await axios.post("/api/create-order", payload);
-			console.log(response.data);
 
+			toast.success(response.data?.message);
 			if (response.data.success) {
-				toast.success(response.data?.message);
 				router.push(`/thank-you/${response?.data?.order?._id}`);
 			}
+			setIsLoading(false);
 		} catch (error) {
+			setIsLoading(false);
+			toast.error(error?.data?.message);
 			console.log(error);
 		}
 	};
@@ -101,6 +103,15 @@ export default function CheckoutPage({ params: rawParams }) {
 						<CardTitle>Product Details</CardTitle>
 					</CardHeader>
 					<CardContent className='space-y-4'>
+						{product?.images && (
+							<Image
+								src={product?.images[0] || "./placeholder.svg"}
+								alt={product?.title}
+								width={400}
+								height={300}
+								className='w-full h-auto rounded-lg'
+							/>
+						)}
 						<h2 className='text-2xl font-semibold'>
 							{product.title}
 						</h2>
@@ -421,7 +432,9 @@ export default function CheckoutPage({ params: rawParams }) {
 						)}
 
 						<Button onClick={handleSubmit} className='w-full mt-4'>
-							Complete Purchase
+							{isLoading
+								? "Processing Order..."
+								: "Complete Purchase"}
 						</Button>
 					</CardFooter>
 				</Card>

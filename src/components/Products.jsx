@@ -47,6 +47,7 @@ export default function ProductSection() {
 				response.data?.products
 					.reverse()
 					.filter((product) => product?.inReview === false)
+					.filter((product) => product?.isSold === false)
 			);
 
 			setIsLoading(false);

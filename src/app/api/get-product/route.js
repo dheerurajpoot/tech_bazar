@@ -11,7 +11,7 @@ export async function POST(request) {
 		const product = await Product.findOne({ _id: productId })
 			.populate({
 				path: "bids.user",
-				select: "username email role",
+				select: "username email phone",
 			})
 			.populate({
 				path: "seller",

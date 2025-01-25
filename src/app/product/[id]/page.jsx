@@ -171,12 +171,12 @@ export default function ProductDetailsPage({ params: rawParams }) {
 										</span>
 									)}
 								</p>
-								<div className='flex items-center mt-1'>
+								{/* <div className='flex items-center mt-1'>
 									<span>
 										({product?.seller?.totalSales || "5"}{" "}
 										Sales)
 									</span>
-								</div>
+								</div> */}
 								<p className='text-sm text-gray-500 mt-1'>
 									Member since{" "}
 									{new Date(
