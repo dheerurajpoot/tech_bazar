@@ -98,7 +98,10 @@ export default function ProductDetailsPage({ params: rawParams }) {
 							</button>
 						))}
 					</div>
-					<BuyingProcessGuide />
+					{/* BuyingProcessGuide for larger screens */}
+					<div className='hidden md:block'>
+						<BuyingProcessGuide />
+					</div>
 				</div>
 
 				<div>
@@ -217,6 +220,10 @@ export default function ProductDetailsPage({ params: rawParams }) {
 						</CardFooter>
 					</Card>
 				</div>
+			</div>
+			{/* BuyingProcessGuide for mobile screens */}
+			<div className='mt-6 md:hidden'>
+				<BuyingProcessGuide />
 			</div>
 			<hr className='my-5' />
 			<RelatedProducts currentProductId={product?._id} />

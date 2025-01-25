@@ -37,7 +37,7 @@ export default function Header() {
 							variant='ghost'
 							size='icon'
 							aria-label='add product'>
-							<Link href='https://wa.link/d7vcm6'>
+							<Link href='/add-product'>
 								<PlusCircle className='h-6 w-6' />
 							</Link>
 						</Button>
@@ -121,7 +121,7 @@ function UserMenu({ isOpen, setIsOpen }) {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align='end' className='w-56'>
 				<DropdownMenuItem>
-					<Link href='https://wa.link/d7vcm6' className='w-full'>
+					<Link href='/add-product' className='w-full'>
 						Sell
 					</Link>
 				</DropdownMenuItem>

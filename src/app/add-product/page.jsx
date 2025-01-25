@@ -2,7 +2,7 @@
 import ProfileLayout from "@/components/profile-layout";
 import AddProductForm from "@/components/add-product-form";
 import { useContext } from "react";
-import { AuthContext } from "../../../../context/authContext";
+import { AuthContext } from "../../../context/authContext";
 
 export default function AddProductPage() {
 	const { user } = useContext(AuthContext);

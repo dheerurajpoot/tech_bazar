@@ -55,6 +55,9 @@ export async function POST(request) {
 		response.cookies.set("token", token, {
 			httpOnly: true,
 		});
+		response.cookies.set("userRole", user.role, {
+			httpOnly: true,
+		});
 		return response;
 	} catch (error) {
 		console.log(error);

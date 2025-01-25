@@ -10,12 +10,14 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../../../../context/authContext";
 
 export default function AdminOrdersPage() {
 	const [orders, setOrders] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
+	const { user } = useContext(AuthContext);
 
 	const getOrders = async () => {
 		try {
@@ -33,7 +35,7 @@ export default function AdminOrdersPage() {
 	}, []);
 
 	return (
-		<ProfileLayout isAdmin={true}>
+		<ProfileLayout isAdmin={user?.role === "admin"}>
 			<h1 className='text-2xl font-bold mb-4'>All Orders</h1>
 			<div className='bg-white shadow rounded-lg overflow-hidden'>
 				<Table>

@@ -34,6 +34,10 @@ const productModel = new mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
+		inReview: {
+			type: Boolean,
+			default: true,
+		},
 		earningsPerMonth: {
 			type: Number,
 			default: 0,

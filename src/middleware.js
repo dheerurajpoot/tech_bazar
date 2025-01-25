@@ -3,7 +3,11 @@ import { NextResponse } from "next/server";
 export function middleware(request) {
 	const path = request.nextUrl.pathname;
 
-	// Define public paths (accessible without login)
+	// Get token and userRole from cookies
+	const token = request.cookies.get("token")?.value || "";
+	const userRole = request.cookies.get("userRole")?.value || "";
+
+	// Public paths (accessible without login)
 	const isPublicPath =
 		path === "/" ||
 		path === "/login" ||
@@ -12,17 +16,16 @@ export function middleware(request) {
 		path === "/shop" ||
 		path.startsWith("/product");
 
-	// Define protected paths (require login)
+	// Protected paths (require login)
 	const isProtectedPath =
 		path.startsWith("/checkout") ||
-		path.startsWith("/admin") ||
 		path.startsWith("/order") ||
-		path === "/profile" ||
-		path === "/admin" ||
+		path.startsWith("/profile") ||
+		path === "/add-product" ||
 		path === "/thank-you";
 
-	// Get token from cookies
-	const token = request.cookies.get("token")?.value || "";
+	// Admin-only paths (require login and admin role)
+	const isAdminPath = path.startsWith("/admin");
 
 	// Redirect logged-in users away from login/register pages
 	if (isPublicPath && token && (path === "/login" || path === "/register")) {
@@ -30,8 +33,13 @@ export function middleware(request) {
 	}
 
 	// Redirect unauthenticated users trying to access protected paths
-	if (isProtectedPath && !token) {
+	if ((isProtectedPath || isAdminPath) && !token) {
 		return NextResponse.redirect(new URL("/login", request.url));
+	}
+
+	// Redirect non-admin users trying to access admin-only paths
+	if (isAdminPath && userRole !== "admin") {
+		return NextResponse.redirect(new URL("/", request.url));
 	}
 
 	return NextResponse.next();
@@ -44,9 +52,12 @@ export const config = {
 		"/register",
 		"/profile",
 		"/shop",
-		"/admin",
+		"/admin/:path*",
+		"/add-product",
 		"/verifyemail",
 		"/checkout/:path*",
+		"/profile/:path*",
+		"/order/:path*",
 		"/product/:path*",
 		"/thank-you",
 	],

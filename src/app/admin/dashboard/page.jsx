@@ -1,7 +1,7 @@
 "use client";
 
 import ProfileLayout from "@/components/profile-layout";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
 	Users,
@@ -20,6 +20,7 @@ import {
 	ResponsiveContainer,
 } from "recharts";
 import axios from "axios";
+import { AuthContext } from "../../../../context/authContext";
 
 const dashboardData = {
 	totalSales: 150000,
@@ -38,6 +39,7 @@ export default function AdminDashboardPage() {
 	const [products, setProducts] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [users, setUsers] = useState([]);
+	const { user } = useContext(AuthContext);
 
 	const [data] = useState(dashboardData);
 
@@ -92,7 +94,7 @@ export default function AdminDashboardPage() {
 	}, 0);
 
 	return (
-		<ProfileLayout isAdmin={true}>
+		<ProfileLayout isAdmin={user?.role === "admin"}>
 			<h1 className='text-3xl font-bold mb-6'>Admin Dashboard</h1>
 
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6'>

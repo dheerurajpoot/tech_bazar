@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProfileLayout from "@/components/profile-layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,11 +29,13 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import { AuthContext } from "../../../../context/authContext";
 
 export default function AdminProductsPage() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [products, setProducts] = useState([]);
 	const [editingProduct, setEditingProduct] = useState(null);
+	const { user } = useContext(AuthContext);
 
 	const handleEditChange = (e) => {
 		if (editingProduct) {
@@ -88,7 +90,7 @@ export default function AdminProductsPage() {
 	}, []);
 
 	return (
-		<ProfileLayout isAdmin={true}>
+		<ProfileLayout isAdmin={user?.role === "admin"}>
 			<h1 className='text-2xl font-bold mb-4'>All Products</h1>
 			<div className='bg-white shadow rounded-lg overflow-hidden'>
 				<Table>

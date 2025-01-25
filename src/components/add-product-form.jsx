@@ -168,6 +168,7 @@ export default function AddProductPage() {
 				const payload = {
 					...formData,
 					seller: user?._id,
+					inReview: user?.role === "admin" ? "false" : "true",
 					images: imageLinks,
 				};
 

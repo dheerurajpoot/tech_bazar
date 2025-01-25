@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProfileLayout from "@/components/profile-layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,11 +29,13 @@ import {
 } from "@/components/ui/select";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../../../context/authContext";
 
 export default function AdminUsersPage() {
 	const [loading, setLoading] = useState(false);
 	const [users, setUsers] = useState([]);
 	const [editingUser, setEditingUser] = useState(null);
+	const { user } = useContext(AuthContext);
 
 	const handleEditChange = (e) => {
 		if (editingUser) {
@@ -96,7 +98,7 @@ export default function AdminUsersPage() {
 	}, []);
 
 	return (
-		<ProfileLayout isAdmin={true}>
+		<ProfileLayout isAdmin={user?.role === "admin"}>
 			<h1 className='text-2xl font-bold mb-4'>All Users</h1>
 			<div className='bg-white shadow rounded-lg overflow-hidden'>
 				<Table>
