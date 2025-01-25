@@ -115,7 +115,13 @@ export default function ProfileLayout({ children, isAdmin }) {
 							asChild
 							variant='ghost'
 							className='w-full justify-start'>
-							<Link href='/profile/orders'>Orders</Link>
+							<Link href='/profile/orders'>My Orders</Link>
+						</Button>
+						<Button
+							asChild
+							variant='ghost'
+							className='w-full justify-start'>
+							<Link href='/profile/products'>My Products</Link>
 						</Button>
 						<Button
 							asChild

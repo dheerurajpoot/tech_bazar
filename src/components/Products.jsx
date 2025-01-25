@@ -43,7 +43,11 @@ export default function ProductSection() {
 		try {
 			setIsLoading(true);
 			const response = await axios.get("/api/admin/allproducts");
-			setProducts(response.data?.products.reverse());
+			setProducts(
+				response.data?.products
+					.reverse()
+					.filter((product) => product?.inReview === false)
+			);
 
 			setIsLoading(false);
 		} catch (error) {

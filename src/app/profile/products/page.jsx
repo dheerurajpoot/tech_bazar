@@ -35,7 +35,6 @@ export default function AdminProductsPage() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [products, setProducts] = useState([]);
 	const [editingProduct, setEditingProduct] = useState(null);
-	const [productStatus, setProductStatus] = useState();
 	const { user } = useContext(AuthContext);
 
 	const handleEditChange = (e) => {
@@ -76,7 +75,11 @@ export default function AdminProductsPage() {
 		try {
 			setIsLoading(true);
 			const response = await axios.get("/api/admin/allproducts");
-			setProducts(response.data?.products.reverse());
+			setProducts(
+				response.data?.products
+					.reverse()
+					.filter((product) => product?.seller?._id === user?._id)
+			);
 
 			setIsLoading(false);
 		} catch (error) {
@@ -90,33 +93,9 @@ export default function AdminProductsPage() {
 		getAllProducts();
 	}, []);
 
-	const handleStatusChange = (value, productId) => {
-		setProductStatus({ productId, inReview: value === "true" });
-	};
-
-	const handleStatusSubmit = async () => {
-		if (!productStatus || !productStatus.productId) {
-			toast.error("Please select a status first.");
-			return;
-		}
-
-		try {
-			const response = await axios.put(
-				"/api/admin/update-product-status",
-				productStatus
-			);
-			if (response.data?.success) {
-				toast.success(response.data?.message);
-				getAllProducts();
-			}
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
 	return (
 		<ProfileLayout isAdmin={user?.role === "admin"}>
-			<h1 className='text-2xl font-bold mb-4'>All Products</h1>
+			<h1 className='text-2xl font-bold mb-4'>My Products</h1>
 			<div className='bg-white shadow rounded-lg overflow-hidden'>
 				<Table>
 					<TableHeader>
@@ -147,65 +126,8 @@ export default function AdminProductsPage() {
 									${product.earningsPerMonth.toLocaleString()}
 								</TableCell>
 								<TableCell>
-									<Dialog>
-										<DialogTrigger asChild>
-											<p className='cursor-pointer'>
-												{product?.inReview
-													? "In Review"
-													: "Live"}
-											</p>
-										</DialogTrigger>
-										<DialogContent>
-											<DialogHeader>
-												<DialogTitle>
-													Update Status
-												</DialogTitle>
-											</DialogHeader>
-											<form
-												onSubmit={(e) => {
-													e.preventDefault();
-													handleStatusSubmit();
-												}}
-												className='space-y-4'>
-												<div>
-													<Label htmlFor='status'>
-														Status
-													</Label>
-													<Select
-														onValueChange={(
-															value
-														) =>
-															handleStatusChange(
-																value,
-																product._id
-															)
-														}
-														defaultValue={
-															product?.inReview
-																? "true"
-																: "false"
-														}>
-														<SelectTrigger>
-															<SelectValue placeholder='Select Status' />
-														</SelectTrigger>
-														<SelectContent>
-															<SelectItem value='true'>
-																In Review
-															</SelectItem>
-															<SelectItem value='false'>
-																Live
-															</SelectItem>
-														</SelectContent>
-													</Select>
-												</div>
-												<Button type='submit'>
-													Save Changes
-												</Button>
-											</form>
-										</DialogContent>
-									</Dialog>
+									{product?.inReview ? "In Review" : "Live"}
 								</TableCell>
-
 								<TableCell>
 									<Dialog>
 										<DialogTrigger asChild>
