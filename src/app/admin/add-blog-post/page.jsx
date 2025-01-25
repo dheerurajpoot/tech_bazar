@@ -1,3 +1,5 @@
+"use client";
+
 import AddBlogPostPage from "@/components/add-blog-form";
 import ProfileLayout from "@/components/profile-layout";
 import { useContext } from "react";
