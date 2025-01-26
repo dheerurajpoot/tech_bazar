@@ -32,6 +32,12 @@ const userModel = new mongoose.Schema(
 			enum: ["user", "admin"],
 			default: "user",
 		},
+		paymentDetails: {
+			bankName: String,
+			accountNumber: Number,
+			ifscCode: String,
+			upiId: String,
+		},
 		forgotPasswordToken: String,
 		forgotPasswordTokenExpiry: Date,
 		verifyToken: String,

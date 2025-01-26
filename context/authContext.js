@@ -14,22 +14,6 @@ export const AuthProvider = ({ children }) => {
 		}
 	}, []);
 
-	// const logout = async () => {
-	// 	setUser(null);
-	// 	try {
-	// 		await axios.get(`/api/auth/logout`, {
-	// 			withCredentials: true,
-	// 		});
-	// 		localStorage.removeItem("user");
-	// 		setTimeout(() => {
-	// 			toast.success("Log out successfully!");
-	// 			window.location.reload();
-	// 		}, 500);
-	// 	} catch (error) {
-	// 		console.log("error in logout", error);
-	// 	}
-	// };
-
 	return (
 		<AuthContext.Provider value={{ user, setUser }}>
 			{children}

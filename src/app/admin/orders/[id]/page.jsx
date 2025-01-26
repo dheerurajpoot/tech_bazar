@@ -171,7 +171,59 @@ export default function AdminOrderDetailsPage({ params: rawParams }) {
 					<CardHeader>
 						<CardTitle className='flex items-center'>
 							<User className='mr-2' />
-							Customer Information
+							Seller Information
+						</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<div className='space-y-2'>
+							<p>
+								<strong>Name:</strong>{" "}
+								{order?.product?.seller?.username}
+							</p>
+							<p>
+								<strong>Email:</strong>{" "}
+								{order?.product?.seller?.email}
+							</p>
+							<p>
+								<strong>Phone:</strong>{" "}
+								{order?.product?.seller?.phone}
+							</p>
+							<p>
+								<strong>Payment Details:</strong>{" "}
+							</p>
+							<p>
+								<strong>Bank Name:</strong>{" "}
+								{
+									order?.product?.seller?.paymentDetails
+										?.bankName
+								}
+							</p>
+							<p>
+								<strong>Account Number:</strong>{" "}
+								{
+									order?.product?.seller?.paymentDetails
+										?.accountNumber
+								}
+							</p>
+							<p>
+								<strong>IFSC Code:</strong>{" "}
+								{
+									order?.product?.seller?.paymentDetails
+										?.ifscCode
+								}
+							</p>
+							<p>
+								<strong>UPI ID/No:</strong>{" "}
+								{order?.product?.seller?.paymentDetails?.upiId}
+							</p>
+						</div>
+					</CardContent>
+				</Card>
+				<Card>
+					<CardHeader>
+						<CardTitle className='flex items-center'>
+							<User className='mr-2' />
+							Buyer Information
 						</CardTitle>
 					</CardHeader>
 					<CardContent>
@@ -188,38 +240,40 @@ export default function AdminOrderDetailsPage({ params: rawParams }) {
 						</div>
 					</CardContent>
 				</Card>
+				<Card>
+					<CardHeader>
+						<CardTitle>Order Items</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<Table>
+							<TableHeader>
+								<TableRow>
+									<TableHead>Item</TableHead>
+									<TableHead className='text-right'>
+										Price
+									</TableHead>
+								</TableRow>
+							</TableHeader>
+							<TableBody>
+								<TableRow>
+									<TableCell>
+										{order?.product?.title}
+									</TableCell>
+									<TableCell className='text-right'>
+										$
+										{order?.product?.price?.toLocaleString()}
+									</TableCell>
+								</TableRow>
+							</TableBody>
+						</Table>
+					</CardContent>
+					<CardFooter className='flex justify-end'>
+						<p className='font-bold'>
+							Total: ${order?.amount?.toLocaleString()}
+						</p>
+					</CardFooter>
+				</Card>
 			</div>
-
-			<Card className='mt-6'>
-				<CardHeader>
-					<CardTitle>Order Items</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<Table>
-						<TableHeader>
-							<TableRow>
-								<TableHead>Item</TableHead>
-								<TableHead className='text-right'>
-									Price
-								</TableHead>
-							</TableRow>
-						</TableHeader>
-						<TableBody>
-							<TableRow>
-								<TableCell>{order?.product?.title}</TableCell>
-								<TableCell className='text-right'>
-									${order?.product?.price?.toLocaleString()}
-								</TableCell>
-							</TableRow>
-						</TableBody>
-					</Table>
-				</CardContent>
-				<CardFooter className='flex justify-end'>
-					<p className='font-bold'>
-						Total: ${order?.amount?.toLocaleString()}
-					</p>
-				</CardFooter>
-			</Card>
 		</div>
 	);
 }

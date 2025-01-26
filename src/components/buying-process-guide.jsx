@@ -63,7 +63,7 @@ export function BuyingProcessGuide() {
 	];
 
 	return (
-		<Card className='mt-6'>
+		<Card className='container mx-auto mt-6 '>
 			<CardHeader>
 				<CardTitle className='text-xl font-bold'>
 					How It Works

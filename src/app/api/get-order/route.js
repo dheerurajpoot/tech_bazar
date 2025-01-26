@@ -15,7 +15,12 @@ export async function POST(request) {
 			})
 			.populate({
 				path: "product",
+				populate: {
+					path: "seller",
+					select: "-password",
+				},
 			});
+
 		if (!order) {
 			return NextResponse.json(
 				{ message: "Order Not Found!" },
