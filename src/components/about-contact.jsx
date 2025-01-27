@@ -33,16 +33,16 @@ export function AboutContact() {
 						<CardContent className='space-y-4'>
 							<div className='flex items-center'>
 								<Mail className='h-5 w-5 mr-2 text-primary' />
-								<span>support@techbazar.com</span>
+								<span>contact@evtn.org</span>
 							</div>
 							<div className='flex items-center'>
 								<Phone className='h-5 w-5 mr-2 text-primary' />
-								<span>+1 (555) 123-4567</span>
+								<span>+919026315148</span>
 							</div>
 							<div className='flex items-center'>
 								<MapPin className='h-5 w-5 mr-2 text-primary' />
 								<span>
-									123 Tech Street, San Francisco, CA 94105
+									Bamba Road, Kalyanpu, Kanpur, UP 208017
 								</span>
 							</div>
 							<Button asChild className='w-full'>

@@ -114,9 +114,27 @@ export default function AdminProductsPage() {
 		}
 	};
 
+	const [searchQuery, setSearchQuery] = useState("");
+
+	const filteredProducts = products.filter(
+		(product) =>
+			product?.title
+				?.toLowerCase()
+				?.includes(searchQuery?.toLowerCase()) ||
+			product?._id?.toLowerCase()?.includes(searchQuery?.toLowerCase()) ||
+			product?.type?.toLowerCase()?.includes(searchQuery?.toLowerCase())
+	);
+
 	return (
 		<ProfileLayout isAdmin={user?.role === "admin"}>
 			<h1 className='text-2xl font-bold mb-4'>All Products</h1>
+			<Input
+				type='search'
+				placeholder='Search products by name, ID, or type...'
+				value={searchQuery}
+				onChange={(e) => setSearchQuery(e.target.value)}
+				className='mb-4'
+			/>
 			<div className='bg-white shadow rounded-lg overflow-hidden'>
 				<Table>
 					<TableHeader>
@@ -133,7 +151,7 @@ export default function AdminProductsPage() {
 						</TableRow>
 					</TableHeader>
 					<TableBody>
-						{products.map((product, index) => (
+						{filteredProducts.map((product, index) => (
 							<TableRow key={product._id}>
 								<TableCell>{index + 1}</TableCell>
 								<TableCell>{product.title}</TableCell>

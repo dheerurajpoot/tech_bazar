@@ -13,11 +13,15 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Mail, Phone, MapPin } from "lucide-react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function ContactPage() {
+	const [isLoading, setIsLoading] = useState(false);
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
+		phone: "",
 		subject: "",
 		message: "",
 	});
@@ -27,12 +31,27 @@ export default function ContactPage() {
 		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// Here you would typically send the form data to your backend
-		console.log("Form submitted:", formData);
-		// Reset form after submission
-		setFormData({ name: "", email: "", subject: "", message: "" });
+		try {
+			setIsLoading(true);
+			const response = await axios.post("/api/contact", formData);
+			console.log("Form submitted:", response);
+			if (response.data.success) {
+				toast.success(response?.data?.message);
+				setFormData({
+					name: "",
+					email: "",
+					phone: "",
+					subject: "",
+					message: "",
+				});
+			}
+			setIsLoading(false);
+		} catch (error) {
+			console.log(error);
+			setIsLoading(false);
+		}
 	};
 
 	return (
@@ -55,7 +74,7 @@ export default function ContactPage() {
 							<Mail className='h-6 w-6 text-primary mr-4' />
 							<div>
 								<h3 className='font-semibold'>Email</h3>
-								<p>support@techbazar.com</p>
+								<p>contact@evtn.org</p>
 							</div>
 						</div>
 						<div className='flex items-center'>
@@ -69,7 +88,7 @@ export default function ContactPage() {
 							<MapPin className='h-6 w-6 text-primary mr-4' />
 							<div>
 								<h3 className='font-semibold'>Address</h3>
-								<p>123 Bamba road Kalyanpur Kanpur 208017</p>
+								<p>Bamba road Kalyanpur, Kanpur, UP, 208017</p>
 							</div>
 						</div>
 					</div>
@@ -89,7 +108,7 @@ export default function ContactPage() {
 								<Input
 									id='name'
 									name='name'
-									value={formData.name}
+									value={formData?.name}
 									onChange={handleInputChange}
 									required
 								/>
@@ -100,7 +119,18 @@ export default function ContactPage() {
 									id='email'
 									name='email'
 									type='email'
-									value={formData.email}
+									value={formData?.email}
+									onChange={handleInputChange}
+									required
+								/>
+							</div>
+							<div>
+								<Label htmlFor='phone'>Phone</Label>
+								<Input
+									id='phone'
+									name='phone'
+									type='phone'
+									value={formData?.phone}
 									onChange={handleInputChange}
 									required
 								/>
@@ -110,7 +140,7 @@ export default function ContactPage() {
 								<Input
 									id='subject'
 									name='subject'
-									value={formData.subject}
+									value={formData?.subject}
 									onChange={handleInputChange}
 									required
 								/>
@@ -120,14 +150,14 @@ export default function ContactPage() {
 								<Textarea
 									id='message'
 									name='message'
-									value={formData.message}
+									value={formData?.message}
 									onChange={handleInputChange}
 									required
 									rows={5}
 								/>
 							</div>
 							<Button type='submit' className='w-full'>
-								Send Message
+								{isLoading ? "Sending..." : "Send Message"}
 							</Button>
 						</form>
 					</CardContent>

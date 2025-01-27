@@ -35,7 +35,15 @@ export default function AdminUsersPage() {
 	const [loading, setLoading] = useState(false);
 	const [users, setUsers] = useState([]);
 	const [editingUser, setEditingUser] = useState(null);
+	const [searchQuery, setSearchQuery] = useState("");
 	const { user } = useContext(AuthContext);
+
+	const filteredUsers = users.filter(
+		(user) =>
+			user?.email?.toLowerCase()?.includes(searchQuery?.toLowerCase()) ||
+			user?.name?.toLowerCase()?.includes(searchQuery?.toLowerCase()) ||
+			user?._id?.toLowerCase()?.includes(searchQuery?.toLowerCase())
+	);
 
 	const handleEditChange = (e) => {
 		if (editingUser) {
@@ -100,6 +108,13 @@ export default function AdminUsersPage() {
 	return (
 		<ProfileLayout isAdmin={user?.role === "admin"}>
 			<h1 className='text-2xl font-bold mb-4'>All Users</h1>
+			<Input
+				type='search'
+				placeholder='Search users by email, name, or ID...'
+				value={searchQuery}
+				onChange={(e) => setSearchQuery(e.target.value)}
+				className='mb-4'
+			/>
 			<div className='bg-white shadow rounded-lg overflow-hidden'>
 				<Table>
 					<TableHeader>
@@ -113,7 +128,7 @@ export default function AdminUsersPage() {
 						</TableRow>
 					</TableHeader>
 					<TableBody>
-						{users.map((user, index) => (
+						{filteredUsers.map((user, index) => (
 							<TableRow key={user._id}>
 								<TableCell>{index + 1}</TableCell>
 								<TableCell>{user.username}</TableCell>

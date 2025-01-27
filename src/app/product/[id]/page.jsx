@@ -17,6 +17,7 @@ import axios from "axios";
 import { BiddingForm } from "@/components/bidding-form";
 import { RelatedProducts } from "@/components/related-products";
 import { BuyingProcessGuide } from "@/components/buying-process-guide";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ProductDetailsPage({ params: rawParams }) {
 	const [isLoading, setIsLoading] = useState(false);
@@ -33,10 +34,10 @@ export default function ProductDetailsPage({ params: rawParams }) {
 			const response = await axios.post("/api/get-product", {
 				productId,
 			});
-
 			setProduct(response?.data?.product || {});
 			setIsLoading(false);
 		} catch (error) {
+			setIsLoading(false)
 			console.log(error);
 		} finally {
 			setIsLoading(false);
@@ -105,120 +106,126 @@ export default function ProductDetailsPage({ params: rawParams }) {
 				</div>
 
 				<div>
-					<Card>
-						<CardHeader>
-							<CardTitle className='text-3xl font-bold'>
-								{product?.title}
-							</CardTitle>
-							<div className='flex items-center justify-between mt-2'>
-								<div className='text-2xl font-semibold text-primary'>
-									${product?.price?.toLocaleString()}
+					{isLoading ? (
+						<DetailSkelton />
+					) : (
+						<Card>
+							<CardHeader>
+								<CardTitle className='text-3xl font-bold'>
+									{product?.title}
+								</CardTitle>
+								<div className='flex items-center justify-between mt-2'>
+									<div className='text-2xl font-semibold text-primary'>
+										${product?.price?.toLocaleString()}
+									</div>
+									<div className='text-sm text-gray-500'>
+										Category:{" "}
+										{product?.type
+											?.charAt(0)
+											.toUpperCase() +
+											product?.type?.slice(1)}
+									</div>
 								</div>
-								<div className='text-sm text-gray-500'>
-									Category:{" "}
-									{product?.type?.charAt(0).toUpperCase() +
-										product?.type?.slice(1)}
-								</div>
-							</div>
-						</CardHeader>
-						<CardContent>
-							<p className='text-gray-600 mb-6'>
-								{product?.description}
-							</p>
-
-							<h3 className='text-lg font-semibold mb-2'>
-								Key Details
-							</h3>
-							<ul className='space-y-2 mb-6'>
-								<li className='flex items-center'>
-									<Calendar className='mr-2 h-5 w-5 text-gray-400' />
-									Age: {product?.age} months
-								</li>
-								<li className='flex items-center'>
-									<TrendingUp className='mr-2 h-5 w-5 text-gray-400' />
-									Monthly Earnings: $
-									{product?.earningsPerMonth?.toLocaleString()}
-								</li>
-								<li>
-									<span className='font-semibold'>
-										Monetization:
-									</span>{" "}
-									{product?.monetization}
-								</li>
-								<li>
-									<span className='font-semibold'>
-										Traffic/Reach:
-									</span>{" "}
-									{product?.traffic || 0} /Month
-								</li>
-								<li>
-									<span className='font-semibold'>
-										Country:
-									</span>{" "}
-									{product?.country}
-								</li>
-							</ul>
-
-							<h3 className='text-lg font-semibold mb-2'>
-								Seller Information
-							</h3>
-							<div className='bg-gray-50 p-4 rounded-lg'>
-								<p className='font-semibold'>
-									{product?.seller?.username}{" "}
-									{product?.seller?.role === "admin" && (
-										<span className='text-xs font-semibold bg-yellow-200 text-yellow-800 px-1 py-0.5 rounded'>
-											Admin
-										</span>
-									)}
+							</CardHeader>
+							<CardContent>
+								<p className='text-gray-600 mb-6'>
+									{product?.description}
 								</p>
-								{/* <div className='flex items-center mt-1'>
+
+								<h3 className='text-lg font-semibold mb-2'>
+									Key Details
+								</h3>
+								<ul className='space-y-2 mb-6'>
+									<li className='flex items-center'>
+										<Calendar className='mr-2 h-5 w-5 text-gray-400' />
+										Age: {product?.age} months
+									</li>
+									<li className='flex items-center'>
+										<TrendingUp className='mr-2 h-5 w-5 text-gray-400' />
+										Monthly Earnings: $
+										{product?.earningsPerMonth?.toLocaleString()}
+									</li>
+									<li>
+										<span className='font-semibold'>
+											Monetization:
+										</span>{" "}
+										{product?.monetization}
+									</li>
+									<li>
+										<span className='font-semibold'>
+											Traffic/Reach:
+										</span>{" "}
+										{product?.traffic || 0} /Month
+									</li>
+									<li>
+										<span className='font-semibold'>
+											Country:
+										</span>{" "}
+										{product?.country}
+									</li>
+								</ul>
+
+								<h3 className='text-lg font-semibold mb-2'>
+									Seller Information
+								</h3>
+								<div className='bg-gray-50 p-4 rounded-lg'>
+									<p className='font-semibold'>
+										{product?.seller?.username}{" "}
+										{product?.seller?.role === "admin" && (
+											<span className='text-xs font-semibold bg-yellow-200 text-yellow-800 px-1 py-0.5 rounded'>
+												Admin
+											</span>
+										)}
+									</p>
+									{/* <div className='flex items-center mt-1'>
 									<span>
 										({product?.seller?.totalSales || "5"}{" "}
 										Sales)
 									</span>
 								</div> */}
-								<p className='text-sm text-gray-500 mt-1'>
-									Member since{" "}
-									{new Date(
-										product?.seller?.createdAt
-									)?.toDateString()}
-								</p>
-							</div>
-							<div className='mt-6'>
-								<h3 className='text-lg font-semibold mb-2'>
-									Bidding
-								</h3>
-								<BiddingForm
-									productId={product?._id}
-									bids={product?.bids || []}
-								/>
-							</div>
-						</CardContent>
-						<CardFooter className='flex flex-col sm:flex-row justify-between items-center gap-4'>
-							{product?.isSold ? (
-								<Button
-									size='lg'
-									className='w-full sm:w-auto bg-red-500 text-white cursor-not-allowed'
-									disabled>
-									Sold
-								</Button>
-							) : (
-								<Link href={`/checkout/${product?._id}`}>
+									<p className='text-sm text-gray-500 mt-1'>
+										Member since{" "}
+										{new Date(
+											product?.seller?.createdAt
+										)?.toDateString()}
+									</p>
+								</div>
+								<div className='mt-6'>
+									<h3 className='text-lg font-semibold mb-2'>
+										Bidding
+									</h3>
+									<BiddingForm
+										productId={product?._id}
+										bids={product?.bids || []}
+									/>
+								</div>
+							</CardContent>
+							<CardFooter className='flex flex-col sm:flex-row justify-between items-center gap-4'>
+								{product?.isSold ? (
 									<Button
 										size='lg'
-										className='w-full sm:w-auto'>
-										Purchase Now
+										className='w-full sm:w-auto bg-red-500 text-white cursor-not-allowed'
+										disabled>
+										Sold
 									</Button>
-								</Link>
-							)}
-							<Button
-								size='lg'
-								variant='outline'
-								className='w-full sm:w-auto'>
-								Contact Seller
-							</Button>
-						</CardFooter>
-					</Card>
+								) : (
+									<Link href={`/checkout/${product?._id}`}>
+										<Button
+											size='lg'
+											className='w-full sm:w-auto'>
+											Purchase Now
+										</Button>
+									</Link>
+								)}
+								<Button
+									size='lg'
+									variant='outline'
+									className='w-full sm:w-auto'>
+									Contact Seller
+								</Button>
+							</CardFooter>
+						</Card>
+					)}
 				</div>
 			</div>
 			{/* BuyingProcessGuide for mobile screens */}
@@ -227,6 +234,58 @@ export default function ProductDetailsPage({ params: rawParams }) {
 			</div>
 			<hr className='my-5' />
 			<RelatedProducts currentProductId={product?._id} />
+		</div>
+	);
+}
+
+function DetailSkelton() {
+	return (
+		<div>
+			<Card>
+				<CardHeader>
+					<Skeleton className='h-8 w-[200px]' />
+					<div className='flex items-center justify-between mt-4'>
+						<Skeleton className='h-6 w-[100px]' />
+						<Skeleton className='h-4 w-[150px]' />
+					</div>
+				</CardHeader>
+				<CardContent>
+					<Skeleton className='h-4 w-full mb-4' />
+					<Skeleton className='h-4 w-2/3 mb-6' />
+					<Skeleton className='h-6 w-[150px] mb-4' />
+					<ul className='space-y-4'>
+						<li className='flex items-center'>
+							<Skeleton className='h-5 w-5 rounded-full mr-2' />
+							<Skeleton className='h-4 w-[200px]' />
+						</li>
+						<li className='flex items-center'>
+							<Skeleton className='h-5 w-5 rounded-full mr-2' />
+							<Skeleton className='h-4 w-[200px]' />
+						</li>
+						<li>
+							<Skeleton className='h-4 w-[250px]' />
+						</li>
+						<li>
+							<Skeleton className='h-4 w-[250px]' />
+						</li>
+						<li>
+							<Skeleton className='h-4 w-[250px]' />
+						</li>
+					</ul>
+					<Skeleton className='h-6 w-[150px] mb-4 mt-6' />
+					<div className='bg-gray-50 p-4 rounded-lg'>
+						<Skeleton className='h-4 w-[200px] mb-2' />
+						<Skeleton className='h-4 w-[150px] mb-2' />
+						<Skeleton className='h-4 w-[200px]' />
+					</div>
+					<Skeleton className='h-6 w-[150px] mt-6 mb-2' />
+					<Skeleton className='h-10 w-full' />
+				</CardContent>
+				<CardFooter className='flex flex-col sm:flex-row justify-between items-center gap-4 mt-4'>
+					<Skeleton className='h-10 w-full sm:w-auto' />
+					<Skeleton className='h-10 w-full sm:w-auto' />
+				</CardFooter>
+			</Card>
 		</div>
 	);
 }

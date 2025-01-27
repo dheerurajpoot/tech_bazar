@@ -89,6 +89,33 @@ export const userOrderMail = () => {
 </html>`;
 };
 
+// new contact mail template
+export const contactMail = (contact) => {
+	return `
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Order Notification</title>
+</head>
+
+<body>
+  <h3>
+    Welcome to ${process.env.COMPANY_NAME}
+  </h3>
+  <p>You have received a new contact form submission on our site.</p> 
+  <p>Name: <span>${contact?.name}</span></p> 
+  <p>Email: <span>${contact?.email}</span></p> 
+  <p>Phone: <span>${contact?.phone}</span></p> 
+  <p>Subject: <span>${contact?.subject}</span></p> 
+  <p>Message: <span>${contact?.message}</span></p> 
+</body>
+
+</html>`;
+};
+
 // new order mail template
 export const orderEmailTemplate = (orderDetails) => {
 	return `

@@ -13,11 +13,25 @@ import {
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../../../context/authContext";
+import { Input } from "@/components/ui/input";
 
 export default function AdminOrdersPage() {
 	const [orders, setOrders] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const { user } = useContext(AuthContext);
+	const [searchQuery, setSearchQuery] = useState("");
+
+	const filteredOrders = orders.filter(
+		(order) =>
+			order?._id?.toLowerCase()?.includes(searchQuery?.toLowerCase()) ||
+			order?.user?.username
+				?.toLowerCase()
+				?.includes(searchQuery?.toLowerCase()) ||
+			order?.product?.title
+				?.toLowerCase()
+				?.includes(searchQuery?.toLowerCase()) ||
+			order?.status?.toLowerCase()?.includes(searchQuery?.toLowerCase())
+	);
 
 	const getOrders = async () => {
 		try {
@@ -37,6 +51,13 @@ export default function AdminOrdersPage() {
 	return (
 		<ProfileLayout isAdmin={user?.role === "admin"}>
 			<h1 className='text-2xl font-bold mb-4'>All Orders</h1>
+			<Input
+				type='search'
+				placeholder='Search orders by ID, user, product, or status...'
+				value={searchQuery}
+				onChange={(e) => setSearchQuery(e.target.value)}
+				className='mb-4'
+			/>
 			<div className='bg-white shadow rounded-lg overflow-hidden'>
 				<Table>
 					<TableHeader>
@@ -51,7 +72,7 @@ export default function AdminOrdersPage() {
 						</TableRow>
 					</TableHeader>
 					<TableBody>
-						{orders.map((order, index) => (
+						{filteredOrders.map((order, index) => (
 							<TableRow key={order?._id}>
 								<TableCell>{index + 1}</TableCell>
 								<TableCell>{order?.user?.username}</TableCell>
