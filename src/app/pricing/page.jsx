@@ -42,7 +42,7 @@ export default function PricingPage() {
 					</CardHeader>
 					<CardContent className='space-y-4'>
 						{[
-							"10% commission on the final sale price of your digital asset",
+							"5% commission on the final sale price of your digital asset",
 							"No upfront costs or listing fees",
 							"Access to our secure escrow service included",
 							"Expert support throughout the entire process",

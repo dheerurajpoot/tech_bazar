@@ -35,12 +35,12 @@ export function AboutContact() {
 							</div>
 							<div className='flex items-center'>
 								<Phone className='h-5 w-5 mr-2 text-primary' />
-								<span>+919026315148</span>
+								<span>+91 9235337852</span>
 							</div>
 							<div className='flex items-center'>
 								<MapPin className='h-5 w-5 mr-2 text-primary' />
 								<span>
-									Bamba Road, Kalyanpu, Kanpur, UP 208017
+									Bamba Road, Kalyanpur, Kanpur Nagar (208017)
 								</span>
 							</div>
 							<Button asChild className='w-full'>

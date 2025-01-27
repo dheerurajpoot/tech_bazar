@@ -33,11 +33,33 @@ export default function Header() {
 							height={80}
 						/>
 					</Link>
-
+					<div className='hidden md:block'>
+						<DropdownMenu>
+							<DropdownMenuTrigger asChild>
+								<Button variant='ghost'>Services</Button>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent>
+								<DropdownMenuItem asChild>
+									<Link href='/services/web-development'>
+										Web Development
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem asChild>
+									<Link href='/services/content-writing-seo'>
+										Content Writing & SEO
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem asChild>
+									<Link href='/services/ppc-ads'>
+										PPC & Ads
+									</Link>
+								</DropdownMenuItem>
+							</DropdownMenuContent>
+						</DropdownMenu>
+					</div>
 					<div className='hidden md:flex flex-1 max-w-xl mx-4'>
 						<SearchBar />
 					</div>
-
 					<div className='flex items-center space-x-4'>
 						<Button
 							variant='ghost'

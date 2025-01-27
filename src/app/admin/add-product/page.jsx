@@ -8,7 +8,9 @@ export default function AddProductPage() {
 	const { user } = useContext(AuthContext);
 	return (
 		<ProfileLayout isAdmin={user?.role === "admin"}>
-			<h1 className='text-2xl font-bold mb-4'>Add New Product</h1>
+			<h1 className='text-2xl font-bold mb-4 text-center'>
+				Add New Product
+			</h1>
 			<AddProductForm />
 		</ProfileLayout>
 	);

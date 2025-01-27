@@ -37,7 +37,7 @@ export default function ProductDetailsPage({ params: rawParams }) {
 			setProduct(response?.data?.product || {});
 			setIsLoading(false);
 		} catch (error) {
-			setIsLoading(false)
+			setIsLoading(false);
 			console.log(error);
 		} finally {
 			setIsLoading(false);
@@ -217,12 +217,14 @@ export default function ProductDetailsPage({ params: rawParams }) {
 										</Button>
 									</Link>
 								)}
-								<Button
-									size='lg'
-									variant='outline'
-									className='w-full sm:w-auto'>
-									Contact Seller
-								</Button>
+								<Link href='https://wa.me/message/6PEUYSHOHEOAB1'>
+									<Button
+										size='lg'
+										variant='outline'
+										className='w-full sm:w-auto'>
+										Contact Seller
+									</Button>
+								</Link>
 							</CardFooter>
 						</Card>
 					)}

@@ -152,17 +152,22 @@ export default function AdminProductsPage() {
 					</TableHeader>
 					<TableBody>
 						{filteredProducts.map((product, index) => (
-							<TableRow key={product._id}>
+							<TableRow
+								key={product?._id}
+								className={`${
+									product?.isSold ? "bg-red-200" : ""
+								}`}>
 								<TableCell>{index + 1}</TableCell>
-								<TableCell>{product.title}</TableCell>
-								<TableCell>{product.type}</TableCell>
+								<TableCell>{product?.title}</TableCell>
+								<TableCell>{product?.type}</TableCell>
 								<TableCell>
-									${product.price.toLocaleString()}
+									${product?.price.toLocaleString()}
 								</TableCell>
-								<TableCell>{product.age}</TableCell>
-								<TableCell>{product.monetization}</TableCell>
+								<TableCell>{product?.age}</TableCell>
+								<TableCell>{product?.monetization}</TableCell>
 								<TableCell>
-									${product.earningsPerMonth.toLocaleString()}
+									$
+									{product?.earningsPerMonth.toLocaleString()}
 								</TableCell>
 								<TableCell>
 									<Dialog>

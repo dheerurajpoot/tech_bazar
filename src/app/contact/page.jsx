@@ -81,14 +81,16 @@ export default function ContactPage() {
 							<Phone className='h-6 w-6 text-primary mr-4' />
 							<div>
 								<h3 className='font-semibold'>Phone</h3>
-								<p>+91 9026315148</p>
+								<p>+91 9235337852</p>
 							</div>
 						</div>
 						<div className='flex items-center'>
 							<MapPin className='h-6 w-6 text-primary mr-4' />
 							<div>
 								<h3 className='font-semibold'>Address</h3>
-								<p>Bamba road Kalyanpur, Kanpur, UP, 208017</p>
+								<p>
+									Bamba road Kalyanpur, Kanpur Nagar, (208017)
+								</p>
 							</div>
 						</div>
 					</div>

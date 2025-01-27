@@ -8,11 +8,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../context/authContext";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export function BiddingForm({ productId, bids }) {
 	const [bidAmount, setBidAmount] = useState("");
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const { user } = useContext(AuthContext);
+	const router = useRouter();
 
 	const sortedBids = [...bids].sort((a, b) => b.amount - a.amount);
 	const topThreeBids = sortedBids.slice(0, 3);
@@ -29,15 +31,13 @@ export function BiddingForm({ productId, bids }) {
 			};
 
 			const response = await axios.put("/api/update-bidding", payload);
-
-			console.log(response.data);
-
-			toast.success("Your bid is submitted");
-
-			setBidAmount("");
+			if (response?.data?.success) {
+				toast.success(response?.data?.message);
+				setBidAmount("");
+				router.refresh();
+			}
 		} catch (error) {
 			console.log(error);
-
 			toast.error(error.response?.data?.message);
 		} finally {
 			setIsSubmitting(false);
@@ -73,7 +73,7 @@ export function BiddingForm({ productId, bids }) {
 			<form
 				onSubmit={handleSubmit}
 				className='space-y-4 flex gap-3 items-center'>
-				<div className='w-[78%]'>
+				<div className='w-[68%]'>
 					<Label htmlFor='bidAmount'>Your Bid</Label>
 					<Input
 						id='bidAmount'
@@ -85,7 +85,7 @@ export function BiddingForm({ productId, bids }) {
 					/>
 				</div>
 				<Button
-					className='w-[20%]'
+					className='w-[30%]'
 					type='submit'
 					disabled={isSubmitting}>
 					{isSubmitting ? "Submitting..." : "Place Bid"}

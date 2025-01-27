@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
 	title: {
-		default: "EVTN Digital mMrketplace",
+		default: "EVTN Digital Marketplace",
 		template: "%s - EVTN Digital Marketplace",
 	},
 	description:
