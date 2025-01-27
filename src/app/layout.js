@@ -16,8 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-	title: "Tech Bazar",
-	description: "A marketplace for creators",
+	title: {
+		default: "EVTN Digital mMrketplace",
+		template: "%s - EVTN Digital Marketplace",
+	},
+	description:
+		"A digital marketplace for creators where users can sell and buy websites, social media pages, youtube channels and other digital things.",
 };
 
 export default function RootLayout({ children }) {

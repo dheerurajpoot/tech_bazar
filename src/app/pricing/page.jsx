@@ -16,6 +16,9 @@ import {
 } from "@/components/ui/accordion";
 import { CheckCircle, HelpCircle, ArrowRight } from "lucide-react";
 
+export const metadata = {
+	title: "Priciing",
+};
 export default function PricingPage() {
 	return (
 		<div className='container mx-auto px-4 py-16'>
@@ -31,7 +34,7 @@ export default function PricingPage() {
 				<Card className='mb-12 transition-shadow hover:shadow-lg'>
 					<CardHeader>
 						<CardTitle className='text-3xl font-bold'>
-							10% Commission
+							5% Commission
 						</CardTitle>
 						<CardDescription className='text-lg'>
 							Only pay when your deal is successful
@@ -106,7 +109,7 @@ export default function PricingPage() {
 						{[
 							{
 								question: "Are there any hidden fees?",
-								answer: "No, we only charge the 10% commission on successful sales. There are no listing fees or other hidden charges.",
+								answer: "No, we only charge the 5% commission on successful sales. There are no listing fees or other hidden charges.",
 							},
 							{
 								question: "When do I pay the commission?",
@@ -140,8 +143,8 @@ export default function PricingPage() {
 						Ready to Buy or Sell Digital Assets?
 					</h2>
 					<p className='text-gray-600 mb-6'>
-						Join Tech Bazar today and start your journey in the
-						digital asset marketplace.
+						Join EVTN today and start your journey in the digital
+						asset marketplace.
 					</p>
 					<Button asChild size='lg'>
 						<Link href='/register'>

@@ -16,6 +16,7 @@ import { AuthContext } from "../../context/authContext";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Header() {
 	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -25,7 +26,12 @@ export default function Header() {
 			<div className='container mx-auto px-4 py-4'>
 				<div className='flex items-center justify-between'>
 					<Link href='/' className='text-2xl font-bold text-primary'>
-						Tech Bazar
+						<Image
+							src='/evtn.png'
+							alt='evtn logo'
+							width={170}
+							height={80}
+						/>
 					</Link>
 
 					<div className='hidden md:flex flex-1 max-w-xl mx-4'>

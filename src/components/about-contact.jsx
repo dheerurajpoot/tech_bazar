@@ -10,16 +10,14 @@ export function AboutContact() {
 			<div className='container mx-auto px-4'>
 				<div className='grid md:grid-cols-2 gap-8 items-center'>
 					<div>
-						<h2 className='text-3xl font-bold mb-4'>
-							About Tech Bazar
-						</h2>
+						<h2 className='text-3xl font-bold mb-4'>About EVTN</h2>
 						<p className='text-lg mb-6'>
-							Tech Bazar is the premier marketplace for buying and
+							EVTN is the premier marketplace for buying and
 							selling digital assets. We connect entrepreneurs,
 							investors, and digital creators in a secure and
 							efficient platform. Whether you're looking to
 							acquire a thriving online business or sell your
-							digital property, Tech Bazar provides the tools and
+							digital property, EVTN provides the tools and
 							support you need to succeed.
 						</p>
 						<Button asChild>

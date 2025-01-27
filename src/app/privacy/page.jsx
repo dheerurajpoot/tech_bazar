@@ -8,6 +8,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Shield, Eye, Lock } from "lucide-react";
 
+export const metadata = {
+	title: "Privacy Policy",
+};
+
 export default function PrivacyPolicyPage() {
 	return (
 		<div className='container mx-auto px-4 py-16'>
@@ -24,10 +28,10 @@ export default function PrivacyPolicyPage() {
 				</CardHeader>
 				<CardContent>
 					<p className='text-lg'>
-						At Tech Bazar, we are committed to protecting your
-						privacy and ensuring the security of your personal
-						information. This Privacy Policy explains how we
-						collect, use, and safeguard your data.
+						At EVTN, we are committed to protecting your privacy and
+						ensuring the security of your personal information. This
+						Privacy Policy explains how we collect, use, and
+						safeguard your data.
 					</p>
 				</CardContent>
 			</Card>
@@ -251,8 +255,7 @@ export default function PrivacyPolicyPage() {
 						<AccordionContent>
 							<p>
 								If you have any questions about this Privacy
-								Policy, please contact us at
-								privacy@techbazar.com.
+								Policy, please contact us at contact@evtn.org.
 							</p>
 						</AccordionContent>
 					</AccordionItem>

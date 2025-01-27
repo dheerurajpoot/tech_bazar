@@ -10,26 +10,28 @@ import {
 } from "lucide-react";
 import { BuyingProcessGuide } from "@/components/buying-process-guide";
 
+export const metadata = {
+	title: "About",
+};
+
 export default function AboutPage() {
 	return (
 		<div className='container mx-auto px-4 py-16'>
-			<h1 className='text-4xl font-bold mb-8 text-center'>
-				About Tech Bazar
-			</h1>
+			<h1 className='text-4xl font-bold mb-8 text-center'>About EVTN</h1>
 
 			<div className='grid md:grid-cols-2 gap-12 items-center mb-16'>
 				<div>
 					<h2 className='text-3xl font-semibold mb-4'>Our Story</h2>
 					<p className='text-lg mb-6'>
-						Founded in 2023, Tech Bazar emerged from a simple idea:
-						to create a secure and efficient marketplace for digital
+						Founded in 2023, EVTN emerged from a simple idea: to
+						create a secure and efficient marketplace for digital
 						assets. Our founders, seasoned entrepreneurs and tech
 						enthusiasts, recognized the need for a platform where
 						creators, investors, and businesses could connect to buy
 						and sell online properties with confidence.
 					</p>
 					<p className='text-lg'>
-						Today, Tech Bazar stands as the premier destination for
+						Today, EVTN stands as the premier destination for
 						trading websites, social media accounts, and YouTube
 						channels. We've facilitated thousands of transactions,
 						helping digital entrepreneurs realize their dreams and
@@ -78,11 +80,11 @@ export default function AboutPage() {
 					Our Mission
 				</h2>
 				<p className='text-lg text-center max-w-3xl mx-auto'>
-					At Tech Bazar, our mission is to empower digital
-					entrepreneurs and investors by providing a transparent,
-					secure, and dynamic marketplace for online assets. We strive
-					to foster innovation, facilitate growth, and create
-					opportunities in the ever-evolving digital economy.
+					At EVTN, our mission is to empower digital entrepreneurs and
+					investors by providing a transparent, secure, and dynamic
+					marketplace for online assets. We strive to foster
+					innovation, facilitate growth, and create opportunities in
+					the ever-evolving digital economy.
 				</p>
 			</div>
 
@@ -141,8 +143,8 @@ export default function AboutPage() {
 				</h2>
 				<p className='text-lg mb-8 max-w-2xl mx-auto'>
 					Whether you're looking to sell your successful online
-					business or invest in the next big thing, Tech Bazar is here
-					to help you succeed in the digital world.
+					business or invest in the next big thing, EVTN is here to
+					help you succeed in the digital world.
 				</p>
 				<Button asChild size='lg'>
 					<Link href='/register'>

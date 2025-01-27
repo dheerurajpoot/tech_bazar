@@ -1,5 +1,4 @@
 "use client";
-
 import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -80,7 +79,7 @@ export default function LoginPage() {
 		<div className='container mx-auto px-4 py-8'>
 			<div className='max-w-md mx-auto'>
 				<h1 className='text-3xl font-bold mb-6 text-center'>
-					Log In to Tech Bazar
+					Log In to EVTN
 				</h1>
 				<form onSubmit={handleSubmit} className='space-y-6'>
 					<div>

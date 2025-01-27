@@ -4,11 +4,14 @@ import Link from "next/link";
 import { ArrowRight, DollarSign, ShieldCheck, Users } from "lucide-react";
 import { BuyingProcessGuide } from "@/components/buying-process-guide";
 
+export const metadata = {
+	title: "How it works",
+};
 export default function HowItWorksPage() {
 	return (
 		<div className='container mx-auto px-4 py-16'>
 			<h1 className='text-4xl font-bold mb-8 text-center'>
-				How Tech Bazar Works
+				How EVTN Works
 			</h1>
 
 			<div className='grid md:grid-cols-3 gap-8 mb-16'>
@@ -72,7 +75,7 @@ export default function HowItWorksPage() {
 
 			<div className='max-w-3xl mx-auto'>
 				<h2 className='text-2xl font-semibold mb-6 text-center'>
-					The Tech Bazar Process
+					The EVTN Process
 				</h2>
 
 				<div className='space-y-8'>
@@ -94,9 +97,9 @@ export default function HowItWorksPage() {
 						</h3>
 						<p>
 							Buyers can ask questions and request additional
-							information about listed assets. Tech Bazar
-							encourages thorough due diligence and facilitates
-							clear communication between parties.
+							information about listed assets. EVTN encourages
+							thorough due diligence and facilitates clear
+							communication between parties.
 						</p>
 					</div>
 
@@ -107,8 +110,8 @@ export default function HowItWorksPage() {
 						<p>
 							Once interested, buyers can make offers on assets.
 							Sellers can accept, reject, or counter these offers.
-							Tech Bazar provides a platform for secure
-							negotiations until both parties reach an agreement.
+							EVTN provides a platform for secure negotiations
+							until both parties reach an agreement.
 						</p>
 					</div>
 
@@ -118,8 +121,8 @@ export default function HowItWorksPage() {
 						</h3>
 						<p>
 							When a deal is struck, the buyer sends payment to
-							Tech Bazar's secure escrow service. This protects
-							both parties during the transaction process.
+							EVTN's secure escrow service. This protects both
+							parties during the transaction process.
 						</p>
 					</div>
 
@@ -129,7 +132,7 @@ export default function HowItWorksPage() {
 						</h3>
 						<p>
 							The seller transfers the digital asset to the buyer.
-							Tech Bazar provides guidance and support to ensure a
+							EVTN provides guidance and support to ensure a
 							smooth transfer process. The buyer verifies that
 							everything is in order.
 						</p>
@@ -146,8 +149,8 @@ export default function HowItWorksPage() {
 						</p>
 						<p>
 							Once the buyer confirms successful transfer and
-							satisfaction with the asset, Tech Bazar releases the
-							funds to the seller, completing the transaction.
+							satisfaction with the asset, EVTN releases the funds
+							to the seller, completing the transaction.
 						</p>
 					</div>
 				</div>
@@ -163,8 +166,8 @@ export default function HowItWorksPage() {
 				</h2>
 				<p className='text-lg mb-8 max-w-2xl mx-auto'>
 					Whether you're looking to sell your digital asset or invest
-					in a new opportunity, Tech Bazar provides a secure and
-					efficient platform for your transactions.
+					in a new opportunity, EVTN provides a secure and efficient
+					platform for your transactions.
 				</p>
 				<Button asChild size='lg'>
 					<Link href='/register'>

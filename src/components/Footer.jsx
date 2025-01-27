@@ -8,10 +8,10 @@ export default function Footer() {
 				<div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
 					<div>
 						<h2 className='text-lg font-semibold mb-4'>
-							About Tech Bazar
+							About EVTN
 						</h2>
 						<p className='text-sm'>
-							Tech Bazar is your go-to marketplace for buying and
+							EVTN is your go-to marketplace for buying and
 							selling websites, social media pages, and YouTube
 							channels.
 						</p>
@@ -122,8 +122,8 @@ export default function Footer() {
 				</div>
 				<div className='mt-8 pt-8 border-t border-gray-200 text-center'>
 					<p className='text-sm'>
-						&copy; {new Date().getFullYear()} Tech Bazar. All rights
-						reserved.
+						&copy; {new Date().getFullYear()}{" "}
+						<Link href='/'>EVTN</Link>. All rights reserved.
 					</p>
 				</div>
 			</div>

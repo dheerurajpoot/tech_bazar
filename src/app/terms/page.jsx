@@ -8,6 +8,9 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { CheckCircle, AlertTriangle, Scale } from "lucide-react";
 
+export const metadata = {
+	title: "Terms of Service",
+};
 export default function TermsOfServicePage() {
 	return (
 		<div className='container mx-auto px-4 py-16'>
@@ -24,8 +27,8 @@ export default function TermsOfServicePage() {
 				</CardHeader>
 				<CardContent>
 					<p className='text-lg'>
-						Welcome to Tech Bazar. By using our services, you agree
-						to comply with and be bound by the following terms and
+						Welcome to EVTN. By using our services, you agree to
+						comply with and be bound by the following terms and
 						conditions. Please read these carefully. If you do not
 						agree with any part of these terms, you may not use our
 						services.
@@ -93,10 +96,10 @@ export default function TermsOfServicePage() {
 							1. Acceptance of Terms
 						</AccordionTrigger>
 						<AccordionContent>
-							By accessing or using Tech Bazar, you agree to be
-							bound by these Terms of Service and all applicable
-							laws and regulations. If you do not agree with any
-							part of these terms, you may not use our services.
+							By accessing or using EVTN, you agree to be bound by
+							these Terms of Service and all applicable laws and
+							regulations. If you do not agree with any part of
+							these terms, you may not use our services.
 						</AccordionContent>
 					</AccordionItem>
 
@@ -139,8 +142,8 @@ export default function TermsOfServicePage() {
 							5. Fees and Payments
 						</AccordionTrigger>
 						<AccordionContent>
-							Tech Bazar charges fees for using our services.
-							These fees are clearly stated before you complete a
+							EVTN charges fees for using our services. These fees
+							are clearly stated before you complete a
 							transaction. You agree to pay all applicable fees.
 						</AccordionContent>
 					</AccordionItem>
@@ -150,9 +153,9 @@ export default function TermsOfServicePage() {
 							6. Prohibited Activities
 						</AccordionTrigger>
 						<AccordionContent>
-							You may not use Tech Bazar for any illegal or
-							unauthorized purpose. You must not, in the use of
-							the service, violate any laws in your jurisdiction.
+							You may not use EVTN for any illegal or unauthorized
+							purpose. You must not, in the use of the service,
+							violate any laws in your jurisdiction.
 						</AccordionContent>
 					</AccordionItem>
 
@@ -174,7 +177,7 @@ export default function TermsOfServicePage() {
 							8. Limitation of Liability
 						</AccordionTrigger>
 						<AccordionContent>
-							Tech Bazar shall not be liable for any indirect,
+							EVTN shall not be liable for any indirect,
 							incidental, special, consequential or punitive
 							damages, including without limitation, loss of
 							profits, data, use, goodwill, or other intangible
@@ -187,9 +190,9 @@ export default function TermsOfServicePage() {
 							9. Modifications to Terms
 						</AccordionTrigger>
 						<AccordionContent>
-							Tech Bazar reserves the right to modify these terms
-							at any time. We will provide notice of significant
-							changes by posting an announcement on our website.
+							EVTN reserves the right to modify these terms at any
+							time. We will provide notice of significant changes
+							by posting an announcement on our website.
 						</AccordionContent>
 					</AccordionItem>
 
@@ -205,8 +208,8 @@ export default function TermsOfServicePage() {
 			</ScrollArea>
 
 			<p className='mt-8 text-center text-sm text-gray-500'>
-				By using Tech Bazar, you acknowledge that you have read,
-				understood, and agree to be bound by these Terms of Service.
+				By using EVTN, you acknowledge that you have read, understood,
+				and agree to be bound by these Terms of Service.
 			</p>
 		</div>
 	);

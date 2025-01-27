@@ -11,8 +11,8 @@ export default function Hero() {
 						Buy and Sell Digital Assets
 					</h1>
 					<p className='mt-6 max-w-2xl mx-auto text-xl sm:text-2xl'>
-						Tech Bazar: Your marketplace for websites, social media
-						pages, and YouTube channels
+						EVTN: Your marketplace for websites, social media pages,
+						and YouTube channels
 					</p>
 					<div className='mt-10 flex justify-center gap-4'>
 						<Button
