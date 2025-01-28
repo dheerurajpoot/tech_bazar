@@ -11,6 +11,10 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+export const metadata = {
+	title: "Content Writing & SEO",
+};
+
 export default function ContentWritingSEOPage() {
 	return (
 		<div>
@@ -27,7 +31,7 @@ export default function ContentWritingSEOPage() {
 						rankings.
 					</p>
 					<Link href='/contact'>
-					<Button size='lg'>Request a Content Strategy</Button>
+						<Button size='lg'>Request a Content Strategy</Button>
 					</Link>
 				</div>
 				<div className='relative h-64 md:h-auto'>

@@ -11,6 +11,10 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+export const metadata = {
+	title: "PPC Ads Campaigns",
+};
+
 export default function PPCAdsPage() {
 	return (
 		<div>

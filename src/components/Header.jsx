@@ -29,7 +29,7 @@ export default function Header() {
 						<Image
 							src='/evtn.png'
 							alt='evtn logo'
-							width={170}
+							width={150}
 							height={80}
 						/>
 					</Link>

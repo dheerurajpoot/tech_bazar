@@ -18,6 +18,10 @@ const productModel = new mongoose.Schema(
 			type: Number,
 			required: true,
 		},
+		url: {
+			type: String,
+			required: true,
+		},
 		type: {
 			type: String,
 			required: true,

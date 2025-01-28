@@ -26,6 +26,7 @@ export default function AddProductPage() {
 		type: "",
 		price: "",
 		description: "",
+		url: "",
 		age: "",
 		monetization: "",
 		country: "",
@@ -38,6 +39,7 @@ export default function AddProductPage() {
 		type: "",
 		price: "",
 		description: "",
+		url: "",
 		age: "",
 		monetization: "",
 		country: "",
@@ -116,6 +118,15 @@ export default function AddProductPage() {
 		if (formData.description.length < 10) {
 			newErrors.description =
 				"Description must be at least 10 characters long.";
+			isValid = false;
+		}
+
+		if (
+			!formData.url ||
+			isNaN(Number(formData.url)) ||
+			Number(formData.url) < 0
+		) {
+			newErrors.url = "Please enter a valid URL/Link.";
 			isValid = false;
 		}
 
@@ -281,6 +292,22 @@ export default function AddProductPage() {
 						)}
 					</div>
 
+					<div>
+						<Label htmlFor='url'>URL/Link</Label>
+						<Input
+							id='url'
+							name='url'
+							type='text'
+							value={formData.url}
+							onChange={handleInputChange}
+							placeholder='e.g., https://example.com'
+						/>
+						{errors.url && (
+							<p className='text-sm text-red-500 mt-1'>
+								{errors.url}
+							</p>
+						)}
+					</div>
 					<div>
 						<Label htmlFor='age'>Age (in months)</Label>
 						<Input

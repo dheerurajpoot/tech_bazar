@@ -11,6 +11,10 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+export const metadata = {
+	title: "Web Development Services",
+};
+
 export default function WebDevelopmentPage() {
 	return (
 		<div>

@@ -154,9 +154,9 @@ export default function Footer() {
 							</li>
 							<li>
 								<Link
-									href='/valuation'
+									href='/cookies'
 									className='hover:text-white transition-colors'>
-									Asset Valuation
+									Cookies Policy
 								</Link>
 							</li>
 						</ul>

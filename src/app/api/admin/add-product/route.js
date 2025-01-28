@@ -12,6 +12,7 @@ export async function POST(request) {
 			price,
 			description,
 			age,
+			url,
 			seller,
 			inReview,
 			monetization,
@@ -28,6 +29,7 @@ export async function POST(request) {
 			!price ||
 			!description ||
 			!age ||
+			!url ||
 			!seller ||
 			!monetization ||
 			!country ||
@@ -50,6 +52,7 @@ export async function POST(request) {
 			price,
 			description,
 			age,
+			url,
 			seller,
 			inReview,
 			monetization,
