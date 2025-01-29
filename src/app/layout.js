@@ -17,11 +17,11 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
 	title: {
-		default: "EVTN Digital Marketplace",
-		template: "%s - EVTN Digital Marketplace",
+		default: "EVTN | Buy & Sell Digital Assets",
+		template: "%s - EVTN",
 	},
 	description:
-		"A digital marketplace for creators where users can sell and buy websites, social media pages, youtube channels and other digital things.",
+		"EVTN is the premier marketplace for buying and selling websites, social media accounts, and YouTube channels. Find your next digital investment or sell your online business today.",
 };
 
 export default function RootLayout({ children }) {
