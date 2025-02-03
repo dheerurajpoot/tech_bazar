@@ -47,7 +47,6 @@ export default function ProductSection() {
 				response.data?.products
 					.reverse()
 					.filter((product) => product?.inReview === false)
-					.filter((product) => product?.isSold === false)
 			);
 
 			setIsLoading(false);
@@ -154,7 +153,7 @@ function ProductListItem({ product }) {
 				<CardHeader className='md:w-1/4'>
 					<Image
 						src={product?.images[0] || "/placeholder.svg"}
-						alt={product.title}
+						alt={product?.title}
 						width={300}
 						height={200}
 						className='w-full h-48 object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none'
@@ -162,30 +161,32 @@ function ProductListItem({ product }) {
 				</CardHeader>
 				<CardContent className='flex-1 p-6'>
 					<Link
-						href={`/product/${product._id}`}
+						href={`/product/${product?._id}`}
 						className='text-2xl font-semibold hover:underline mb-2 block'>
-						{product.title}
+						{product?.title}
 					</Link>
-					<p className='text-gray-600 mb-4'>{product.description}</p>
+					<p className='text-gray-600 mb-4'>{product?.description}</p>
 					<div className='grid grid-cols-2 gap-4'>
 						<div>
 							<p className='font-semibold'>Category:</p>
 							<p>
-								{product.type.charAt(0).toUpperCase() +
-									product.type.slice(1)}
+								{product?.type?.charAt(0)?.toUpperCase() +
+									product?.type?.slice(1)}
 							</p>
 						</div>
 						<div>
 							<p className='font-semibold'>Age:</p>
-							<p>{product.age} months</p>
+							<p>{product?.age} months</p>
 						</div>
 						<div>
 							<p className='font-semibold'>Monetization:</p>
-							<p>{product.monetization}</p>
+							<p>{product?.monetization}</p>
 						</div>
 						<div>
 							<p className='font-semibold'>Monthly Earnings:</p>
-							<p>${product.earningsPerMonth.toLocaleString()}</p>
+							<p>
+								${product?.earningsPerMonth?.toLocaleString()}
+							</p>
 						</div>
 					</div>
 				</CardContent>
@@ -193,12 +194,16 @@ function ProductListItem({ product }) {
 					<div>
 						<p className='text-lg font-semibold mb-2'>Price:</p>
 						<p className='text-2xl font-bold'>
-							${product.price.toLocaleString()}
+							${product?.price?.toLocaleString()}
 						</p>
 					</div>
-					<Button asChild className='w-full mt-4'>
-						<Link href={`/product/${product._id}`}>
-							View Details
+					<Button
+						asChild
+						className={`w-full mt-4 ${
+							product?.isSold ? "bg-red-700" : ""
+						}`}>
+						<Link href={`/product/${product?._id}`}>
+							{product?.isSold ? "Sold" : "View Details"}
 						</Link>
 					</Button>
 				</CardFooter>

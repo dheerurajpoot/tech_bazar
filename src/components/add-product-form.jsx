@@ -39,7 +39,6 @@ export default function AddProductPage() {
 		type: "",
 		price: "",
 		description: "",
-		url: "",
 		age: "",
 		monetization: "",
 		country: "",
@@ -122,15 +121,6 @@ export default function AddProductPage() {
 		}
 
 		if (
-			!formData.url ||
-			isNaN(Number(formData.url)) ||
-			Number(formData.url) < 0
-		) {
-			newErrors.url = "Please enter a valid URL/Link.";
-			isValid = false;
-		}
-
-		if (
 			!formData.age ||
 			isNaN(Number(formData.age)) ||
 			Number(formData.age) < 0
@@ -182,6 +172,7 @@ export default function AddProductPage() {
 					inReview: user?.role === "admin" ? "false" : "true",
 					images: imageLinks,
 				};
+				console.log(payload);
 
 				const response = await axios.post(
 					"/api/admin/add-product",
@@ -293,6 +284,17 @@ export default function AddProductPage() {
 					</div>
 
 					<div>
+						<Label>Product Images</Label>
+						<ImageUpload onImagesChange={handleImagesChange} />
+
+						{isUploading && (
+							<p className='text-sm text-red-500 mt-1'>
+								Image Uploading...
+							</p>
+						)}
+					</div>
+
+					<div>
 						<Label htmlFor='url'>URL/Link</Label>
 						<Input
 							id='url'
@@ -302,11 +304,6 @@ export default function AddProductPage() {
 							onChange={handleInputChange}
 							placeholder='e.g., https://example.com'
 						/>
-						{errors.url && (
-							<p className='text-sm text-red-500 mt-1'>
-								{errors.url}
-							</p>
-						)}
 					</div>
 					<div>
 						<Label htmlFor='age'>Age (in months)</Label>
@@ -391,17 +388,6 @@ export default function AddProductPage() {
 						{errors.traffic && (
 							<p className='text-sm text-red-500 mt-1'>
 								{errors.traffic}
-							</p>
-						)}
-					</div>
-
-					<div>
-						<Label>Product Images</Label>
-						<ImageUpload onImagesChange={handleImagesChange} />
-
-						{isUploading && (
-							<p className='text-sm text-red-500 mt-1'>
-								Image Uploading...
 							</p>
 						)}
 					</div>

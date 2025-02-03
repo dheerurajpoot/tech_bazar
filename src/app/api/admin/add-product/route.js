@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { connectDb } from "@/dbconfig/db";
 import { Product } from "@/models/product.model";
+import { sendMail } from "@/lib/orderMail";
+import { newProductMail } from "@/lib/mail-templates";
 
 export async function POST(request) {
 	try {
@@ -63,6 +65,12 @@ export async function POST(request) {
 		});
 
 		const savedProduct = await newProduct.save();
+		// send order confirmation mail to admin
+		await sendMail({
+			email: process.env.MAIL_USER,
+			subject: "New Product Added on EVTN!",
+			template: newProductMail(savedProduct),
+		});
 
 		return NextResponse.json({
 			message: "Product Added Successfully",

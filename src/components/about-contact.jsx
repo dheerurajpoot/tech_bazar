@@ -35,7 +35,7 @@ export function AboutContact() {
 							</div>
 							<div className='flex items-center'>
 								<Phone className='h-5 w-5 mr-2 text-primary' />
-								<span>+91 9235337852</span>
+								<span>+91 7755089819</span>
 							</div>
 							<div className='flex items-center'>
 								<MapPin className='h-5 w-5 mr-2 text-primary' />

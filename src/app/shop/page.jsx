@@ -42,7 +42,6 @@ const ShopPage = () => {
 				response.data?.products
 					.reverse()
 					.filter((product) => product?.inReview === false)
-					.filter((product) => product?.isSold === false)
 			);
 			setIsLoading(false);
 		} catch (error) {
@@ -138,11 +137,11 @@ const ShopPage = () => {
 			) : (
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
 					{currentProducts.map((product) => (
-						<Card key={product._id} className='flex flex-col'>
+						<Card key={product?._id} className='flex flex-col'>
 							<CardHeader>
 								<Image
-									src={product.images[0]}
-									alt={product.title}
+									src={product?.images[0]}
+									alt={product?.title}
 									width={300}
 									height={200}
 									className='w-full h-48 object-cover rounded-t-lg'
@@ -150,20 +149,26 @@ const ShopPage = () => {
 							</CardHeader>
 							<CardContent className='flex-grow'>
 								<CardTitle className='mb-2'>
-									{product.title}
+									{product?.title}
 								</CardTitle>
 								<p className='text-sm text-gray-600 mb-2'>
-									{product.description}
+									{product?.description}
 								</p>
 								<p className='font-semibold'>
-									Price: ${product.price.toLocaleString()}
+									Price: ${product?.price.toLocaleString()}
 								</p>
-								<p className='text-sm'>Type: {product.type}</p>
+								<p className='text-sm'>Type: {product?.type}</p>
 							</CardContent>
 							<CardFooter>
-								<Button asChild className='w-full'>
-									<Link href={`/product/${product.id}`}>
-										View Details
+								<Button
+									asChild
+									className={`w-full ${
+										product?.isSold ? "bg-red-700" : ""
+									}`}>
+									<Link href={`/product/${product?._id}`}>
+										{product?.isSold
+											? "Sold"
+											: "View Details"}
 									</Link>
 								</Button>
 							</CardFooter>
