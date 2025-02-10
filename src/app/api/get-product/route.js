@@ -15,7 +15,7 @@ export async function POST(request) {
 			})
 			.populate({
 				path: "seller",
-				select: "username email role createdAt",
+				select: "username email role phone createdAt",
 			});
 		if (!product) {
 			return NextResponse.json(

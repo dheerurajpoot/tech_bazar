@@ -227,7 +227,10 @@ export default function ProductDetailsPage({ params: rawParams }) {
 									</span>
 								</div> */}
 										<p className='text-sm text-gray-500 mt-1'>
-											Member since{" "}
+											Contact: {product?.seller?.phone}
+										</p>
+										<p className='text-sm text-gray-500 mt-1'>
+											Member since:{" "}
 											{new Date(
 												product?.seller?.createdAt
 											)?.toDateString()}
@@ -269,7 +272,7 @@ export default function ProductDetailsPage({ params: rawParams }) {
 											size='lg'
 											variant='outline'
 											className='w-full sm:w-auto'>
-											Contact Seller
+											Contact Admin
 										</Button>
 									</Link>
 
