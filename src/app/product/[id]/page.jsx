@@ -84,7 +84,7 @@ export default function ProductDetailsPage({ params: rawParams }) {
 				/>
 				<meta property='og:type' content='website' />
 			</Head>
-			<div className='container mx-auto px-4 py-8'>
+			<div className='container mx-auto px-4 py-8 mt-16'>
 				<Link
 					href='/'
 					className='inline-flex items-center text-primary hover:underline mb-6'>

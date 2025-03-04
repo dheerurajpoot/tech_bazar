@@ -121,7 +121,7 @@ export default function ProductSection() {
 
 				<div className='space-y-6'>
 					{isLoading
-						? Array.from({ length: 5 }).map((_, index) => (
+						? Array.from({ length: 2 }).map((_, index) => (
 								<ProductSkeleton key={index} />
 						  ))
 						: filteredProducts

@@ -42,17 +42,16 @@ export default function Header() {
 	return (
 		<header
 			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-				isScrolled ? "bg-white shadow-md" : "bg-transparent"
+				isScrolled ? "bg-white shadow-md" : "bg-[#111827]"
 			}`}>
 			<div className='container mx-auto px-4 py-4'>
 				<div className='flex items-center justify-between'>
-					<Link href='/' className='text-2xl font-bold text-primary'>
-						<Image
-							src='/evtn.png'
-							alt='evtn logo'
-							width={120}
-							height={60}
-						/>
+					<Link
+						href='/'
+						className={`text-3xl font-black transition-colors ${
+							isScrolled ? "text-blue-600" : "text-white"
+						}`}>
+						EVTN
 					</Link>
 					<nav className='hidden md:flex items-center space-x-6'>
 						{navItems.map((item) => (

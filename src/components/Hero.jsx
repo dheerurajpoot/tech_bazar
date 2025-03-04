@@ -148,17 +148,10 @@ export default function Hero() {
 							asChild
 							size='lg'
 							className='bg-blue-500 hover:bg-blue-600 text-white'>
-							<Link href='/services'>
-								Explore Services
+							<Link href='/contact'>
+								Get a Free Consultation
 								<ArrowRight className='ml-2 h-5 w-5' />
 							</Link>
-						</Button>
-						<Button
-							asChild
-							size='lg'
-							variant='outline'
-							className='text-black border-white hover:bg-gray-200 hover:text-gray-900'>
-							<Link href='/contact'>Get a Free Consultation</Link>
 						</Button>
 					</motion.div>
 				</motion.div>

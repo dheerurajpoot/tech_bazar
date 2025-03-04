@@ -23,7 +23,7 @@ export default function VerifyEmailPage() {
 		setToken(tokenUrl);
 	}, []);
 	return (
-		<div className='container mx-auto px-4 py-8 flex flex-col relative items-center justify-center'>
+		<div className='container mx-auto px-4 py-8 flex flex-col relative items-center justify-center mt-16'>
 			{!verified && (
 				<div>
 					<h2 className='text-2xl mb-4 font-semibold'>

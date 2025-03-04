@@ -51,14 +51,14 @@ export function MarketingServices() {
 					value={activeTab}
 					onValueChange={setActiveTab}
 					className='w-full'>
-					<TabsList className='grid w-full grid-cols-3 bg-blue-900/50 rounded-xl p-1'>
+					<TabsList className='grid w-full grid-cols-3 bg-blue-900 rounded-xl p-1'>
 						{services.map((service) => (
 							<TabsTrigger
 								key={service.title}
 								value={service.title
 									.toLowerCase()
 									.replace(" ", "-")}
-								className='data-[state=active]:bg-white data-[state=active]:text-blue-900'>
+								className='data-[state=active]:bg-white font-sans text-white data-[state=active]:text-blue-900'>
 								<service.icon
 									className={`h-5 w-5 mr-2 ${service.color}`}
 								/>

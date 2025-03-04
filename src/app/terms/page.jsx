@@ -13,7 +13,7 @@ export const metadata = {
 };
 export default function TermsOfServicePage() {
 	return (
-		<div className='container mx-auto px-4 py-16'>
+		<div className='container mx-auto px-4 py-16 mt-16'>
 			<h1 className='text-4xl font-bold mb-8 text-center'>
 				Terms of Service
 			</h1>

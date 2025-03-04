@@ -30,7 +30,7 @@ export default function ProfileLayout({ children, isAdmin }) {
 	};
 
 	return (
-		<div className='container mx-auto px-4 py-8'>
+		<div className='container mx-auto px-4 py-8 mt-20'>
 			<div className='flex flex-col md:flex-row gap-8'>
 				<aside className='w-full md:w-64'>
 					<nav className='space-y-2'>

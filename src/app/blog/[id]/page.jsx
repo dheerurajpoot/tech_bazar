@@ -43,7 +43,7 @@ export default function BlogPostPage({ params }) {
 	}
 
 	return (
-		<div className='container mx-auto px-4 py-8'>
+		<div className='container mx-auto px-4 py-8 mt-16'>
 			<Button
 				variant='outline'
 				onClick={() => router.push("/blog")}

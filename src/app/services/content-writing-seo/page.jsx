@@ -18,7 +18,7 @@ export const metadata = {
 export default function ContentWritingSEOPage() {
 	return (
 		<div>
-			<div className='grid md:grid-cols-2 gap-12 items-center mb-16'>
+			<div className='grid md:grid-cols-2 gap-12 items-center mb-16 mt-16'>
 				<div>
 					<h2 className='text-3xl font-bold mb-4'>
 						Content Writing & SEO Services

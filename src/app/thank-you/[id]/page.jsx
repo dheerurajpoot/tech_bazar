@@ -37,9 +37,8 @@ export default function ThankYouPage({ params: rawParams }) {
 		getOrder();
 	}, []);
 
-
 	return (
-		<div className='container mx-auto px-4 py-16'>
+		<div className='container mx-auto px-4 py-16 mt-16'>
 			<div className='max-w-2xl mx-auto text-center'>
 				<CheckCircle className='mx-auto h-16 w-16 text-green-500 mb-4' />
 				<h1 className='text-3xl font-bold mb-4'>
