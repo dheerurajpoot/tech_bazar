@@ -27,7 +27,7 @@ export default function ProductSection() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [categoryFilter, setCategoryFilter] = useState("all");
 	const [priceFilter, setPriceFilter] = useState("");
-	const [visibleProducts, setVisibleProducts] = useState(5);
+	const [visibleProducts, setVisibleProducts] = useState(2);
 
 	const filteredProducts = products.filter(
 		(product) =>
@@ -137,7 +137,7 @@ export default function ProductSection() {
 				{visibleProducts < filteredProducts.length && (
 					<div className='mt-8 text-center'>
 						<Button onClick={handleLoadMore} className='px-6 py-2'>
-							Load More
+							Load More Products
 						</Button>
 					</div>
 				)}

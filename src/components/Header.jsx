@@ -1,9 +1,7 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
-import { Search, User, PlusCircle } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
 	DropdownMenu,
@@ -17,106 +15,85 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { User } from "lucide-react";
+
+const navItems = [
+	{ href: "/", label: "Home" },
+	{ href: "/#", label: "Services" },
+	{ href: "/pricing", label: "Pricing" },
+	{ href: "/blog", label: "Blog" },
+	{ href: "/shop", label: "Shop" },
+	{ href: "/about", label: "About" },
+	{ href: "/contact", label: "Contact" },
+];
 
 export default function Header() {
 	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+	const [isScrolled, setIsScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsScrolled(window.scrollY > 10);
+		};
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
 
 	return (
-		<header className='bg-white shadow-sm'>
+		<header
+			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+				isScrolled ? "bg-white shadow-md" : "bg-transparent"
+			}`}>
 			<div className='container mx-auto px-4 py-4'>
 				<div className='flex items-center justify-between'>
 					<Link href='/' className='text-2xl font-bold text-primary'>
 						<Image
 							src='/evtn.png'
 							alt='evtn logo'
-							width={150}
-							height={80}
+							width={120}
+							height={60}
 						/>
 					</Link>
-					<div className='hidden md:block'>
-						<DropdownMenu>
-							<DropdownMenuTrigger asChild>
-								<Button variant='ghost'>Services</Button>
-							</DropdownMenuTrigger>
-							<DropdownMenuContent>
-								<DropdownMenuItem asChild>
-									<Link href='/services/web-development'>
-										Web Development
-									</Link>
-								</DropdownMenuItem>
-								<DropdownMenuItem asChild>
-									<Link href='/services/content-writing-seo'>
-										Content Writing & SEO
-									</Link>
-								</DropdownMenuItem>
-								<DropdownMenuItem asChild>
-									<Link href='/services/ppc-ads'>
-										PPC & Ads
-									</Link>
-								</DropdownMenuItem>
-							</DropdownMenuContent>
-						</DropdownMenu>
-					</div>
-					<div className='hidden md:flex flex-1 max-w-xl mx-4'>
-						<SearchBar />
-					</div>
+					<nav className='hidden md:flex items-center space-x-6'>
+						{navItems.map((item) => (
+							<NavLink
+								key={item.href}
+								href={item.href}
+								isScrolled={isScrolled}>
+								{item.label}
+							</NavLink>
+						))}
+					</nav>
 					<div className='flex items-center space-x-4'>
-						<Button
-							variant='ghost'
-							size='icon'
-							aria-label='add product'>
-							<Link href='/add-product'>
-								<PlusCircle className='h-6 w-6' />
-							</Link>
-						</Button>
-
 						<UserMenu
 							isOpen={isUserMenuOpen}
 							setIsOpen={setIsUserMenuOpen}
+							isScrolled={isScrolled}
 						/>
 					</div>
-				</div>
-
-				<div className='mt-4 md:hidden'>
-					<SearchBar />
 				</div>
 			</div>
 		</header>
 	);
 }
 
-function SearchBar() {
-	const router = useRouter();
-	const [searchQuery, setSearchQuery] = useState("");
-
-	const handleSearch = (e) => {
-		e.preventDefault();
-		if (searchQuery.trim()) {
-			router.push(`/shop?q=${encodeURIComponent(searchQuery.trim())}`);
-		}
-	};
-
+function NavLink({ href, children, isScrolled }) {
 	return (
-		<form onSubmit={handleSearch} className='relative w-full'>
-			<Input
-				type='search'
-				placeholder='Search for websites, pages, channels...'
-				className='w-full pl-10'
-				value={searchQuery}
-				onChange={(e) => setSearchQuery(e.target.value)}
-			/>
-			<Button
-				type='submit'
-				size='icon'
-				className='absolute right-0 top-0 h-full'>
-				<Search className='h-4 w-4' />
-				<span className='sr-only'>Search</span>
-			</Button>
-		</form>
+		<Link
+			href={href}
+			className={`
+        ${
+			isScrolled
+				? "text-black hover:text-blue-600"
+				: "text-white hover:text-blue-200"
+		}
+      `}>
+			{children}
+		</Link>
 	);
 }
 
-function UserMenu({ isOpen, setIsOpen }) {
+function UserMenu({ isOpen, setIsOpen, isScrolled }) {
 	const router = useRouter();
 	const { user, setUser } = useContext(AuthContext);
 
@@ -141,7 +118,12 @@ function UserMenu({ isOpen, setIsOpen }) {
 		<DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
 			<DropdownMenuTrigger asChild>
 				<div>
-					<Button variant='ghost' aria-label='User menu'>
+					<Button
+						variant='ghost'
+						aria-label='User menu'
+						className={`transition-colors ${
+							isScrolled ? "text-gray-700" : "text-white"
+						}`}>
 						<User className='h-6 w-6' />
 						<p>{user?.username.split(" ")[0]}</p>
 					</Button>
