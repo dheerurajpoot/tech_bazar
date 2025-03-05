@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function ServicesLayout({ children }) {
 	return (
-		<div className='container mx-auto px-4 py-8'>
+		<div className='container mx-auto px-4 py-8 mt-16'>
 			<h1 className='text-3xl font-bold mb-6'>Our Services</h1>
 			<div className='flex flex-wrap gap-4 mb-8'>
 				<Button asChild variant='outline'>

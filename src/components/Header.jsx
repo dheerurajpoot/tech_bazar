@@ -3,19 +3,19 @@
 import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { AuthContext } from "../../context/authContext";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { User } from "lucide-react";
+import { Menu } from "lucide-react";
+import {
+	Sheet,
+	SheetContent,
+	SheetDescription,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger,
+} from "./ui/sheet";
 
 const navItems = [
 	{ href: "/", label: "Home" },
@@ -28,7 +28,6 @@ const navItems = [
 ];
 
 export default function Header() {
-	const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 
 	useEffect(() => {
@@ -63,13 +62,7 @@ export default function Header() {
 							</NavLink>
 						))}
 					</nav>
-					<div className='flex items-center space-x-4'>
-						<UserMenu
-							isOpen={isUserMenuOpen}
-							setIsOpen={setIsUserMenuOpen}
-							isScrolled={isScrolled}
-						/>
-					</div>
+					<ProfileDrawer isScrolled={isScrolled} />
 				</div>
 			</div>
 		</header>
@@ -92,7 +85,7 @@ function NavLink({ href, children, isScrolled }) {
 	);
 }
 
-function UserMenu({ isOpen, setIsOpen, isScrolled }) {
+function ProfileDrawer({ isAdmin, isScrolled }) {
 	const router = useRouter();
 	const { user, setUser } = useContext(AuthContext);
 
@@ -114,54 +107,96 @@ function UserMenu({ isOpen, setIsOpen, isScrolled }) {
 	};
 
 	return (
-		<DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-			<DropdownMenuTrigger asChild>
-				<div>
-					<Button
-						variant='ghost'
-						aria-label='User menu'
-						className={`transition-colors ${
-							isScrolled ? "text-gray-700" : "text-white"
-						}`}>
-						<User className='h-6 w-6' />
-						<p>{user?.username.split(" ")[0]}</p>
-					</Button>
-				</div>
-			</DropdownMenuTrigger>
-			<DropdownMenuContent align='end' className='w-56'>
-				<DropdownMenuItem>
-					<Link href='/add-product' className='w-full'>
-						Sell
-					</Link>
-				</DropdownMenuItem>
-				{user && user ? (
-					<>
-						<DropdownMenuItem>
-							<Link href='/profile' className='w-full'>
+		<Sheet>
+			<SheetTrigger asChild>
+				<Button
+					variant='ghost'
+					size='icon'
+					className={`rounded-full transition-colors ${
+						isScrolled
+							? "text-gray-700 hover:text-blue-600 hover:bg-gray-100"
+							: "text-white hover:text-blue-200 hover:bg-white/10"
+					}`}>
+					<Menu className='h-6 w-6' />
+					<span className='sr-only'>Open profile menu</span>
+				</Button>
+			</SheetTrigger>
+			<SheetContent>
+				<SheetHeader>
+					<SheetTitle>Profile Menu</SheetTitle>
+					<SheetDescription>
+						Manage your account and settings
+					</SheetDescription>
+				</SheetHeader>
+				<div className='py-4 space-y-4'>
+					{user && user ? (
+						<>
+							<Link
+								href='/profile'
+								className='block text-blue-600 hover:underline'>
 								Profile
 							</Link>
-						</DropdownMenuItem>
-						<DropdownMenuSeparator />
-						<DropdownMenuItem onClick={logOut}>
-							Logout
-						</DropdownMenuItem>
-					</>
-				) : (
-					<>
-						<DropdownMenuItem>
-							<Link href='/register' className='w-full'>
+						</>
+					) : (
+						<>
+							<Link
+								href='/register'
+								className='block text-blue-600 hover:underline'>
 								Register
 							</Link>
-						</DropdownMenuItem>
-						<DropdownMenuSeparator />
-						<DropdownMenuItem>
-							<Link href='/login' className='w-full'>
+							<Link
+								href='/login'
+								className='block text-blue-600 hover:underline'>
 								Login
 							</Link>
-						</DropdownMenuItem>
-					</>
-				)}
-			</DropdownMenuContent>
-		</DropdownMenu>
+						</>
+					)}
+					<Link
+						href='/add-product'
+						className='block text-blue-600 hover:underline'>
+						Sell
+					</Link>
+					<Link
+						href='/shop'
+						className='block text-blue-600 hover:underline'>
+						Shop
+					</Link>
+					<Link
+						href='/contact'
+						className='block text-blue-600 hover:underline'>
+						Contact
+					</Link>
+					<Link
+						href='/about'
+						className='block text-blue-600 hover:underline'>
+						About
+					</Link>
+					<Link
+						href='/blog'
+						className='block text-blue-600 hover:underline'>
+						Blog
+					</Link>
+					<Link
+						href='/pricing'
+						className='block text-blue-600 hover:underline'>
+						Pricing
+					</Link>
+					<Link
+						href='/services/web-development'
+						className='block text-blue-600 hover:underline'>
+						Services
+					</Link>
+
+					<div className='border-t border-gray-200 pt-4'>
+						<Link
+							onClick={logOut}
+							href='/'
+							className='block text-red-600 hover:underline'>
+							Logout
+						</Link>
+					</div>
+				</div>
+			</SheetContent>
+		</Sheet>
 	);
 }
