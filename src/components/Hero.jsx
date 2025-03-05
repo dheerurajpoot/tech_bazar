@@ -1,171 +1,127 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-	ArrowRight,
-	Zap,
-	Globe,
-	DollarSign,
-	TrendingUp,
-	Pencil,
-	Search,
-	BarChart,
-} from "lucide-react";
+import { ArrowRight, Zap, Globe, DollarSign, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const services = [
 	{
-		icon: Pencil,
-		title: "Content Writing",
-		description: "Engaging, SEO-optimized content",
-		color: "bg-teal-500",
+		icon: Zap,
+		title: "Fast Results",
+		description: "See improvements in your digital presence quickly",
+		color: "bg-yellow-500",
 	},
 	{
-		icon: Search,
-		title: "SEO",
-		description: "Boost your online visibility",
+		icon: Globe,
+		title: "Global Reach",
+		description: "Expand your audience across borders",
 		color: "bg-blue-500",
 	},
 	{
-		icon: BarChart,
-		title: "PPC Ads",
-		description: "Targeted, high-performing campaigns",
+		icon: DollarSign,
+		title: "Cost-Effective",
+		description: "Maximize your ROI with our strategies",
+		color: "bg-green-500",
+	},
+	{
+		icon: TrendingUp,
+		title: "Scalable Growth",
+		description: "Solutions that grow with your business",
 		color: "bg-purple-500",
 	},
 ];
 
-const containerVariants = {
-	hidden: { opacity: 0 },
-	visible: {
-		opacity: 1,
-		transition: {
-			delayChildren: 0.3,
-			staggerChildren: 0.2,
-		},
-	},
-};
-
-const itemVariants = {
-	hidden: { y: 20, opacity: 0 },
-	visible: {
-		y: 0,
-		opacity: 1,
-	},
-};
-
 export default function Hero() {
+	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+	useEffect(() => {
+		const handleMouseMove = (e) => {
+			setMousePosition({ x: e.clientX, y: e.clientY });
+		};
+
+		window.addEventListener("mousemove", handleMouseMove);
+		return () => {
+			window.removeEventListener("mousemove", handleMouseMove);
+		};
+	}, []);
+
 	return (
-		<div className='relative overflow-hidden bg-gray-900 text-white'>
-			<div className='absolute inset-0'>
-				<svg
-					className='absolute left-full transform -translate-x-1/2 -translate-y-1/4'
-					width='404'
-					height='404'
-					fill='none'
-					viewBox='0 0 404 404'
-					aria-hidden='true'>
-					<defs>
-						<pattern
-							id='85737c0e-0916-41d7-917f-596dc7edfa27'
-							x='0'
-							y='0'
-							width='20'
-							height='20'
-							patternUnits='userSpaceOnUse'>
-							<rect
-								x='0'
-								y='0'
-								width='4'
-								height='4'
-								className='text-gray-700'
-								fill='currentColor'
-							/>
-						</pattern>
-					</defs>
-					<rect
-						width='404'
-						height='404'
-						fill='url(#85737c0e-0916-41d7-917f-596dc7edfa27)'
-					/>
-				</svg>
-				<svg
-					className='absolute right-full bottom-0 transform translate-x-1/2 translate-y-1/4'
-					width='404'
-					height='404'
-					fill='none'
-					viewBox='0 0 404 404'
-					aria-hidden='true'>
-					<defs>
-						<pattern
-							id='85737c0e-0916-41d7-917f-596dc7edfa28'
-							x='0'
-							y='0'
-							width='20'
-							height='20'
-							patternUnits='userSpaceOnUse'>
-							<rect
-								x='0'
-								y='0'
-								width='4'
-								height='4'
-								className='text-gray-700'
-								fill='currentColor'
-							/>
-						</pattern>
-					</defs>
-					<rect
-						width='404'
-						height='404'
-						fill='url(#85737c0e-0916-41d7-917f-596dc7edfa28)'
-					/>
-				</svg>
-			</div>
-			<div className='container mx-auto px-4 py-24 sm:py-32 lg:py-40 relative z-10'>
+		<div className='relative overflow-hidden bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white min-h-screen flex items-center justify-center'>
+			{/* Mouse Follower */}
+			<motion.div
+				className='absolute w-16 h-16 bg-blue-500 bg-opacity-30 blur-2xl rounded-full pointer-events-none'
+				style={{
+					left: mousePosition.x - 32,
+					top: mousePosition.y - 32,
+				}}
+				animate={{ x: mousePosition.x, y: mousePosition.y }}
+				transition={{ type: "tween", ease: "easeOut", duration: 0.1 }}
+			/>
+
+			<div className='container mx-auto px-4 py-24 sm:py-32 lg:py-40 relative z-10 text-center'>
+				<motion.h1
+					className='text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl mb-6'
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5 }}>
+					<span className='inline-block bg-gradient-to-r from-blue-400 to-teal-400 text-transparent bg-clip-text'>
+						Revolutionize
+					</span>{" "}
+					<span className='inline-block'>Your Digital Presence</span>
+				</motion.h1>
+				<motion.p
+					className='mt-6 max-w-2xl mx-auto text-xl sm:text-2xl text-blue-100 mb-8'
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6 }}>
+					Elevate your online business with our comprehensive digital
+					marketing solutions.
+				</motion.p>
+
 				<motion.div
-					className='text-center'
-					initial='hidden'
-					animate='visible'
-					variants={containerVariants}>
-					<motion.h1
-						className='text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl mb-6'
-						variants={itemVariants}>
-						<span className='block text-blue-500'>
-							Revolutionize
-						</span>
-						<span className='block'>Your Digital Presence</span>
-					</motion.h1>
-					<motion.p
-						className='mt-6 max-w-2xl mx-auto text-xl sm:text-2xl text-gray-300 mb-8'
-						variants={itemVariants}>
-						Elevate your online business with our comprehensive
-						digital marketing solutions
-					</motion.p>
-					<motion.div
-						className='flex flex-wrap justify-center gap-4 mb-12'
-						variants={itemVariants}>
-						<Button
-							asChild
-							size='lg'
-							className='bg-blue-500 hover:bg-blue-600 text-white'>
-							<Link href='/contact'>
-								Get a Free Consultation
-								<ArrowRight className='ml-2 h-5 w-5' />
-							</Link>
-						</Button>
-					</motion.div>
+					className='flex flex-wrap justify-center gap-4 mb-12'
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.7 }}>
+					<Button
+						asChild
+						size='lg'
+						className='bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white'>
+						<Link href='/services/web-development'>
+							Explore Services
+							<ArrowRight className='ml-2 h-5 w-5' />
+						</Link>
+					</Button>
+					<Button
+						asChild
+						size='lg'
+						variant='outline'
+						className='text-white border-white hover:bg-white hover:text-blue-900'>
+						<Link href='/contact'>Get a Free Consultation</Link>
+					</Button>
 				</motion.div>
 
 				<motion.div
-					className='grid md:grid-cols-3 gap-8 mt-16'
-					variants={containerVariants}
+					className='grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16'
 					initial='hidden'
-					animate='visible'>
+					animate='visible'
+					variants={{
+						hidden: { opacity: 0 },
+						visible: {
+							opacity: 1,
+							transition: { staggerChildren: 0.2 },
+						},
+					}}>
 					{services.map((service, index) => (
 						<motion.div
 							key={index}
-							className='bg-gray-800 rounded-lg p-6 transform hover:scale-105 transition-transform duration-300'
-							variants={itemVariants}>
+							className='bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-6 transform hover:scale-105 transition-transform duration-300'
+							variants={{
+								hidden: { y: 20, opacity: 0 },
+								visible: { y: 0, opacity: 1 },
+							}}>
 							<div
 								className={`${service.color} rounded-full p-3 inline-block mb-4`}>
 								<service.icon className='h-6 w-6 text-white' />
@@ -173,39 +129,11 @@ export default function Hero() {
 							<h3 className='text-xl font-bold mb-2'>
 								{service.title}
 							</h3>
-							<p className='text-gray-400'>
+							<p className='text-blue-100'>
 								{service.description}
 							</p>
 						</motion.div>
 					))}
-				</motion.div>
-
-				<motion.div
-					className='mt-20 text-center'
-					variants={itemVariants}>
-					<h2 className='text-3xl font-bold mb-6'>
-						Why Choose EVTN?
-					</h2>
-					<div className='grid md:grid-cols-4 gap-8'>
-						{[
-							{ icon: Globe, title: "Global Reach" },
-							{ icon: Zap, title: "Fast Results" },
-							{ icon: DollarSign, title: "Cost-Effective" },
-							{ icon: TrendingUp, title: "Measurable Growth" },
-						].map((item, index) => (
-							<motion.div
-								key={index}
-								className='flex flex-col items-center'
-								variants={itemVariants}>
-								<div className='bg-blue-500 rounded-full p-3 mb-4'>
-									<item.icon className='h-6 w-6 text-white' />
-								</div>
-								<h3 className='text-lg font-semibold'>
-									{item.title}
-								</h3>
-							</motion.div>
-						))}
-					</div>
 				</motion.div>
 			</div>
 		</div>

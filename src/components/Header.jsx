@@ -19,7 +19,7 @@ import {
 
 const navItems = [
 	{ href: "/", label: "Home" },
-	{ href: "/#", label: "Services" },
+	{ href: "/services/web-development", label: "Services" },
 	{ href: "/pricing", label: "Pricing" },
 	{ href: "/blog", label: "Blog" },
 	{ href: "/shop", label: "Shop" },
@@ -41,7 +41,7 @@ export default function Header() {
 	return (
 		<header
 			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-				isScrolled ? "bg-white shadow-md" : "bg-[#111827]"
+				isScrolled ? "bg-white shadow-md" : "bg-[#293486]"
 			}`}>
 			<div className='container mx-auto px-4 py-4'>
 				<div className='flex items-center justify-between'>

@@ -41,7 +41,7 @@ const ResetPassword = () => {
 		}
 	};
 	return (
-		<div className='container mx-auto px-4 py-8'>
+		<div className='container mx-auto px-4 py-8 mt-20'>
 			<div className='max-w-md mx-auto'>
 				<div className='w-full max-w-md space-y-6 rounded-lg bg-white p-8 shadow-lg dark:bg-gray-800'>
 					<div className='space-y-2 text-center'>
