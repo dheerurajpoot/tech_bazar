@@ -1,7 +1,5 @@
 import { AboutContact } from "@/components/about-contact";
-import { BuyingProcessGuide } from "@/components/buying-process-guide";
 import { FAQ } from "@/components/faq";
-import { Features } from "@/components/features";
 import Hero from "@/components/Hero";
 import { MarketingServices } from "@/components/marketing-services";
 import ProductSection from "@/components/Products";
