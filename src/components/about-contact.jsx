@@ -3,10 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
+import { Testimonials } from "./testimonials";
 
 export function AboutContact() {
 	return (
-		<section className='py-20 bg-gradient-to-b from-gray-900 to-blue-900 text-white overflow-hidden'>
+		<section className='py-32 bg-gradient-to-b from-gray-900 to-blue-900 text-white overflow-hidden'>
 			<div className='container mx-auto px-4'>
 				<div className='grid md:grid-cols-2 gap-8 items-center'>
 					<div>
@@ -49,6 +50,7 @@ export function AboutContact() {
 						</CardContent>
 					</Card>
 				</div>
+				<Testimonials />
 			</div>
 		</section>
 	);

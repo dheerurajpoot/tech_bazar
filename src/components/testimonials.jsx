@@ -75,10 +75,12 @@ export function Testimonials() {
 	};
 
 	const renderTestimonial = (testimonial, index) => (
-		<Card key={index} className='h-full'>
+		<Card
+			key={index}
+			className='bg-blue-800 bg-opacity-50 rounded-lg p-6 transform hover:scale-105 transition-transform duration-300 border-none shadow'>
 			<CardContent className='pt-6'>
-				<Quote className='h-8 w-8 text-primary opacity-20 mb-2' />
-				<p className='text-gray-600 mb-4'>{testimonial.content}</p>
+				<Quote className='h-8 w-8 text-blue-400 opacity-20 mb-2' />
+				<p className='text-blue-200 mb-4'>{testimonial.content}</p>
 				<div className='flex items-center'>
 					<Avatar className='h-10 w-10 mr-3'>
 						<AvatarImage
@@ -93,8 +95,10 @@ export function Testimonials() {
 						</AvatarFallback>
 					</Avatar>
 					<div>
-						<p className='font-semibold'>{testimonial.name}</p>
-						<p className='text-sm text-gray-500'>
+						<p className='text-blue-200 font-semibold'>
+							{testimonial.name}
+						</p>
+						<p className='text-sm text-blue-200'>
 							{testimonial.role}
 						</p>
 					</div>
@@ -104,8 +108,8 @@ export function Testimonials() {
 	);
 
 	return (
-		<section className='py-16 bg-gray-50'>
-			<div className='container mx-auto px-4'>
+		<section className='pt-28'>
+			<div className=''>
 				<h2 className='text-3xl font-bold text-center mb-12'>
 					What Our Users Say
 				</h2>
@@ -129,14 +133,14 @@ export function Testimonials() {
 					<Button
 						variant='outline'
 						size='icon'
-						className='absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2'
+						className='absolute text-gray-800 top-1/2 left-0 -translate-y-1/2 -translate-x-1/2'
 						onClick={prevTestimonial}>
 						<ChevronLeft className='h-4 w-4' />
 					</Button>
 					<Button
 						variant='outline'
 						size='icon'
-						className='absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2'
+						className='absolute text-gray-800 top-1/2 right-0 -translate-y-1/2 translate-x-1/2'
 						onClick={nextTestimonial}>
 						<ChevronRight className='h-4 w-4' />
 					</Button>

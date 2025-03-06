@@ -16,8 +16,6 @@ export default function Home() {
 				<ProductSection />
 			</div>
 			<AboutContact />
-			<Testimonials />
-			<FAQ />
 		</div>
 	);
 }
