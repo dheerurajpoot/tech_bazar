@@ -98,7 +98,7 @@ export default function Hero() {
 						asChild
 						size='lg'
 						variant='outline'
-						className='text-white border-white hover:bg-white hover:text-blue-900'>
+						className='text-gray-700 border-white hover:bg-white hover:text-blue-900'>
 						<Link href='/contact'>Get a Free Consultation</Link>
 					</Button>
 				</motion.div>

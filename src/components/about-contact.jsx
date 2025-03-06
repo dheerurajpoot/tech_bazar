@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function AboutContact() {
 	return (
-		<section className='py-16 bg-gray-50'>
+		<section className='py-20 bg-gradient-to-b from-gray-900 to-blue-900 text-white overflow-hidden'>
 			<div className='container mx-auto px-4'>
 				<div className='grid md:grid-cols-2 gap-8 items-center'>
 					<div>
