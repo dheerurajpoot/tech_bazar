@@ -101,7 +101,7 @@ export default function WebDevelopment() {
 					<Link href='/contact'>
 						<Button
 							size='lg'
-							className='bg-blue-500 hover:bg-blue-600 text-white'>
+							className='bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white'>
 							Start Your Web Project
 						</Button>
 					</Link>

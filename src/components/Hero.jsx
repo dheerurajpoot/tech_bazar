@@ -34,33 +34,9 @@ const services = [
 ];
 
 export default function Hero() {
-	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-	useEffect(() => {
-		const handleMouseMove = (e) => {
-			setMousePosition({ x: e.clientX, y: e.clientY });
-		};
-
-		window.addEventListener("mousemove", handleMouseMove);
-		return () => {
-			window.removeEventListener("mousemove", handleMouseMove);
-		};
-	}, []);
-
 	return (
 		<div className='relative overflow-hidden bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white min-h-screen flex items-center justify-center'>
-			{/* Mouse Follower */}
-			<motion.div
-				className='absolute w-16 h-16 bg-blue-500 bg-opacity-30 blur-2xl rounded-full pointer-events-none'
-				style={{
-					left: mousePosition.x - 32,
-					top: mousePosition.y - 32,
-				}}
-				animate={{ x: mousePosition.x, y: mousePosition.y }}
-				transition={{ type: "tween", ease: "easeOut", duration: 0.1 }}
-			/>
-
-			<div className='container mx-auto px-4 py-24 sm:py-32 lg:py-40 relative z-10 text-center'>
+			<div className='container mx-auto px-4 py-8 sm:py-12 lg:py-16 relative z-10 text-center'>
 				<motion.h1
 					className='text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl mb-6'
 					initial={{ opacity: 0, y: 20 }}

@@ -136,7 +136,9 @@ export default function ProductSection() {
 
 				{visibleProducts < filteredProducts.length && (
 					<div className='mt-8 text-center'>
-						<Button onClick={handleLoadMore} className='px-6 py-2'>
+						<Button
+							onClick={handleLoadMore}
+							className='px-6 py-2 bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white border-none'>
 							Load More Products
 						</Button>
 					</div>

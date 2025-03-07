@@ -174,7 +174,10 @@ export default function Footer() {
 								placeholder='Your email address'
 								className='bg-gray-800 text-white border-gray-700'
 							/>
-							<Button type='submit' variant='secondary'>
+							<Button
+								type='submit'
+								variant='secondary'
+								className='bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white border-none'>
 								Subscribe
 							</Button>
 						</form>

@@ -21,7 +21,9 @@ export function AboutContact() {
 							digital property, EVTN provides the tools and
 							support you need to succeed.
 						</p>
-						<Button asChild>
+						<Button
+							asChild
+							className='bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white border-none'>
 							<Link href='/about'>Learn More About Us</Link>
 						</Button>
 					</div>
@@ -44,7 +46,9 @@ export function AboutContact() {
 									Bamba Road, Kalyanpur, Kanpur Nagar (208017)
 								</span>
 							</div>
-							<Button asChild className='w-full'>
+							<Button
+								asChild
+								className='bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white border-none'>
 								<Link href='/contact'>Get in Touch</Link>
 							</Button>
 						</CardContent>
