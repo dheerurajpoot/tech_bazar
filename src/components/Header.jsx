@@ -16,10 +16,11 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from "./ui/sheet";
+import Image from "next/image";
 
 const navItems = [
 	{ href: "/", label: "Home" },
-	{ href: "/services/web-development", label: "Services" },
+	{ href: "/services", label: "Services" },
 	{ href: "/pricing", label: "Pricing" },
 	{ href: "/blog", label: "Blog" },
 	{ href: "/shop", label: "Shop" },
@@ -41,16 +42,25 @@ export default function Header() {
 	return (
 		<header
 			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-				isScrolled ? "bg-white shadow-md" : "bg-[#293486]"
+				isScrolled
+					? "bg-white shadow-md"
+					: "bg-gradient-to-br bg-indigo-900 "
 			}`}>
 			<div className='container mx-auto px-4 py-4'>
 				<div className='flex items-center justify-between'>
-					<Link
-						href='/'
-						className={`text-3xl font-black transition-colors ${
-							isScrolled ? "text-blue-600" : "text-white"
-						}`}>
-						EVTN
+					<Link href='/'>
+						{isScrolled ? (
+							<Image
+								src='/evtn.png'
+								alt='evtn logo'
+								width={120}
+								height={80}
+							/>
+						) : (
+							<h3 className='text-3xl text-white font-black transition-colors'>
+								EVTN
+							</h3>
+						)}
 					</Link>
 					<nav className='hidden md:flex items-center space-x-6'>
 						{navItems.map((item) => (
@@ -182,7 +192,7 @@ function ProfileDrawer({ isAdmin, isScrolled }) {
 						Pricing
 					</Link>
 					<Link
-						href='/services/web-development'
+						href='/services'
 						className='block text-blue-600 hover:underline'>
 						Services
 					</Link>
