@@ -51,6 +51,7 @@ export default function Header() {
 					<Link href='/'>
 						{isScrolled ? (
 							<Image
+								className='w-auto h-auto'
 								src='/evtn.png'
 								alt='evtn logo'
 								width={120}
