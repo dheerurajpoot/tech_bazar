@@ -246,9 +246,10 @@ export default function CareersPage() {
 											<p className='text-sm text-gray-500 mt-2'>
 												Experience: {job.experience} •
 												Posted:{" "}
-												{new Date(
-													job.postedDate
-												).toLocaleDateString()}
+												{/* {new Date(
+													
+												).toLocaleDateString()} */}
+												{job.postedDate}
 											</p>
 										</CardContent>
 										<CardFooter>

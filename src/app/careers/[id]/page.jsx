@@ -19,8 +19,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { useParams } from "next/navigation";
 
 // Mock job data - in a real app, this would come from an API or database
@@ -202,9 +202,10 @@ export default function JobDetailsPage() {
 									className='flex items-center'>
 									<Calendar className='mr-1 h-4 w-4' />
 									Posted:{" "}
-									{new Date(
+									{/* {new Date(
 										job.postedDate
-									).toLocaleDateString()}
+									).toLocaleDateString()} */}
+									{job.postedDate}
 								</Badge>
 							</div>
 							<p className='text-xl text-blue-200 mb-8'>
@@ -289,68 +290,6 @@ export default function JobDetailsPage() {
 
 						<div className='text-center pt-4'>
 							<Button size='lg'>Apply for this Position</Button>
-						</div>
-					</div>
-				</section>
-
-				{/* Similar Jobs Section */}
-				<section className='py-12 bg-white'>
-					<div className='container mx-auto px-4'>
-						<h2 className='text-2xl font-bold mb-8'>
-							Similar Positions
-						</h2>
-						<div className='grid md:grid-cols-3 gap-6'>
-							{jobs
-								.filter(
-									(j) =>
-										j.id !== job.id &&
-										j.department === job.department
-								)
-								.slice(0, 3)
-								.map((similarJob) => (
-									<Card
-										key={similarJob.id}
-										className='transition-all hover:shadow-md'>
-										<CardHeader>
-											<CardTitle>
-												{similarJob.title}
-											</CardTitle>
-											<div className='flex flex-wrap gap-2 mt-2'>
-												<Badge
-													variant='outline'
-													className='flex items-center'>
-													<MapPin className='mr-1 h-3 w-3' />
-													{similarJob.location}
-												</Badge>
-												<Badge
-													variant='outline'
-													className='flex items-center'>
-													<Clock className='mr-1 h-3 w-3' />
-													{similarJob.type}
-												</Badge>
-											</div>
-										</CardHeader>
-										<CardContent>
-											<p className='text-gray-600 mb-4'>
-												{similarJob.description}
-											</p>
-											<p className='text-sm text-gray-500'>
-												Posted:{" "}
-												{new Date(
-													similarJob.postedDate
-												).toLocaleDateString()}
-											</p>
-										</CardContent>
-										<CardFooter>
-											<Button asChild className='w-full'>
-												<Link
-													href={`/careers/${similarJob.id}`}>
-													View Details
-												</Link>
-											</Button>
-										</CardFooter>
-									</Card>
-								))}
 						</div>
 					</div>
 				</section>
