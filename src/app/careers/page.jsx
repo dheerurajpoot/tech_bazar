@@ -114,9 +114,9 @@ export default function CareersPage() {
 							<motion.p
 								className='text-xl text-blue-200 mb-8'
 								variants={itemVariants}>
-								Discover exciting career opportunities at Tech
-								Bazar and be part of our mission to
-								revolutionize the digital marketplace.
+								Discover exciting career opportunities at EVTN
+								and be part of our mission to revolutionize the
+								digital marketplace.
 							</motion.p>
 							<motion.div variants={itemVariants}>
 								<Input
@@ -284,7 +284,7 @@ export default function CareersPage() {
 				<section className='py-16 bg-white'>
 					<div className='container mx-auto px-4'>
 						<h2 className='text-3xl font-bold text-center mb-12'>
-							Why Join Tech Bazar?
+							Why Join EVTN?
 						</h2>
 						<div className='grid md:grid-cols-3 gap-8'>
 							{[

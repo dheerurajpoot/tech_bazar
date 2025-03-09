@@ -37,7 +37,7 @@ const jobs = [
 		description:
 			"Join our content team and help create engaging, SEO-optimized content for our clients.",
 		aboutRole:
-			"As a Content Writer Intern at Tech Bazar, you will work closely with our marketing team to create high-quality, engaging content for our website, blog, and social media channels. This is an excellent opportunity for aspiring writers to gain hands-on experience in digital marketing and content creation while working with a dynamic team of professionals.",
+			"As a Content Writer Intern at EVTN, you will work closely with our marketing team to create high-quality, engaging content for our website, blog, and social media channels. This is an excellent opportunity for aspiring writers to gain hands-on experience in digital marketing and content creation while working with a dynamic team of professionals.",
 		responsibilities: [
 			"Research and write SEO-optimized blog posts, articles, and website content",
 			"Assist in creating compelling social media content",
@@ -80,7 +80,7 @@ const jobs = [
 		description:
 			"Help improve our clients' search engine rankings with cutting-edge SEO strategies.",
 		aboutRole:
-			"As an SEO Specialist Intern at Tech Bazar, you will assist our digital marketing team in implementing and optimizing SEO strategies for our clients. This internship offers hands-on experience in various aspects of search engine optimization, providing you with valuable skills in this high-demand field.",
+			"As an SEO Specialist Intern at EVTN, you will assist our digital marketing team in implementing and optimizing SEO strategies for our clients. This internship offers hands-on experience in various aspects of search engine optimization, providing you with valuable skills in this high-demand field.",
 		responsibilities: [
 			"Conduct keyword research and analysis using industry tools",
 			"Assist in on-page and off-page SEO optimization",
@@ -210,7 +210,7 @@ export default function JobDetailsPage() {
 							<p className='text-xl text-blue-200 mb-8'>
 								{job.description}
 							</p>
-							<Link href='#'>
+							<Link href='https://forms.gle/jZekZLjE7QWUZV9P6'>
 								<Button
 									size='lg'
 									className='bg-white text-indigo-900 hover:bg-blue-100'>
@@ -288,7 +288,7 @@ export default function JobDetailsPage() {
 						</Card>
 
 						<div className='text-center pt-4'>
-							<Link href='#'>
+							<Link href='https://forms.gle/jZekZLjE7QWUZV9P6'>
 								<Button size='lg'>
 									Apply for this Position
 								</Button>
