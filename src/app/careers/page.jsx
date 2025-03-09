@@ -96,10 +96,10 @@ export default function CareersPage() {
 	});
 
 	return (
-		<div className='min-h-screen flex flex-col'>
+		<div className='flex flex-col'>
 			<main className='flex-grow'>
 				{/* Hero Section */}
-				<section className='py-20 bg-gradient-to-b from-indigo-900 via-purple-900 to-pink-800 text-white'>
+				<section className='py-20 mt-12 bg-gradient-to-b from-indigo-900 via-purple-900 to-pink-800 text-white'>
 					<div className='container mx-auto px-4'>
 						<motion.div
 							className='text-center max-w-3xl mx-auto'
@@ -351,7 +351,7 @@ export default function CareersPage() {
 							asChild
 							size='lg'
 							className='bg-white text-blue-600 hover:bg-blue-100'>
-							<Link href='/careers/general-application'>
+							<Link href='/contact'>
 								Submit General Application
 							</Link>
 						</Button>

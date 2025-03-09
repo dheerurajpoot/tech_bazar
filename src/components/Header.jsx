@@ -178,6 +178,11 @@ function ProfileDrawer({ isAdmin, isScrolled }) {
 						Contact
 					</Link>
 					<Link
+						href='/careers'
+						className='block text-blue-600 hover:underline'>
+						Careers
+					</Link>
+					<Link
 						href='/about'
 						className='block text-blue-600 hover:underline'>
 						About

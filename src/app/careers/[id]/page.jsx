@@ -145,11 +145,10 @@ export default function JobDetailsPage() {
 	}
 
 	return (
-		<div className='min-h-screen flex flex-col'>
-			<Header />
+		<div className='flex flex-col'>
 			<main className='flex-grow'>
 				{/* Job Header */}
-				<section className='py-16 bg-gradient-to-b from-indigo-900 via-purple-900 to-pink-800 text-white'>
+				<section className='py-16 mt-12 bg-gradient-to-b from-indigo-900 via-purple-900 to-pink-800 text-white'>
 					<div className='container mx-auto px-4'>
 						<Button
 							variant='ghost'
@@ -289,12 +288,15 @@ export default function JobDetailsPage() {
 						</Card>
 
 						<div className='text-center pt-4'>
-							<Button size='lg'>Apply for this Position</Button>
+							<Link href='#'>
+								<Button size='lg'>
+									Apply for this Position
+								</Button>
+							</Link>
 						</div>
 					</div>
 				</section>
 			</main>
-			<Footer />
 		</div>
 	);
 }
