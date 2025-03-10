@@ -1,4 +1,6 @@
 import { AboutContact } from "@/components/about-contact";
+import { Approach } from "@/components/approach";
+import { StateCounter } from "@/components/counter";
 import { DigitalMarketingServices } from "@/components/digital-services";
 import Hero from "@/components/Hero";
 import { MarketingServices } from "@/components/marketing-services";
@@ -16,6 +18,8 @@ export default function Home() {
 				<ProductSection />
 			</div>
 			<AboutContact />
+			<StateCounter />
+			<Approach />
 		</div>
 	);
 }
