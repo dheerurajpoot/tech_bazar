@@ -296,6 +296,9 @@ export default function AdminProductsPage() {
 																<SelectItem value='website'>
 																	Website
 																</SelectItem>
+																<SelectItem value='script'>
+																	Script
+																</SelectItem>
 																<SelectItem value='facebook page'>
 																	Facebook
 																	Page

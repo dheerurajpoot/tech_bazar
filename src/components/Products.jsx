@@ -83,6 +83,7 @@ export default function ProductSection() {
 									All categories
 								</SelectItem>
 								<SelectItem value='website'>Website</SelectItem>
+								<SelectItem value='script'>Script</SelectItem>
 								<SelectItem value='facebook page'>
 									Facebook Page
 								</SelectItem>
@@ -168,29 +169,34 @@ function ProductListItem({ product }) {
 						{product?.title}
 					</Link>
 					<p className='text-gray-600 mb-4'>{product?.description}</p>
-					<div className='grid grid-cols-2 gap-4'>
-						<div>
-							<p className='font-semibold'>Category:</p>
-							<p>
-								{product?.type?.charAt(0)?.toUpperCase() +
-									product?.type?.slice(1)}
-							</p>
+					{product.type !== "script" && (
+						<div className='grid grid-cols-2 gap-4'>
+							<div>
+								<p className='font-semibold'>Category:</p>
+								<p>
+									{product?.type?.charAt(0)?.toUpperCase() +
+										product?.type?.slice(1)}
+								</p>
+							</div>
+							<div>
+								<p className='font-semibold'>Age:</p>
+								<p>{product?.age} months</p>
+							</div>
+							<div>
+								<p className='font-semibold'>Monetization:</p>
+								<p>{product?.monetization}</p>
+							</div>
+							<div>
+								<p className='font-semibold'>
+									Monthly Earnings:
+								</p>
+								<p>
+									$
+									{product?.earningsPerMonth?.toLocaleString()}
+								</p>
+							</div>
 						</div>
-						<div>
-							<p className='font-semibold'>Age:</p>
-							<p>{product?.age} months</p>
-						</div>
-						<div>
-							<p className='font-semibold'>Monetization:</p>
-							<p>{product?.monetization}</p>
-						</div>
-						<div>
-							<p className='font-semibold'>Monthly Earnings:</p>
-							<p>
-								${product?.earningsPerMonth?.toLocaleString()}
-							</p>
-						</div>
-					</div>
+					)}
 				</CardContent>
 				<CardFooter className='flex flex-col justify-between p-6 md:w-1/4'>
 					<div>

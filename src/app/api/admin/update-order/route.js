@@ -33,7 +33,7 @@ export async function PUT(request) {
 		if (status === "Completed") {
 			const product = await Product.findById(order.product);
 
-			product.isSold = true;
+			product.isSold = product.type === "script" ? false : true;
 			await product.save();
 
 			if (!product) {

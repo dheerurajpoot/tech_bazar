@@ -102,6 +102,7 @@ const ShopPage = () => {
 					<SelectContent>
 						<SelectItem value='all'>All categories</SelectItem>
 						<SelectItem value='website'>Website</SelectItem>
+						<SelectItem value='script'>Script</SelectItem>
 						<SelectItem value='facebook page'>
 							Facebook Page
 						</SelectItem>

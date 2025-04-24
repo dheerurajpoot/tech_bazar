@@ -116,27 +116,29 @@ export default function CheckoutPage({ params: rawParams }) {
 							{product.title}
 						</h2>
 						<p className='text-gray-600'>{product?.description}</p>
-						<div className='grid grid-cols-2 gap-4'>
-							<div>
-								<Label>Type</Label>
-								<p>{product?.type}</p>
+						{product.type !== "script" && (
+							<div className='grid grid-cols-2 gap-4'>
+								<div>
+									<Label>Type</Label>
+									<p>{product?.type}</p>
+								</div>
+								<div>
+									<Label>Age</Label>
+									<p>{product?.age} months</p>
+								</div>
+								<div>
+									<Label>Monetization</Label>
+									<p>{product?.monetization}</p>
+								</div>
+								<div>
+									<Label>Monthly Earnings</Label>
+									<p>
+										$
+										{product?.earningsPerMonth?.toLocaleString()}
+									</p>
+								</div>
 							</div>
-							<div>
-								<Label>Age</Label>
-								<p>{product?.age} months</p>
-							</div>
-							<div>
-								<Label>Monetization</Label>
-								<p>{product?.monetization}</p>
-							</div>
-							<div>
-								<Label>Monthly Earnings</Label>
-								<p>
-									$
-									{product?.earningsPerMonth?.toLocaleString()}
-								</p>
-							</div>
-						</div>
+						)}
 					</CardContent>
 				</Card>
 

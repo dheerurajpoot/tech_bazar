@@ -133,9 +133,11 @@ export default function ProductDetailsPage({ params: rawParams }) {
 							))}
 						</div>
 						{/* BuyingProcessGuide for larger screens */}
-						<div className='hidden md:block'>
-							<BuyingProcessGuide />
-						</div>
+						{product.type !== "script" && (
+							<div className='hidden md:block'>
+								<BuyingProcessGuide />
+							</div>
+						)}
 					</div>
 
 					<div>
@@ -169,42 +171,51 @@ export default function ProductDetailsPage({ params: rawParams }) {
 										Key Details
 									</h3>
 									<ul className='space-y-2 mb-6'>
-										<li className='flex items-center'>
+										<li className='flex font-semibold items-center'>
 											<Calendar className='mr-2 h-5 w-5 text-gray-400' />
-											URL/Link:{" "}
+											{product.type === "script"
+												? "Demo Link: "
+												: "Link: "}
+											&nbsp;
 											<Link
+												className='text-blue-500'
 												href={`${product?.url}`}
 												target='_blank'>
 												{product?.url}
 											</Link>
 										</li>
-										<li className='flex items-center'>
-											<Calendar className='mr-2 h-5 w-5 text-gray-400' />
-											Age: {product?.age} months
-										</li>
-										<li className='flex items-center'>
-											<TrendingUp className='mr-2 h-5 w-5 text-gray-400' />
-											Monthly Earnings: $
-											{product?.earningsPerMonth?.toLocaleString()}
-										</li>
-										<li>
-											<span className='font-semibold'>
-												Monetization:
-											</span>{" "}
-											{product?.monetization}
-										</li>
-										<li>
-											<span className='font-semibold'>
-												Traffic/Reach:
-											</span>{" "}
-											{product?.traffic || 0} /Month
-										</li>
-										<li>
-											<span className='font-semibold'>
-												Country:
-											</span>{" "}
-											{product?.country}
-										</li>
+										{product.type !== "script" && (
+											<>
+												<li className='flex items-center'>
+													<Calendar className='mr-2 h-5 w-5 text-gray-400' />
+													Age: {product?.age} months
+												</li>
+												<li className='flex items-center'>
+													<TrendingUp className='mr-2 h-5 w-5 text-gray-400' />
+													Monthly Earnings: $
+													{product?.earningsPerMonth?.toLocaleString()}
+												</li>
+												<li>
+													<span className='font-semibold'>
+														Monetization:
+													</span>{" "}
+													{product?.monetization}
+												</li>
+												<li>
+													<span className='font-semibold'>
+														Traffic/Reach:
+													</span>{" "}
+													{product?.traffic || 0}{" "}
+													/Month
+												</li>
+												<li>
+													<span className='font-semibold'>
+														Country:
+													</span>{" "}
+													{product?.country}
+												</li>
+											</>
+										)}
 									</ul>
 
 									<h3 className='text-lg font-semibold mb-2'>
@@ -236,15 +247,17 @@ export default function ProductDetailsPage({ params: rawParams }) {
 											)?.toDateString()}
 										</p>
 									</div>
-									<div className='mt-6'>
-										<h3 className='text-lg font-semibold mb-2'>
-											Bidding
-										</h3>
-										<BiddingForm
-											productId={product?._id}
-											bids={product?.bids || []}
-										/>
-									</div>
+									{product.type !== "script" && (
+										<div className='mt-6'>
+											<h3 className='text-lg font-semibold mb-2'>
+												Bidding
+											</h3>
+											<BiddingForm
+												productId={product?._id}
+												bids={product?.bids || []}
+											/>
+										</div>
+									)}
 								</CardContent>
 								<CardFooter className='flex flex-col sm:flex-row justify-between items-center gap-4'>
 									{product?.isSold ? (
@@ -290,9 +303,11 @@ export default function ProductDetailsPage({ params: rawParams }) {
 					</div>
 				</div>
 				{/* BuyingProcessGuide for mobile screens */}
-				<div className='mt-6 md:hidden'>
-					<BuyingProcessGuide />
-				</div>
+				{product.type !== "script" && (
+					<div className='mt-6 md:hidden'>
+						<BuyingProcessGuide />
+					</div>
+				)}
 				<hr className='my-5' />
 				<RelatedProducts currentProductId={product?._id} />
 			</div>

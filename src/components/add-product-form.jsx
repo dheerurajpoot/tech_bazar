@@ -172,7 +172,6 @@ export default function AddProductPage() {
 					inReview: user?.role === "admin" ? "false" : "true",
 					images: imageLinks,
 				};
-				console.log(payload);
 
 				const response = await axios.post(
 					"/api/admin/add-product",
@@ -225,6 +224,7 @@ export default function AddProductPage() {
 							</SelectTrigger>
 							<SelectContent>
 								<SelectItem value='website'>Website</SelectItem>
+								<SelectItem value='script'>Script</SelectItem>
 								<SelectItem value='facebook page'>
 									Facebook Page
 								</SelectItem>
