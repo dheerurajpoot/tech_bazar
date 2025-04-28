@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 
 export default function ProfileLayout({ children, isAdmin }) {
 	const router = useRouter();
-	const { user, setUser } = useContext(AuthContext);
+	const { setUser } = useContext(AuthContext);
 
 	const handleLogout = async () => {
 		try {
@@ -116,6 +116,12 @@ export default function ProfileLayout({ children, isAdmin }) {
 							variant='ghost'
 							className='w-full justify-start'>
 							<Link href='/profile/orders'>My Orders</Link>
+						</Button>
+						<Button
+							asChild
+							variant='ghost'
+							className='w-full justify-start'>
+							<Link href='/add-product'>Add Products</Link>
 						</Button>
 						<Button
 							asChild

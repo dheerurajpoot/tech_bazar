@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/authContext";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { Menu } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import {
 	Sheet,
 	SheetContent,
@@ -20,12 +20,11 @@ import Image from "next/image";
 
 const navItems = [
 	{ href: "/", label: "Home" },
+	{ href: "/shop", label: "Shop" },
 	{ href: "/services", label: "Services" },
 	{ href: "/pricing", label: "Pricing" },
-	{ href: "/blog", label: "Blog" },
-	{ href: "/shop", label: "Shop" },
-	{ href: "/about", label: "About" },
 	{ href: "/contact", label: "Contact" },
+	{ href: "/about", label: "About" },
 ];
 
 export default function Header() {
@@ -73,7 +72,22 @@ export default function Header() {
 							</NavLink>
 						))}
 					</nav>
-					<ProfileDrawer isScrolled={isScrolled} />
+					<div className='flex items-center'>
+						<Button
+							variant='ghost'
+							size='icon'
+							className={`rounded-full transition-colors ${
+								isScrolled
+									? "text-gray-700 hover:text-blue-600 hover:bg-gray-100"
+									: "text-white hover:text-blue-200 hover:bg-white/10"
+							}`}>
+							<Link href='/profile'>
+								<User className='h-6 w-6 hidden md:block' />
+							</Link>
+							<span className='sr-only'>Open profile menu</span>
+						</Button>
+						<ProfileDrawer isScrolled={isScrolled} />
+					</div>
 				</div>
 			</div>
 		</header>
@@ -123,7 +137,7 @@ function ProfileDrawer({ isAdmin, isScrolled }) {
 				<Button
 					variant='ghost'
 					size='icon'
-					className={`rounded-full transition-colors ${
+					className={`rounded-full md:hidden block transition-colors ${
 						isScrolled
 							? "text-gray-700 hover:text-blue-600 hover:bg-gray-100"
 							: "text-white hover:text-blue-200 hover:bg-white/10"

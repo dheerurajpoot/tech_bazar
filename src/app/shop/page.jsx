@@ -32,7 +32,7 @@ const ShopPage = () => {
 	const [categoryFilter, setCategoryFilter] = useState("all");
 	const [priceFilter, setPriceFilter] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
-	const productsPerPage = 6;
+	const productsPerPage = 12;
 
 	const getAllProducts = async () => {
 		try {
