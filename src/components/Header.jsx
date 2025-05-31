@@ -29,6 +29,7 @@ const navItems = [
 
 export default function Header() {
 	const [isScrolled, setIsScrolled] = useState(false);
+	const { user } = useContext(AuthContext);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -81,9 +82,15 @@ export default function Header() {
 									? "text-gray-700 hover:text-blue-600 hover:bg-gray-100"
 									: "text-white hover:text-blue-200 hover:bg-white/10"
 							}`}>
-							<Link href='/profile'>
-								<User className='h-6 w-6 hidden md:block' />
-							</Link>
+							{user ? (
+								<Link href='/profile'>
+									<User className='h-6 w-6 hidden md:block' />
+								</Link>
+							) : (
+								<Link href='/login'>
+									<User className='h-6 w-6 hidden md:block' />
+								</Link>
+							)}
 							<span className='sr-only'>Open profile menu</span>
 						</Button>
 						<ProfileDrawer isScrolled={isScrolled} />

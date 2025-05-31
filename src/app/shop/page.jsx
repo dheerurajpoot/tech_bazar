@@ -21,6 +21,7 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import axios from "axios";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const ShopPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -82,6 +83,19 @@ const ShopPage = () => {
 	);
 
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+	if (isLoading) {
+		return (
+			<div className='container mx-auto px-4 py-12 mt-16'>
+				<h1 className='text-3xl font-bold mb-8'>Shop Digital Assets</h1>
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+					{Array.from({ length: 3 }).map((_, index) => (
+						<ProductSkeleton key={index} />
+					))}
+				</div>
+			</div>
+		);
+	}
 
 	return (
 		<div className='container mx-auto px-4 py-12 mt-16'>
@@ -211,5 +225,29 @@ export default function ShopPageWithSuspense() {
 		<Suspense fallback={<div>Loading...</div>}>
 			<ShopPage />
 		</Suspense>
+	);
+}
+
+function ProductSkeleton() {
+	return (
+		<Card className='flex flex-col'>
+			<CardHeader>
+				<Skeleton className='h-48 w-full rounded-lg' />
+			</CardHeader>
+			<CardContent className='flex-grow'>
+				<Skeleton className='h-6 w-3/4 mb-2' />
+				<Skeleton className='h-4 w-full mb-4' />
+				<div className='flex items-center gap-4 mb-4'>
+					<Skeleton className='h-4 w-20' />
+					<Skeleton className='h-4 w-20' />
+				</div>
+			</CardContent>
+			<CardFooter>
+				<div className='flex items-center justify-between w-full'>
+					<Skeleton className='h-6 w-24' />
+					<Skeleton className='h-10 w-32' />
+				</div>
+			</CardFooter>
+		</Card>
 	);
 }
