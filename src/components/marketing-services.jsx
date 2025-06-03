@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Pencil, Search, BarChart } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SEOService } from "./seo-service";
 import { PPCService } from "./ppc-service";
@@ -16,21 +14,24 @@ const services = [
 		title: "Content Writing",
 		description:
 			"Engaging, SEO-optimized content that resonates with your audience and drives conversions.",
-		color: "text-teal-400",
+		gradient: "from-green-50 to-teal-100",
+		color: "text-green-600",
 	},
 	{
 		icon: Search,
 		title: "SEO",
 		description:
 			"Boost your online visibility and climb search engine rankings with our expert SEO strategies.",
-		color: "text-blue-400",
+		gradient: "from-blue-50 to-indigo-100",
+		color: "text-indigo-600",
 	},
 	{
 		icon: BarChart,
 		title: "PPC Ads",
 		description:
 			"Targeted, high-performing ad campaigns that maximize your ROI and drive quality traffic.",
-		color: "text-purple-400",
+		gradient: "from-purple-50 to-pink-100",
+		color: "text-purple-600",
 	},
 ];
 
@@ -38,10 +39,10 @@ export function MarketingServices() {
 	const [activeTab, setActiveTab] = useState("content-writing");
 
 	return (
-		<section className='py-16 bg-gradient-to-b from-indigo-900 to-blue-800'>
+		<section className='py-16 bg-white'>
 			<div className='container mx-auto px-4'>
 				<motion.h2
-					className='text-4xl font-bold text-center text-white mb-12'
+					className='text-4xl font-bold text-center text-gray-900 mb-12'
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5 }}>
@@ -51,14 +52,14 @@ export function MarketingServices() {
 					value={activeTab}
 					onValueChange={setActiveTab}
 					className='w-full'>
-					<TabsList className='grid w-full grid-cols-3 bg-blue-900 rounded-xl p-1'>
+					<TabsList className='grid w-full grid-cols-3 bg-white rounded-xl p-1 border border-gray-200'>
 						{services.map((service) => (
 							<TabsTrigger
 								key={service.title}
 								value={service.title
 									.toLowerCase()
 									.replace(" ", "-")}
-								className='data-[state=active]:bg-white font-sans text-white data-[state=active]:text-blue-900'>
+								className='font-sans text-gray-700 data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-50 data-[state=active]:to-indigo-100'>
 								<service.icon
 									className={`h-5 w-5 mr-2 ${service.color}`}
 								/>
@@ -78,18 +79,6 @@ export function MarketingServices() {
 						</TabsContent>
 					</div>
 				</Tabs>
-				<motion.div
-					className='text-center mt-12'
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.5, delay: 0.2 }}>
-					<Button
-						asChild
-						size='lg'
-						className='bg-teal-500 hover:bg-teal-600 text-white'>
-						<Link href='/contact'>Get a Free Consultation</Link>
-					</Button>
-				</motion.div>
 			</div>
 		</section>
 	);

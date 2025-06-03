@@ -78,7 +78,7 @@ const itemVariants = {
 
 export function DigitalMarketingServices() {
 	return (
-		<section className='py-20 bg-gradient-to-b from-blue-900 to-indigo-900 text-white overflow-hidden'>
+		<section className='py-16 bg-white overflow-hidden'>
 			<div className='container mx-auto px-4'>
 				<motion.div
 					className='text-center mb-16'
@@ -87,12 +87,12 @@ export function DigitalMarketingServices() {
 					viewport={{ once: true }}
 					variants={containerVariants}>
 					<motion.h2
-						className='text-4xl md:text-5xl font-bold mb-4'
+						className='text-4xl md:text-5xl font-bold mb-4 text-gray-900'
 						variants={itemVariants}>
 						Comprehensive Marketing Services
 					</motion.h2>
 					<motion.p
-						className='text-xl text-blue-200 max-w-3xl mx-auto'
+						className='text-xl text-gray-600 max-w-3xl mx-auto'
 						variants={itemVariants}>
 						Elevate your online presence with our cutting-edge
 						digital marketing solutions tailored to your business
@@ -101,59 +101,71 @@ export function DigitalMarketingServices() {
 				</motion.div>
 
 				<motion.div
-					className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'
+					className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
 					initial='hidden'
 					whileInView='visible'
 					viewport={{ once: true }}
 					variants={containerVariants}>
-					{services.map((service, index) => (
-						<motion.div
-							key={index}
-							className='bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-6 transform hover:scale-105 transition-transform duration-300'
-							variants={itemVariants}>
-							<div
-								className={`${service.color} rounded-full p-3 inline-block mb-4`}>
-								<service.icon className='h-6 w-6 text-white' />
-							</div>
-							<h3 className='text-xl font-bold mb-2'>
-								{service.title}
-							</h3>
-							<p className='text-blue-200 mb-4'>
-								{service.description}
-							</p>
-							<Button
-								asChild
-								variant='outline'
-								className='text-white border-white hover:bg-white hover:text-blue-900'>
-								<Link
-									className='bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white border-none'
-									href='/contact'>
-									Learn More
-								</Link>
-							</Button>
-						</motion.div>
-					))}
-				</motion.div>
-
-				<motion.div
-					className='text-center mt-16'
-					initial='hidden'
-					whileInView='visible'
-					viewport={{ once: true }}
-					variants={containerVariants}>
-					<motion.p
-						className='text-xl text-blue-200 mb-6'
-						variants={itemVariants}>
-						Ready to take your digital marketing to the next level?
-					</motion.p>
-					<motion.div variants={itemVariants}>
-						<Button
-							asChild
-							size='lg'
-							className='bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white'>
-							<Link href='/contact'>Get a Custom Strategy</Link>
-						</Button>
-					</motion.div>
+					{services.map((service, index) => {
+						const gradients = [
+							"from-yellow-50 to-amber-100",
+							"from-purple-50 to-pink-100",
+							"from-blue-50 to-indigo-100",
+							"from-green-50 to-teal-100",
+							"from-red-50 to-orange-100",
+							"from-gray-50 to-blue-100",
+						];
+						const iconColors = [
+							"text-amber-600",
+							"text-purple-600",
+							"text-indigo-600",
+							"text-teal-600",
+							"text-orange-600",
+							"text-blue-600",
+						];
+						return (
+							<motion.div
+								key={index}
+								variants={itemVariants}
+								className={`bg-gradient-to-br ${
+									gradients[index % gradients.length]
+								} p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden`}>
+								<div className='flex items-center mb-6'>
+									<div
+										className={`p-3 rounded-full ${
+											gradients[index % gradients.length]
+										} shadow-inner relative z-10`}>
+										<service.icon
+											className={`h-8 w-8 ${
+												iconColors[
+													index % iconColors.length
+												]
+											}`}
+										/>
+									</div>
+									<h3 className='text-xl font-semibold text-gray-900 ml-4 relative z-10'>
+										{service.title}
+									</h3>
+								</div>
+								<p className='text-gray-600 mb-6 relative z-10'>
+									{service.description}
+								</p>
+								<Button
+									asChild
+									variant='outline'
+									className='relative z-10'>
+									<Link
+										className={`bg-gradient-to-r ${
+											gradients[index % gradients.length]
+										} text-gray-900 border-none hover:shadow-md`}
+										href='/contact'>
+										Learn More
+									</Link>
+								</Button>
+								<div className='absolute inset-0 bg-gradient-to-br from-white/5 to-white/30 opacity-0 hover:opacity-100 transition-opacity duration-300'></div>
+							</motion.div>
+						);
+					})}
 				</motion.div>
 			</div>
 		</section>

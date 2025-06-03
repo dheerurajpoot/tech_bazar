@@ -1,22 +1,11 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { AuthContext } from "../../context/authContext";
-import toast from "react-hot-toast";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { Menu, User } from "lucide-react";
-import {
-	Sheet,
-	SheetContent,
-	SheetDescription,
-	SheetHeader,
-	SheetTitle,
-	SheetTrigger,
-} from "./ui/sheet";
 import Image from "next/image";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
 	{ href: "/", label: "Home" },
@@ -28,28 +17,34 @@ const navItems = [
 ];
 
 export default function Header() {
-	const [isScrolled, setIsScrolled] = useState(false);
 	const { user } = useContext(AuthContext);
+	const [isScrolled, setIsScrolled] = useState(false);
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 	useEffect(() => {
 		const handleScroll = () => {
-			setIsScrolled(window.scrollY > 10);
+			setIsScrolled(window.scrollY > 20);
 		};
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
 	return (
-		<header
+		<motion.header
+			initial={{ y: -100 }}
+			animate={{ y: 0 }}
+			transition={{ duration: 0.5 }}
 			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
 				isScrolled
-					? "bg-white shadow-md"
-					: "bg-gradient-to-br bg-indigo-900 "
+					? "bg-white/90 backdrop-blur-md shadow-lg"
+					: "bg-transparent"
 			}`}>
-			<div className='container mx-auto px-4 py-4'>
+			<div className='container mx-auto px-4 py-3'>
 				<div className='flex items-center justify-between'>
-					<Link href='/'>
-						{isScrolled ? (
+					<motion.div
+						whileHover={{ scale: 1.05 }}
+						whileTap={{ scale: 0.95 }}>
+						<Link href='/'>
 							<Image
 								className='w-auto h-auto'
 								src='/evtn.png'
@@ -57,183 +52,109 @@ export default function Header() {
 								width={120}
 								height={80}
 							/>
-						) : (
-							<h3 className='text-3xl text-white font-black transition-colors'>
-								EVTN
-							</h3>
-						)}
-					</Link>
-					<nav className='hidden md:flex items-center space-x-6'>
-						{navItems.map((item) => (
-							<NavLink
+						</Link>
+					</motion.div>
+
+					{/* Desktop Navigation */}
+					<nav className='hidden md:flex items-center space-x-8'>
+						{navItems.map((item, index) => (
+							<motion.div
 								key={item.href}
-								href={item.href}
-								isScrolled={isScrolled}>
-								{item.label}
-							</NavLink>
+								initial={{ opacity: 0, y: -20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ delay: index * 0.1 }}>
+								<NavLink href={item.href}>{item.label}</NavLink>
+							</motion.div>
 						))}
 					</nav>
-					<div className='flex items-center'>
-						<Button
-							variant='ghost'
-							size='icon'
-							className={`rounded-full transition-colors ${
-								isScrolled
-									? "text-gray-700 hover:text-blue-600 hover:bg-gray-100"
-									: "text-white hover:text-blue-200 hover:bg-white/10"
-							}`}>
+
+					{/* Mobile Menu Button */}
+					<div className='md:hidden'>
+						<motion.button
+							whileHover={{ scale: 1.1 }}
+							whileTap={{ scale: 0.9 }}
+							onClick={() =>
+								setIsMobileMenuOpen(!isMobileMenuOpen)
+							}
+							className={`p-2 rounded-lg text-gray-800`}>
+							{isMobileMenuOpen ? (
+								<X className='h-6 w-6' />
+							) : (
+								<Menu className='h-6 w-6' />
+							)}
+						</motion.button>
+					</div>
+
+					{/* User Profile/Login */}
+					<div className='hidden md:flex items-center'>
+						<motion.div
+							whileHover={{ scale: 1.05 }}
+							whileTap={{ scale: 0.95 }}
+							className={`px-4 py-2 rounded-full bg-indigo-600 text-white`}>
 							{user ? (
 								<Link href='/profile'>
-									<User className='h-6 w-6 hidden md:block' />
+									<span>
+										Hi, <b>{user.username.split(" ")[0]}</b>
+									</span>
 								</Link>
 							) : (
 								<Link href='/login'>
-									<User className='h-6 w-6 hidden md:block' />
+									<span className='font-bold'>Login</span>
 								</Link>
 							)}
-							<span className='sr-only'>Open profile menu</span>
-						</Button>
-						<ProfileDrawer isScrolled={isScrolled} />
+						</motion.div>
 					</div>
 				</div>
+
+				{/* Mobile Menu */}
+				<motion.nav
+					initial={{ opacity: 0, height: 0 }}
+					animate={{
+						opacity: isMobileMenuOpen ? 1 : 0,
+						height: isMobileMenuOpen ? "auto" : 0,
+					}}
+					transition={{ duration: 0.3 }}
+					className={`md:hidden overflow-hidden ${
+						isScrolled ? "bg-white" : "bg-indigo-900"
+					}`}>
+					<div className='px-4 py-5 space-y-4'>
+						{navItems.map((item) => (
+							<motion.div
+								key={item.href}
+								whileHover={{ x: 10 }}
+								className='block'>
+								<NavLink href={item.href}>{item.label}</NavLink>
+							</motion.div>
+						))}
+						<motion.div
+							whileHover={{ x: 10 }}
+							className={`block ${
+								isScrolled ? "text-gray-800" : "text-white"
+							}`}>
+							{user ? (
+								<Link href='/profile'>
+									Hi, <b>{user.username.split(" ")[0]}</b>
+								</Link>
+							) : (
+								<Link href='/login'>
+									<span className='font-bold'>Login</span>
+								</Link>
+							)}
+						</motion.div>
+					</div>
+				</motion.nav>
 			</div>
-		</header>
+		</motion.header>
 	);
 }
 
-function NavLink({ href, children, isScrolled }) {
+function NavLink({ href, children }) {
 	return (
 		<Link
 			href={href}
-			className={`
-        ${
-			isScrolled
-				? "text-black hover:text-blue-600"
-				: "text-white hover:text-blue-200"
-		}
-      `}>
-			{children}
+			className={`relative font-semibold group transition-colors duration-300`}>
+			<span className='relative z-10 text-current'>{children}</span>
+			<span className='absolute inset-x-0 -bottom-1 h-0.5 bg-indigo-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out' />
 		</Link>
-	);
-}
-
-function ProfileDrawer({ isAdmin, isScrolled }) {
-	const router = useRouter();
-	const { user, setUser } = useContext(AuthContext);
-
-	const logOut = async () => {
-		try {
-			const response = await axios.get("/api/auth/logout");
-			if (response.status === 200) {
-				localStorage.removeItem("user");
-				toast.success("Logout Successfully");
-				setUser(null);
-				router.push("/login");
-			} else {
-				toast.error("Failed to logout");
-			}
-		} catch (error) {
-			toast.error("An error occurred during logout");
-			console.log(error);
-		}
-	};
-
-	return (
-		<Sheet>
-			<SheetTrigger asChild>
-				<Button
-					variant='ghost'
-					size='icon'
-					className={`rounded-full md:hidden block transition-colors ${
-						isScrolled
-							? "text-gray-700 hover:text-blue-600 hover:bg-gray-100"
-							: "text-white hover:text-blue-200 hover:bg-white/10"
-					}`}>
-					<Menu className='h-6 w-6' />
-					<span className='sr-only'>Open profile menu</span>
-				</Button>
-			</SheetTrigger>
-			<SheetContent>
-				<SheetHeader>
-					<SheetTitle>Profile Menu</SheetTitle>
-					<SheetDescription>
-						Manage your account and settings
-					</SheetDescription>
-				</SheetHeader>
-				<div className='py-4 space-y-4'>
-					{user && user ? (
-						<>
-							<Link
-								href='/profile'
-								className='block text-blue-600 hover:underline'>
-								Profile
-							</Link>
-						</>
-					) : (
-						<>
-							<Link
-								href='/register'
-								className='block text-blue-600 hover:underline'>
-								Register
-							</Link>
-							<Link
-								href='/login'
-								className='block text-blue-600 hover:underline'>
-								Login
-							</Link>
-						</>
-					)}
-					<Link
-						href='/add-product'
-						className='block text-blue-600 hover:underline'>
-						Sell
-					</Link>
-					<Link
-						href='/shop'
-						className='block text-blue-600 hover:underline'>
-						Shop
-					</Link>
-					<Link
-						href='/contact'
-						className='block text-blue-600 hover:underline'>
-						Contact
-					</Link>
-					<Link
-						href='/careers'
-						className='block text-blue-600 hover:underline'>
-						Careers
-					</Link>
-					<Link
-						href='/about'
-						className='block text-blue-600 hover:underline'>
-						About
-					</Link>
-					<Link
-						href='/blog'
-						className='block text-blue-600 hover:underline'>
-						Blog
-					</Link>
-					<Link
-						href='/pricing'
-						className='block text-blue-600 hover:underline'>
-						Pricing
-					</Link>
-					<Link
-						href='/services'
-						className='block text-blue-600 hover:underline'>
-						Services
-					</Link>
-
-					<div className='border-t border-gray-200 pt-4'>
-						<Link
-							onClick={logOut}
-							href='/'
-							className='block text-red-600 hover:underline'>
-							Logout
-						</Link>
-					</div>
-				</div>
-			</SheetContent>
-		</Sheet>
 	);
 }

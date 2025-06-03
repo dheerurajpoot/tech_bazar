@@ -26,7 +26,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang='en'>
+		<html lang='en' suppressHydrationWarning={true}>
 			<head>
 				<script
 					async
@@ -34,7 +34,8 @@ export default function RootLayout({ children }) {
 					crossorigin='anonymous'></script>
 			</head>
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+				suppressHydrationWarning={true}>
 				<AuthProvider>
 					<Header />
 					<Toaster position='top-right' reverseOrder={true} />
