@@ -14,9 +14,6 @@ export default function Home() {
 			<WebDevelopment />
 			<MarketingServices />
 			<DigitalMarketingServices />
-			<div>
-				<ProductSection />
-			</div>
 			<StateCounter />
 			<Testimonials />
 			<Approach />

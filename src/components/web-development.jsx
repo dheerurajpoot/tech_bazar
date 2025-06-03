@@ -2,9 +2,14 @@
 
 import { useRef, useEffect } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-import { Code, Smartphone, Zap, Shield } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import {
+	Code,
+	Smartphone,
+	Zap,
+	Shield,
+	Search,
+	ShoppingCart,
+} from "lucide-react";
 
 const features = [
 	{
@@ -26,6 +31,16 @@ const features = [
 		icon: Shield,
 		title: "Security First",
 		description: "Robust security measures to protect your data and users",
+	},
+	{
+		icon: Search,
+		title: "SEO Optimization",
+		description: "Optimize your website for search engines",
+	},
+	{
+		icon: ShoppingCart,
+		title: "E-commerce Solutions",
+		description: "Build and manage your online store with ease",
 	},
 ];
 
@@ -68,12 +83,16 @@ export default function WebDevelopment() {
 							"from-purple-50 to-pink-100",
 							"from-green-50 to-teal-100",
 							"from-yellow-50 to-orange-100",
+							"from-cyan-50 to-cyan-100",
+							"from-red-50 to-red-100",
 						];
 						const iconColors = [
 							"text-indigo-600",
 							"text-purple-600",
 							"text-green-600",
 							"text-orange-600",
+							"text-cyan-600",
+							"text-red-600",
 						];
 						return (
 							<motion.div

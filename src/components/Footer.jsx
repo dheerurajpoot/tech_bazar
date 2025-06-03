@@ -14,216 +14,180 @@ import { Input } from "@/components/ui/input";
 
 export default function Footer() {
 	return (
-		<footer className='bg-gray-900 text-gray-300 py-12'>
+		<footer className='bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-300 py-16'>
 			<div className='container mx-auto px-4'>
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8'>
-					<div>
-						<h2 className='text-2xl font-bold mb-4 text-white'>
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12'>
+					<div className='space-y-6'>
+						<h2 className='text-3xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent'>
 							EVTN
 						</h2>
-						<p className='mb-4'>
+						<p className='text-gray-400 leading-relaxed'>
 							Your go-to marketplace for buying and selling
 							websites, social media pages, and YouTube channels.
 						</p>
 						<div className='flex space-x-4'>
-							<a
-								href='https://facebook.com'
-								target='_blank'
-								rel='noopener noreferrer'
-								aria-label='Facebook'>
-								<Facebook className='h-6 w-6 text-gray-400 hover:text-white transition-colors' />
-							</a>
-							<a
-								href='https://instagram.com'
-								target='_blank'
-								rel='noopener noreferrer'
-								aria-label='Instagram'>
-								<Instagram className='h-6 w-6 text-gray-400 hover:text-white transition-colors' />
-							</a>
-							<a
-								href='https://youtube.com'
-								target='_blank'
-								rel='noopener noreferrer'
-								aria-label='YouTube'>
-								<Youtube className='h-6 w-6 text-gray-400 hover:text-white transition-colors' />
-							</a>
-							<a
-								href='https://twitter.com'
-								target='_blank'
-								rel='noopener noreferrer'
-								aria-label='Twitter'>
-								<Twitter className='h-6 w-6 text-gray-400 hover:text-white transition-colors' />
-							</a>
-							<a
-								href='https://linkedin.com'
-								target='_blank'
-								rel='noopener noreferrer'
-								aria-label='LinkedIn'>
-								<Linkedin className='h-6 w-6 text-gray-400 hover:text-white transition-colors' />
-							</a>
+							{[
+								{
+									icon: Facebook,
+									href: "https://facebook.com",
+									label: "Facebook",
+								},
+								{
+									icon: Instagram,
+									href: "https://instagram.com",
+									label: "Instagram",
+								},
+								{
+									icon: Youtube,
+									href: "https://youtube.com",
+									label: "YouTube",
+								},
+								{
+									icon: Twitter,
+									href: "https://twitter.com",
+									label: "Twitter",
+								},
+								{
+									icon: Linkedin,
+									href: "https://linkedin.com",
+									label: "LinkedIn",
+								},
+							].map((social) => (
+								<a
+									key={social.label}
+									href={social.href}
+									target='_blank'
+									rel='noopener noreferrer'
+									aria-label={social.label}
+									className='p-2 rounded-full bg-gray-800 hover:bg-gradient-to-r hover:from-blue-500 hover:to-teal-500 transition-all duration-300 group'>
+									<social.icon className='h-5 w-5 text-gray-400 group-hover:text-white transition-colors' />
+								</a>
+							))}
 						</div>
 					</div>
-					<div>
-						<h3 className='text-lg font-semibold mb-4 text-white'>
+					<div className='space-y-6'>
+						<h3 className='text-xl font-semibold text-white'>
 							Quick Links
 						</h3>
-						<ul className='space-y-2'>
-							<li>
-								<Link
-									href='/about'
-									className='hover:text-white transition-colors'>
-									About Us
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='/services'
-									className='hover:text-white transition-colors'>
-									Services
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='/careers'
-									className='hover:text-white transition-colors'>
-									Careers
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='/pricing'
-									className='hover:text-white transition-colors'>
-									Pricing
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='/blog'
-									className='hover:text-white transition-colors'>
-									Blog
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='/contact'
-									className='hover:text-white transition-colors'>
-									Contact Us
-								</Link>
-							</li>
+						<ul className='space-y-3'>
+							{[
+								{ href: "/about", label: "About Us" },
+								{ href: "/services", label: "Services" },
+								{ href: "/careers", label: "Careers" },
+								{ href: "/pricing", label: "Pricing" },
+								{ href: "/blog", label: "Blog" },
+								{ href: "/contact", label: "Contact Us" },
+							].map((link) => (
+								<li key={link.label}>
+									<Link
+										href={link.href}
+										className='text-gray-400 hover:text-white transition-colors flex items-center group'>
+										<span className='w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
+										{link.label}
+									</Link>
+								</li>
+							))}
 						</ul>
 					</div>
-					<div>
-						<h3 className='text-lg font-semibold mb-4 text-white'>
+					<div className='space-y-6'>
+						<h3 className='text-xl font-semibold text-white'>
 							Our Services
 						</h3>
-						<ul className='space-y-2'>
-							<li>
-								<Link
-									href='/services/web-development'
-									className='hover:text-white transition-colors'>
-									Web Development
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='/services/content-writing-seo'
-									className='hover:text-white transition-colors'>
-									Content Writing & SEO
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='/services/ppc-ads'
-									className='hover:text-white transition-colors'>
-									PPC & Ads
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='/shop'
-									className='hover:text-white transition-colors'>
-									Buy Digital Assets
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='/add-product'
-									className='hover:text-white transition-colors'>
-									Sell Digital Assets
-								</Link>
-							</li>
-							<li>
-								<Link
-									href='/cookies'
-									className='hover:text-white transition-colors'>
-									Cookies Policy
-								</Link>
-							</li>
+						<ul className='space-y-3'>
+							{[
+								{
+									href: "/services/web-development",
+									label: "Web Development",
+								},
+								{
+									href: "/services/content-writing-seo",
+									label: "Content Writing & SEO",
+								},
+								{
+									href: "/services/ppc-ads",
+									label: "PPC & Ads",
+								},
+								{ href: "/shop", label: "Buy Digital Assets" },
+								{
+									href: "/add-product",
+									label: "Sell Digital Assets",
+								},
+								{ href: "/cookies", label: "Cookies Policy" },
+							].map((link) => (
+								<li key={link.label}>
+									<Link
+										href={link.href}
+										className='text-gray-400 hover:text-white transition-colors flex items-center group'>
+										<span className='w-1.5 h-1.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity'></span>
+										{link.label}
+									</Link>
+								</li>
+							))}
 						</ul>
 					</div>
-					<div>
-						<h3 className='text-lg font-semibold mb-4 text-white'>
+					<div className='space-y-6'>
+						<h3 className='text-xl font-semibold text-white'>
 							Newsletter
 						</h3>
-						<p className='mb-4'>
+						<p className='text-gray-400'>
 							Stay updated with our latest news and offers.
 						</p>
-						<form className='flex flex-col space-y-2'>
-							<Input
-								type='email'
-								placeholder='Your email address'
-								className='bg-gray-800 text-white border-gray-700'
-							/>
+						<form className='space-y-4'>
+							<div className='relative'>
+								<Input
+									type='email'
+									placeholder='Your email address'
+									className='bg-gray-800/50 text-white border-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300'
+								/>
+							</div>
 							<Button
 								type='submit'
-								variant='secondary'
-								className='bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white border-none'>
+								className='w-full bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white border-none shadow-lg hover:shadow-blue-500/20 transition-all duration-300'>
 								Subscribe
 							</Button>
 						</form>
 					</div>
 				</div>
 				<div className='border-t border-gray-800 pt-8 mt-8'>
-					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-						<div className='flex items-center'>
-							<Mail className='h-5 w-5 mr-2 text-gray-400' />
+					<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+						<div className='flex items-center space-x-3 bg-gray-800/50 p-3 rounded-lg'>
+							<Mail className='h-5 w-5 text-blue-400' />
 							<a
 								href='mailto:contact@evtn.org'
-								className='hover:text-white transition-colors'>
+								className='text-gray-300 hover:text-white transition-colors'>
 								contact@evtn.org
 							</a>
 						</div>
-						<div className='flex items-center'>
-							<Phone className='h-5 w-5 mr-2 text-gray-400' />
+						<div className='flex items-center space-x-3 bg-gray-800/50 p-3 rounded-lg'>
+							<Phone className='h-5 w-5 text-teal-400' />
 							<a
 								href='tel:7755089819'
-								className='hover:text-white transition-colors'>
+								className='text-gray-300 hover:text-white transition-colors'>
 								+91 7755089819
 							</a>
 						</div>
-						<div className='flex items-center'>
-							<MapPin className='h-5 w-5 mr-2 text-gray-400' />
-							<span>
-								{" "}
+						<div className='flex items-center space-x-3 bg-gray-800/50 p-3 rounded-lg'>
+							<MapPin className='h-5 w-5 text-purple-400' />
+							<span className='text-gray-300'>
 								Bamba Road, Kalyanpur, Kanpur Nagar (208017)
 							</span>
 						</div>
 					</div>
 				</div>
-				<div className='text-center mt-8'>
-					<p>
+				<div className='text-center mt-12 space-y-4'>
+					<p className='text-gray-400'>
 						&copy; {new Date().getFullYear()} EVTN. All rights
 						reserved.
 					</p>
-					<div className='mt-2'>
+					<div className='flex justify-center space-x-6'>
 						<Link
 							href='/terms'
-							className='hover:text-white transition-colors mr-4'>
+							className='text-gray-400 hover:text-white transition-colors'>
 							Terms of Service
 						</Link>
 						<Link
 							href='/privacy'
-							className='hover:text-white transition-colors'>
+							className='text-gray-400 hover:text-white transition-colors'>
 							Privacy Policy
 						</Link>
 					</div>
