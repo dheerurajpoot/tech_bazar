@@ -67,7 +67,7 @@ export default function CookiePolicyPage() {
 				</p>
 				<p className='mt-8'>
 					If you have any questions about our use of cookies or other
-					technologies, please email us at contact@evtn.org.
+					technologies, please email us at evtnofficial@gmail.com.
 				</p>
 			</div>
 		</div>

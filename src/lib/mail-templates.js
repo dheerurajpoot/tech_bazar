@@ -902,7 +902,7 @@ export const userOrderMail = () => {
                                              <td valign="top" class="pc-w620-padding-0-0-0-0" align="left">
                                               <div class="pc-font-alt" style="text-decoration: none;">
                                                <div style="font-size: 17px;line-height: 140%;text-align:left;text-align-last:left;color:#001942;letter-spacing:-0.03em;font-weight:600;font-style:normal;font-variant-ligatures:normal;">
-                                                <div class="pc-w620-text-align-left"><span style="font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; line-height: 140%; text-decoration: none; text-transform: none;">contact@evtn.org</span>
+                                                <div class="pc-w620-text-align-left"><span style="font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; line-height: 140%; text-decoration: none; text-transform: none;">evtnofficial@gmail.com</span>
                                                 </div>
                                                </div>
                                               </div>
@@ -999,7 +999,7 @@ export const userOrderMail = () => {
                                              <td valign="top" class="pc-w620-padding-0-0-0-0" align="left">
                                               <div class="pc-font-alt" style="text-decoration: none;">
                                                <div style="font-size: 17px;line-height: 140%;text-align:left;text-align-last:left;color:#001942;letter-spacing:-0.03em;font-weight:600;font-style:normal;font-variant-ligatures:normal;">
-                                                <div class="pc-w620-text-align-left"><span style="font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; line-height: 140%; text-decoration: none; text-transform: none;">+91 9235337852</span>
+                                                <div class="pc-w620-text-align-left"><span style="font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; line-height: 140%; text-decoration: none; text-transform: none;">+91 7755089819</span>
                                                 </div>
                                                </div>
                                               </div>
@@ -2039,7 +2039,7 @@ export const orderEmailTemplate = (orderDetails) => {
                                             <tr>
                                              <td valign="top" class="pc-w620-padding-0-0-0-0 pc-w620-textAlign-left" align="left">
                                               <div class="pc-font-alt pc-w620-textAlign-left" style="line-height: 140%; letter-spacing: -0.03em; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; font-weight: 600; font-variant-ligatures: normal; color: #001942; text-align: left; text-align-last: left;">
-                                               <div><span style="letter-spacing: -0.03em;">contact@evtn.org</span>
+                                               <div><span style="letter-spacing: -0.03em;">evtnofficial@gmail.com</span>
                                                </div>
                                               </div>
                                              </td>
@@ -2134,7 +2134,7 @@ export const orderEmailTemplate = (orderDetails) => {
                                             <tr>
                                              <td valign="top" class="pc-w620-padding-0-0-0-0 pc-w620-textAlign-left" align="left">
                                               <div class="pc-font-alt pc-w620-textAlign-left" style="line-height: 140%; letter-spacing: -0.03em; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; font-weight: 600; font-variant-ligatures: normal; color: #001942; text-align: left; text-align-last: left;">
-                                               <div><span>+91 9235337852</span>
+                                               <div><span>+91 7755089819</span>
                                                </div>
                                               </div>
                                              </td>

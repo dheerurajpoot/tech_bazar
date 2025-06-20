@@ -74,7 +74,7 @@ export default function ContactPage() {
 							<Mail className='h-6 w-6 text-primary mr-4' />
 							<div>
 								<h3 className='font-semibold'>Email</h3>
-								<p>contact@evtn.org</p>
+								<p>evtnofficial@gmail.com</p>
 							</div>
 						</div>
 						<div className='flex items-center'>
@@ -88,9 +88,7 @@ export default function ContactPage() {
 							<MapPin className='h-6 w-6 text-primary mr-4' />
 							<div>
 								<h3 className='font-semibold'>Address</h3>
-								<p>
-									Bamba road Kalyanpur, Kanpur Nagar, (208017)
-								</p>
+								<p>Kalyanpur, Kanpur, UP, India, (208017)</p>
 							</div>
 						</div>
 					</div>

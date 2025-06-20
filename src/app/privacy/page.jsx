@@ -255,7 +255,8 @@ export default function PrivacyPolicyPage() {
 						<AccordionContent>
 							<p>
 								If you have any questions about this Privacy
-								Policy, please contact us at contact@evtn.org.
+								Policy, please contact us at
+								evtnofficial@gmail.com.
 							</p>
 						</AccordionContent>
 					</AccordionItem>

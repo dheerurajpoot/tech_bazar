@@ -153,9 +153,9 @@ export default function Footer() {
 						<div className='flex items-center space-x-3 bg-gray-800/50 p-3 rounded-lg'>
 							<Mail className='h-5 w-5 text-blue-400' />
 							<a
-								href='mailto:contact@evtn.org'
+								href='mailto:evtnofficial@gmail.com'
 								className='text-gray-300 hover:text-white transition-colors'>
-								contact@evtn.org
+								evtnofficial@gmail.com
 							</a>
 						</div>
 						<div className='flex items-center space-x-3 bg-gray-800/50 p-3 rounded-lg'>
@@ -169,7 +169,7 @@ export default function Footer() {
 						<div className='flex items-center space-x-3 bg-gray-800/50 p-3 rounded-lg'>
 							<MapPin className='h-5 w-5 text-purple-400' />
 							<span className='text-gray-300'>
-								Bamba Road, Kalyanpur, Kanpur Nagar (208017)
+								Kalyanpur, Kanpur, UP, India, (208017)
 							</span>
 						</div>
 					</div>
