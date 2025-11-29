@@ -19,7 +19,7 @@ export default function Footer() {
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12'>
 					<div className='space-y-6'>
 						<h2 className='text-3xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent'>
-							EVTN
+							WebDeelers
 						</h2>
 						<p className='text-gray-400 leading-relaxed'>
 							Your go-to marketplace for buying and selling
@@ -176,7 +176,7 @@ export default function Footer() {
 				</div>
 				<div className='text-center mt-12 space-y-4'>
 					<p className='text-gray-400'>
-						&copy; {new Date().getFullYear()} EVTN. All rights
+						&copy; {new Date().getFullYear()} WebDeelers. All rights
 						reserved.
 					</p>
 					<div className='flex justify-center space-x-6'>

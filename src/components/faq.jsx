@@ -7,20 +7,21 @@ import {
 
 const faqs = [
 	{
-		question: "How does EVTN ensure transaction security?",
-		answer: "EVTN uses a secure escrow service for all transactions. Funds are held safely until both the buyer and seller confirm that all conditions of the sale have been met.",
+		question: "How does WebDeelers ensure transaction security?",
+		answer: "WebDeelers uses a secure escrow service for all transactions. Funds are held safely until both the buyer and seller confirm that all conditions of the sale have been met.",
 	},
 	{
-		question: "What types of digital assets can I buy or sell on EVTN?",
-		answer: "EVTN supports a wide range of digital assets, including websites, e-commerce stores, mobile apps, social media accounts, and YouTube channels.",
+		question:
+			"What types of digital assets can I buy or sell on WebDeelers?",
+		answer: "WebDeelers supports a wide range of digital assets, including websites, e-commerce stores, mobile apps, social media accounts, and YouTube channels.",
 	},
 	{
-		question: "How are digital assets valued on EVTN?",
+		question: "How are digital assets valued on WebDeelers?",
 		answer: "Asset valuation is based on various factors including monthly revenue, traffic, age, niche, and growth potential. We provide detailed analytics and metrics for each listing to help buyers make informed decisions.",
 	},
 	{
-		question: "What fees does EVTN charge?",
-		answer: "EVTN charges a competitive commission fee on successful transactions. There are no upfront listing fees. Please check our pricing page for the most up-to-date fee structure.",
+		question: "What fees does WebDeelers charge?",
+		answer: "WebDeelers charges a competitive commission fee on successful transactions. There are no upfront listing fees. Please check our pricing page for the most up-to-date fee structure.",
 	},
 ];
 

@@ -7,7 +7,7 @@ export default function CookiePolicyPage() {
 			<h1 className='text-4xl font-bold mb-6'>Cookie Policy</h1>
 			<div className='space-y-6'>
 				<p>
-					This Cookie Policy explains how EVTN uses cookies and
+					This Cookie Policy explains how WebDeelers uses cookies and
 					similar technologies to recognize you when you visit our
 					website. It explains what these technologies are and why we
 					use them, as well as your rights to control our use of them.
@@ -67,7 +67,8 @@ export default function CookiePolicyPage() {
 				</p>
 				<p className='mt-8'>
 					If you have any questions about our use of cookies or other
-					technologies, please email us at evtnofficial@gmail.com.
+					technologies, please email us at
+					WebDeelersofficial@gmail.com.
 				</p>
 			</div>
 		</div>

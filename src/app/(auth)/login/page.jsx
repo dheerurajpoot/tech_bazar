@@ -79,7 +79,7 @@ export default function LoginPage() {
 		<div className='container mx-auto px-4 py-28 mt-20'>
 			<div className='max-w-md mx-auto'>
 				<h1 className='text-3xl font-bold mb-6 text-center'>
-					Log In to EVTN
+					Log In to WebDeelers
 				</h1>
 				<form onSubmit={handleSubmit} className='space-y-6'>
 					<div>

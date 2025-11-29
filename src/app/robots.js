@@ -4,6 +4,6 @@ export default function robots() {
 			userAgent: "*",
 			allow: "/",
 		},
-		sitemap: "https://evtn.org/sitemap.xml",
+		sitemap: "https://webdeelers.com/sitemap.xml",
 	};
 }

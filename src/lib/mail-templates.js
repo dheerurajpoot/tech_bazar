@@ -60,7 +60,7 @@ export const newProductMail = (product) => {
   <h3>
     Welcome to ${process.env.COMPANY_NAME}
   </h3>
-  <p>New product is added on EVTN.Org, Check and Approve it as soon as possible </p> 
+  <p>New product is added on webdeelers.com, Check and Approve it as soon as possible </p> 
 </body>
 
 </html>`;
@@ -319,13 +319,13 @@ export const newOrderMail = () => {
         <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="center" style="border-collapse: separate; border-spacing: 0; margin-right: auto; margin-left: auto;">
             <tr>
                 <td valign="middle" align="center" style="border-radius: 500px 500px 500px 500px; background-color: #0067ff; text-align:center; color: #ffffff; padding: 14px 28px 14px 28px; mso-padding-left-alt: 0; margin-left:28px;" bgcolor="#0067ff">
-                                    <a class="pc-font-alt" style="display: inline-block; text-decoration: none; font-variant-ligatures: normal; font-family: 'Fira Sans', Arial, Helvetica, sans-serif; text-align: center;" href="https://evtn.org/admin/orders" target="_blank"><span style="font-size: 17px;line-height: 24px;color:#ffffff;letter-spacing:-0.2px;font-weight:500;font-style:normal;display:inline-block;font-variant-ligatures:normal;"><span style="display:inline-block;"><span style="font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; line-height: 24px; text-decoration: none; text-transform: none;">See details</span></span></span></a>
+                                    <a class="pc-font-alt" style="display: inline-block; text-decoration: none; font-variant-ligatures: normal; font-family: 'Fira Sans', Arial, Helvetica, sans-serif; text-align: center;" href="https://webdeelers.com/admin/orders" target="_blank"><span style="font-size: 17px;line-height: 24px;color:#ffffff;letter-spacing:-0.2px;font-weight:500;font-style:normal;display:inline-block;font-variant-ligatures:normal;"><span style="display:inline-block;"><span style="font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; line-height: 24px; text-decoration: none; text-transform: none;">See details</span></span></span></a>
                                 </td>
             </tr>
         </table>
         <![endif]-->
                                <!--[if !mso]><!-- -->
-                               <a style="display: inline-block; box-sizing: border-box; border-radius: 500px 500px 500px 500px; background-color: #0067ff; padding: 14px 28px 14px 28px; font-family: 'Fira Sans', Arial, Helvetica, sans-serif; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;" href="https://evtn.org/admin/orders" target="_blank"><span style="font-size: 17px;line-height: 24px;color:#ffffff;letter-spacing:-0.2px;font-weight:500;font-style:normal;display:inline-block;font-variant-ligatures:normal;"><span style="display:inline-block;"><span style="font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; line-height: 24px; text-decoration: none; text-transform: none;">See details</span></span></span></a>
+                               <a style="display: inline-block; box-sizing: border-box; border-radius: 500px 500px 500px 500px; background-color: #0067ff; padding: 14px 28px 14px 28px; font-family: 'Fira Sans', Arial, Helvetica, sans-serif; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;" href="https://webdeelers.com/admin/orders" target="_blank"><span style="font-size: 17px;line-height: 24px;color:#ffffff;letter-spacing:-0.2px;font-weight:500;font-style:normal;display:inline-block;font-variant-ligatures:normal;"><span style="display:inline-block;"><span style="font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; line-height: 24px; text-decoration: none; text-transform: none;">See details</span></span></span></a>
                                <!--<![endif]-->
                               </th>
                              </tr>
@@ -363,7 +363,7 @@ export const newOrderMail = () => {
                 <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                  <tr>
                   <td align="center" valign="top" style="padding: 0px 0px 12px 0px;">
-                   <img src="https://www.evtn.org/_next/image?url=%2Fevtn.png&w=384&q=75" width="135" height="26" alt="" style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; object-fit: contain; width: 135px; height: auto; max-width: 100%; border: 0;" />
+                   <img src="https://www.webdeelers.com/_next/image?url=%2Fwdlogo.png&w=384&q=75" width="135" height="26" alt="" style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; object-fit: contain; width: 135px; height: auto; max-width: 100%; border: 0;" />
                   </td>
                  </tr>
                 </table>
@@ -793,13 +793,13 @@ export const userOrderMail = () => {
         <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="center" style="border-collapse: separate; border-spacing: 0; margin-right: auto; margin-left: auto;">
             <tr>
                 <td valign="middle" align="center" style="border-radius: 500px 500px 500px 500px; background-color: #0067ff; text-align:center; color: #ffffff; padding: 14px 28px 14px 28px; mso-padding-left-alt: 0; margin-left:28px;" bgcolor="#0067ff">
-                                    <a class="pc-font-alt" style="display: inline-block; text-decoration: none; font-variant-ligatures: normal; font-family: 'Fira Sans', Arial, Helvetica, sans-serif; text-align: center;" href="https://evtn.org/profile/orders" target="_blank"><span style="font-size: 17px;line-height: 24px;color:#ffffff;letter-spacing:-0.2px;font-weight:500;font-style:normal;display:inline-block;font-variant-ligatures:normal;"><span style="display:inline-block;"><span style="font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; line-height: 24px; text-decoration: none; text-transform: none;">See details</span></span></span></a>
+                                    <a class="pc-font-alt" style="display: inline-block; text-decoration: none; font-variant-ligatures: normal; font-family: 'Fira Sans', Arial, Helvetica, sans-serif; text-align: center;" href="https://webdeelers.com/profile/orders" target="_blank"><span style="font-size: 17px;line-height: 24px;color:#ffffff;letter-spacing:-0.2px;font-weight:500;font-style:normal;display:inline-block;font-variant-ligatures:normal;"><span style="display:inline-block;"><span style="font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; line-height: 24px; text-decoration: none; text-transform: none;">See details</span></span></span></a>
                                 </td>
             </tr>
         </table>
         <![endif]-->
                                <!--[if !mso]><!-- -->
-                               <a style="display: inline-block; box-sizing: border-box; border-radius: 500px 500px 500px 500px; background-color: #0067ff; padding: 14px 28px 14px 28px; font-family: 'Fira Sans', Arial, Helvetica, sans-serif; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;" href="https://evtn.org/profile/orders" target="_blank"><span style="font-size: 17px;line-height: 24px;color:#ffffff;letter-spacing:-0.2px;font-weight:500;font-style:normal;display:inline-block;font-variant-ligatures:normal;"><span style="display:inline-block;"><span style="font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; line-height: 24px; text-decoration: none; text-transform: none;">See details</span></span></span></a>
+                               <a style="display: inline-block; box-sizing: border-box; border-radius: 500px 500px 500px 500px; background-color: #0067ff; padding: 14px 28px 14px 28px; font-family: 'Fira Sans', Arial, Helvetica, sans-serif; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;" href="https://webdeelers.com/profile/orders" target="_blank"><span style="font-size: 17px;line-height: 24px;color:#ffffff;letter-spacing:-0.2px;font-weight:500;font-style:normal;display:inline-block;font-variant-ligatures:normal;"><span style="display:inline-block;"><span style="font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 17px; line-height: 24px; text-decoration: none; text-transform: none;">See details</span></span></span></a>
                                <!--<![endif]-->
                               </th>
                              </tr>
@@ -1075,7 +1075,7 @@ export const userOrderMail = () => {
                 <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                  <tr>
                   <td align="center" valign="top" style="padding: 0px 0px 12px 0px;">
-                   <img src="https://www.evtn.org/_next/image?url=%2Fevtn.png&w=384&q=75" width="135" height="26" alt="" style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; object-fit: contain; width: 135px; height: auto; max-width: 100%; border: 0;" />
+                   <img src="https://www.webdeelers.com/_next/image?url=%2Fwdlogo.png&w=384&q=75" width="135" height="26" alt="" style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; object-fit: contain; width: 135px; height: auto; max-width: 100%; border: 0;" />
                   </td>
                  </tr>
                 </table>

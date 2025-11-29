@@ -28,10 +28,10 @@ export default function PrivacyPolicyPage() {
 				</CardHeader>
 				<CardContent>
 					<p className='text-lg'>
-						At EVTN, we are committed to protecting your privacy and
-						ensuring the security of your personal information. This
-						Privacy Policy explains how we collect, use, and
-						safeguard your data.
+						At WebDeelers, we are committed to protecting your
+						privacy and ensuring the security of your personal
+						information. This Privacy Policy explains how we
+						collect, use, and safeguard your data.
 					</p>
 				</CardContent>
 			</Card>

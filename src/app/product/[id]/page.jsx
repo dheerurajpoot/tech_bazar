@@ -80,7 +80,7 @@ export default function ProductDetailsPage({ params: rawParams }) {
 				/>
 				<meta
 					property='og:url'
-					content={`https://evtn.org/product/${product._id}`}
+					content={`https://webdeelers.com/product/${product._id}`}
 				/>
 				<meta property='og:type' content='website' />
 			</Head>

@@ -47,10 +47,10 @@ export default function Header() {
 						<Link href='/'>
 							<Image
 								className='w-auto h-auto'
-								src='/evtn.png'
-								alt='evtn logo'
-								width={120}
-								height={80}
+								src='/wdlogo.png'
+								alt='webdeelers logo'
+								width={140}
+								height={140}
 							/>
 						</Link>
 					</motion.div>
@@ -94,7 +94,8 @@ export default function Header() {
 							{user ? (
 								<Link href='/profile'>
 									<span>
-										Hi, <b>{user.username.split(" ")[0]}</b>
+										Hi,{" "}
+										<b>{user?.username?.split(" ")[0]}</b>
 									</span>
 								</Link>
 							) : (
@@ -133,7 +134,7 @@ export default function Header() {
 							}`}>
 							{user ? (
 								<Link href='/profile'>
-									Hi, <b>{user.username.split(" ")[0]}</b>
+									Hi, <b>{user?.username?.split(" ")[0]}</b>
 								</Link>
 							) : (
 								<Link href='/login'>

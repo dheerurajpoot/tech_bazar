@@ -143,8 +143,8 @@ export default function PricingPage() {
 						Ready to Buy or Sell Digital Assets?
 					</h2>
 					<p className='text-gray-600 mb-6'>
-						Join EVTN today and start your journey in the digital
-						asset marketplace.
+						Join WebDeelers today and start your journey in the
+						digital asset marketplace.
 					</p>
 					<Button asChild size='lg'>
 						<Link href='/register'>

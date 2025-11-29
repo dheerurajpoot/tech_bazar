@@ -119,13 +119,13 @@ const marketingServices = [
 // Team members data
 const teamMembers = [
 	{
-		name: "Dheeru Rajpoot",
+		name: "Amit Kumar",
 		role: "CEO & Founder",
-		bio: "With over 5 years of experience in digital marketing and e-commerce, Sarah founded EVTN to help entrepreneurs navigate the digital marketplace.",
+		bio: "With over 5 years of experience in digital marketing and e-commerce, Sarah founded WebDeelers to help entrepreneurs navigate the digital marketplace.",
 		image: "/placeholder.svg?height=300&width=300&text=SJ",
 	},
 	{
-		name: "Shikha Rajani",
+		name: "Subhi Shrivastava",
 		role: "CTO",
 		bio: "Shikha brings 12+ years of software development expertise, leading our engineering team in building secure and scalable marketplace solutions.",
 		image: "/placeholder.svg?height=300&width=300&text=MC",
@@ -139,7 +139,7 @@ const teamMembers = [
 	{
 		name: "David Rodriguez",
 		role: "Head of Customer Success",
-		bio: "David ensures that every client receives exceptional support throughout their journey with EVTN, from onboarding to successful transactions.",
+		bio: "David ensures that every client receives exceptional support throughout their journey with WebDeelers, from onboarding to successful transactions.",
 		image: "/placeholder.svg?height=300&width=300&text=DR",
 	},
 ];
@@ -147,19 +147,19 @@ const teamMembers = [
 // Testimonials data
 const testimonials = [
 	{
-		quote: "EVTN transformed our online presence with their comprehensive digital marketing services. Our organic traffic increased by 150% in just six months!",
+		quote: "WebDeelers transformed our online presence with their comprehensive digital marketing services. Our organic traffic increased by 150% in just six months!",
 		author: "Emma Thompson",
 		company: "GreenLeaf Organics",
 		image: "/placeholder.svg?height=60&width=60&text=ET",
 	},
 	{
-		quote: "The SEO and content marketing strategies implemented by EVTN helped us rank #1 for our main keywords. Their team is knowledgeable, responsive, and results-driven.",
+		quote: "The SEO and content marketing strategies implemented by WebDeelers helped us rank #1 for our main keywords. Their team is knowledgeable, responsive, and results-driven.",
 		author: "James Wilson",
 		company: "TechSolutions Inc.",
 		image: "/placeholder.svg?height=60&width=60&text=JW",
 	},
 	{
-		quote: "Working with EVTN's digital marketing team has been a game-changer for our business. Their data-driven approach and creative strategies have significantly improved our ROI.",
+		quote: "Working with WebDeelers's digital marketing team has been a game-changer for our business. Their data-driven approach and creative strategies have significantly improved our ROI.",
 		author: "Sophia Garcia",
 		company: "Innovate Design Studio",
 		image: "/placeholder.svg?height=60&width=60&text=SG",
@@ -206,7 +206,7 @@ export default function AboutPage() {
 							variants={fadeIn}
 							className='max-w-3xl'>
 							<h1 className='text-5xl md:text-6xl font-bold mb-6'>
-								About EVTN
+								About WebDeelers
 							</h1>
 							<p className='text-xl md:text-2xl mb-8'>
 								Revolutionizing the digital marketplace with
@@ -301,17 +301,17 @@ export default function AboutPage() {
 									Our Story
 								</h2>
 								<p className='text-lg mb-6'>
-									Founded in 20211, EVTN emerged from a simple
-									idea: to create a secure and efficient
-									marketplace for digital assets. Our
-									founders, seasoned entrepreneurs and tech
-									enthusiasts, recognized the need for a
+									Founded in 20211, WebDeelers emerged from a
+									simple idea: to create a secure and
+									efficient marketplace for digital assets.
+									Our founders, seasoned entrepreneurs and
+									tech enthusiasts, recognized the need for a
 									platform where creators, investors, and
 									businesses could connect to buy and sell
 									online properties with confidence.
 								</p>
 								<p className='text-lg'>
-									Today, EVTN stands as the premier
+									Today, WebDeelers stands as the premier
 									destination for trading websites, social
 									media accounts, and YouTube channels. We've
 									facilitated thousands of transactions,
@@ -350,7 +350,7 @@ export default function AboutPage() {
 								Our Mission
 							</h2>
 							<p className='text-xl mb-12'>
-								At EVTN, our mission is to empower digital
+								At WebDeelers, our mission is to empower digital
 								entrepreneurs and investors by providing a
 								transparent, secure, and dynamic marketplace for
 								online assets. We strive to foster innovation,
@@ -421,7 +421,7 @@ export default function AboutPage() {
 								Our Digital Marketing Services
 							</h2>
 							<p className='text-lg mb-12'>
-								At EVTN, we offer comprehensive digital
+								At WebDeelers, we offer comprehensive digital
 								marketing solutions designed to elevate your
 								online presence, drive targeted traffic, and
 								increase conversions. Our data-driven approach
@@ -699,8 +699,8 @@ export default function AboutPage() {
 							<p className='text-lg mb-8'>
 								Whether you're looking to buy or sell digital
 								assets, or need expert digital marketing
-								services, EVTN is here to help you succeed in
-								the online world.
+								services, WebDeelers is here to help you succeed
+								in the online world.
 							</p>
 							<div className='flex flex-wrap justify-center gap-4'>
 								<Button asChild size='lg'>

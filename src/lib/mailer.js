@@ -35,7 +35,7 @@ export const sendMail = async ({ email, emailType, userId }) => {
 		});
 
 		const mailOptions = {
-			from: '"EVTN " <evtnofficial@gmail.com>',
+			from: '"WebDeelers " <evtnofficial@gmail.com>',
 			to: email,
 			subject:
 				emailType === "VERIFY"

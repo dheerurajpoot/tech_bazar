@@ -68,7 +68,7 @@ export async function POST(request) {
 		// send order confirmation mail to admin
 		await sendMail({
 			email: process.env.MAIL_USER,
-			subject: "New Product Added on EVTN!",
+			subject: "New Product Added on WebDeelers!",
 			template: newProductMail(savedProduct),
 		});
 

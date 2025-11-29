@@ -13,7 +13,7 @@ export const sendMail = async ({ email, subject, template }) => {
 		});
 
 		const mailOptions = {
-			from: '"EVTN " <evtnofficial@gmail.com>',
+			from: '"WebDeelers " <evtnofficial@gmail.com>',
 			to: email,
 			subject: subject,
 			text: "",
