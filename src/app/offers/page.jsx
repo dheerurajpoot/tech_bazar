@@ -22,6 +22,7 @@ import {
 	BadgeCheck,
 	Crown,
 	Loader2,
+	MessageCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -291,6 +292,8 @@ const paymentOptions = {
 	},
 };
 
+const whatsappNumber = "917755089819";
+
 const testimonials = [
 	{
 		name: "Sarah Khan",
@@ -379,6 +382,13 @@ export default function OffersPage() {
 	const [paymentMethod, setPaymentMethod] = useState("upi");
 	const [formData, setFormData] = useState({ email: "", transactionId: "" });
 	const [isLoading, setIsLoading] = useState(false);
+	const [successDialogOpen, setSuccessDialogOpen] = useState(false);
+	const [successDetails, setSuccessDetails] = useState(null);
+
+	const buildWhatsappLink = (scriptTitle = "AdSense script") =>
+		`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+			`Hi team, I just purchased the ${scriptTitle} and submitted my payment. Please help me activate it. My email is ${formData.email} and my transaction ID is ${formData.transactionId}.`
+		)}`;
 
 	const filteredScripts =
 		selectedCategory === "All"
@@ -419,14 +429,14 @@ export default function OffersPage() {
 				}
 			);
 			if (response.status === 200) {
-				alert(
-					`Thanks ${
-						formData.email
-					}! Our team will verify your ${paymentMethod.toUpperCase()} transaction (${
-						formData.transactionId
-					}) for ${selectedScript?.name}.`
-				);
+				setSuccessDetails({
+					email: formData.email,
+					scriptName: selectedScript?.name,
+					paymentMethod,
+				});
 				setCheckoutOpen(false);
+				setSuccessDialogOpen(true);
+				setFormData({ email: "", transactionId: "" });
 			}
 		} catch (error) {
 			console.log(error);
@@ -984,23 +994,30 @@ export default function OffersPage() {
 									<Button
 										disabled={
 											!formData.email ||
-											!formData.transactionId
+											!formData.transactionId ||
+											isLoading
 										}
-										onClick={handleSubmitCheckout}
 										type='submit'
-										className='w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-lg'>
+										className='w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white text-lg flex items-center justify-center gap-2'>
 										{isLoading ? (
-											<Loader2 className='animate-spin' />
+											<>
+												<Loader2 className='h-4 w-4 animate-spin' />
+												Processing
+											</>
 										) : (
-											"Order Now"
+											<>
+												Order Now
+												<ArrowRight className='h-4 w-4' />
+											</>
 										)}
-										<ArrowRight className='ml-2 h-4 w-4' />
 									</Button>
 
 									<p className='text-xs text-gray-500 text-center'>
 										Need help?{" "}
 										<Link
-											href='/contact'
+											href={buildWhatsappLink(
+												selectedScript?.name
+											)}
 											className='text-purple-300 underline-offset-2 hover:underline'>
 											Chat with support
 										</Link>
@@ -1010,6 +1027,70 @@ export default function OffersPage() {
 						</>
 					)}
 				</DialogContent>
+			</Dialog>
+
+			<Dialog
+				open={successDialogOpen}
+				onOpenChange={setSuccessDialogOpen}>
+				{successDetails && (
+					<DialogContent className='bg-slate-900 text-white border border-emerald-500/30 max-w-xl text-center space-y-6'>
+						<DialogHeader>
+							<DialogTitle className='text-3xl font-bold text-white'>
+								Payment Received 🎉
+							</DialogTitle>
+							<DialogDescription className='text-gray-300 text-base'>
+								Thanks, {successDetails.email}! We are verifying
+								your{" "}
+								{successDetails.paymentMethod.toUpperCase()}{" "}
+								transaction for{" "}
+								<span className='font-semibold text-white'>
+									{successDetails.scriptName}
+								</span>
+								. Expect your access email within 10-30 minutes.
+							</DialogDescription>
+						</DialogHeader>
+
+						<div className='rounded-2xl bg-white/5 border border-white/10 p-5 text-left space-y-3'>
+							<p className='text-sm text-gray-300'>
+								✅ Order received • Our team is matching your
+								transaction ID.
+							</p>
+							<p className='text-sm text-gray-300'>
+								📩 We will send the download link and onboarding
+								guide to{" "}
+								<span className='text-white font-medium'>
+									{successDetails.email}
+								</span>
+							</p>
+							<p className='text-sm text-gray-300'>
+								💬 Need instant help? Ping us on WhatsApp and
+								share your transaction screenshot.
+							</p>
+						</div>
+
+						<div className='flex flex-col sm:flex-row gap-3'>
+							<Button
+								asChild
+								className='flex-1 bg-green-500 hover:bg-green-600 text-white'>
+								<a
+									href={buildWhatsappLink(
+										successDetails.scriptName
+									)}
+									target='_blank'
+									rel='noreferrer'>
+									<MessageCircle className='h-4 w-4' />
+									WhatsApp Support
+								</a>
+							</Button>
+							<Button
+								variant='outline'
+								className='flex-1 text-gray-800 hover:text-white border-gray-400/20 hover:bg-gray-400/10'
+								onClick={() => setSuccessDialogOpen(false)}>
+								Browse more scripts
+							</Button>
+						</div>
+					</DialogContent>
+				)}
 			</Dialog>
 		</div>
 	);
