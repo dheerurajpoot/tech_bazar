@@ -159,14 +159,6 @@ export default function Footer() {
 							</a>
 						</div>
 						<div className='flex items-center space-x-3 bg-gray-800/50 p-3 rounded-lg'>
-							<Phone className='h-5 w-5 text-teal-400' />
-							<a
-								href='tel:7755089819'
-								className='text-gray-300 hover:text-white transition-colors'>
-								+91 7755089819
-							</a>
-						</div>
-						<div className='flex items-center space-x-3 bg-gray-800/50 p-3 rounded-lg'>
 							<MapPin className='h-5 w-5 text-purple-400' />
 							<span className='text-gray-300'>
 								Kalyanpur, Kanpur, UP, India, (208017)

@@ -74,14 +74,7 @@ export default function ContactPage() {
 							<Mail className='h-6 w-6 text-primary mr-4' />
 							<div>
 								<h3 className='font-semibold'>Email</h3>
-								<p>evtnofficial@gmail.com</p>
-							</div>
-						</div>
-						<div className='flex items-center'>
-							<Phone className='h-6 w-6 text-primary mr-4' />
-							<div>
-								<h3 className='font-semibold'>Phone</h3>
-								<p>+91 7755089819</p>
+								<p>drexpress90@gmail.com</p>
 							</div>
 						</div>
 						<div className='flex items-center'>
